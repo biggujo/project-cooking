@@ -1,0 +1,51 @@
+.hero {
+  padding-top: 137px;
+  padding-bottom: 80px;
+}
+
+.hero-wrapper {
+}
+
+.hero-info {
+}
+
+.hero-title {
+  margin-bottom: 14px;
+
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.decor-green-text {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-color);
+}
+.hero-text {
+  font-size: 14px;
+  line-height: 1.28;
+}
+.hero-btn {
+}
+.hero-slider {
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    padding-top: 141px;
+    padding-bottom: 80px;
+  }
+  .hero-title {
+    margin-bottom: 16px;
+
+    font-size: 36px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .hero {
+    padding-top: 160px;
+    padding-bottom: 100px;
+  }
+}
