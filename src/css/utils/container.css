@@ -1,19 +1,26 @@
 .container {
-  max-width: 355px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 10px;
 }
 
+@media screen and (min-width: 375px) {
+  .container {
+    width: var(--breakpoint-mobile-width);
+    padding: 0 var(--breakpoint-mobile-container-padding-inline);
+  }
+}
+
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 736px;
-    padding: 0 16px;
+    width: var(--breakpoint-tablet-width);
+    padding: 0 var(--breakpoint-tablet-container-padding-inline);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
-    max-width: 1104px;
-    padding: 0 12px;
+    width: var(--breakpoint-computer-width);
+    padding: 0 var(--breakpoint-computer-container-padding-inline);
   }
 }

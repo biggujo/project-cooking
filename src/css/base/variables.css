@@ -1,7 +1,6 @@
 /* All variables are stored here */
 
 :root {
-
   /*
    * Breakpoints
    */
@@ -18,5 +17,5 @@
 
   --breakpoint-mobile-container-padding-inline: 20px;
   --breakpoint-tablet-container-padding-inline: 32px;
-  --breakpoint-computer-container-padding-inline: var(--breakpoint-tablet-container-padding-inline);
+  --breakpoint-computer-container-padding-inline: 100px;
 }
