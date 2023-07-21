@@ -8,8 +8,17 @@
     <link rel="stylesheet" href='./css/main.css' />
   </head>
   <body>
-<p>Hello world</p>
-<script type="module" src="../src/js/pop-up-recipe.js"></script>
+    <button class="open-btn" data-modal-open>See recipe</button>
+<div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="close-btn" data-modal-close>
+          <svg class="close-svg">
+            <use href="./images/icons.svg#closebtn"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+<script type='module' src='./js/pop-up-recipe.js'></script>
     
   </body>
 </html>
