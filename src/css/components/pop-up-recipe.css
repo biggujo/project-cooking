@@ -1,3 +1,18 @@
+.open-btn{
+    text-align: center;
+    /* width: 89px;
+    height: 31px; */
+    color: #F8F8F8;
+    padding: 8px 14px; 
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+    border-radius: 8px;
+    border: none;
+    background: #9BB537; 
+}
+
 .backdrop {
   position: fixed;
   top: 0;
