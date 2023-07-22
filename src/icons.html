@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <link rel='icon' type='image/svg+xml' href='./img/favicon.svg' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Vanilla App Template</title>
+    <style>
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+      }
+
+      svg, li {
+        outline: 0.1px solid tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class='container'>
+          <ul>
+            <li>
+              <svg style='
+              width: 32px;
+              height: 32px;
+
+              color: red; fill: var(--color-star-marked)'>
+                <use href='./img/icons.svg#star'></use>
+              </svg>
+            </li>
+            <li>
+              <svg style='
+              width: 32px;
+              height: 32px;
+
+              color: red; fill: var(--color-star-unmarked)'>
+                <use href='./img/icons.svg#star'></use>
+              </svg>
+            </li>
+            <li style='
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            width: 44px;
+            height: 44px;
+
+            background-color: var(--color-pagination-arrow-background-disabled);
+            border-radius: 50%'>
+              <svg style='
+              width: 8px;
+              height: 14px;
+
+               color: red;
+               fill: var(--color-pagination-arrow-disabled)'>
+                <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+            </li>
+            <li style='
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            width: 44px;
+            height: 44px;
+
+            background-color: var(--color-pagination-arrow-background-disabled);
+            border-radius: 50%'>
+              <svg style='
+               width: 8px;
+               height: 14px;
+
+               color: red;
+               fill: var(--color-pagination-arrow-disabled)'>
+                <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+              <svg width='8' height='14' style='
+               color: red;
+               fill: var(--color-pagination-arrow-disabled)'>
+                <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+            </li>
+            <li style='
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            width: 44px;
+            height: 44px;
+
+            transform: rotate(0.5turn);
+
+            background-color: var(--color-pagination-arrow-background-enabled);
+            border-radius: 50%'>
+              <svg width='8' height='14' style='
+               color: red;
+               fill: var(--color-pagination-arrow-enabled)'>
+                <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+            </li>
+            <li style='
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            width: 44px;
+            height: 44px;
+
+            transform: rotate(0.5turn);
+
+            background-color: var(--color-pagination-arrow-background-enabled);
+            border-radius: 50%'>
+              <svg style='
+               width: 8px;
+               height: 14px;
+
+               color: red;
+               fill: var(--color-pagination-arrow-enabled)'>
+                <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+              <svg width='8' height='14' style='
+               color: red;
+               fill: var(--color-pagination-arrow-enabled)'>
+                <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
