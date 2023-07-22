@@ -1,0 +1,272 @@
+
+body {
+    background-color: rgb(247, 245, 245);
+  }
+  .filters__block {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 14px;
+    column-gap: 15px;
+    color: rgba(5, 5, 5, 0.50);
+    position: relative;
+    padding-bottom: 50px;
+    font-size: 14px;
+    line-height: 1.28;
+  }
+  .filters-label{
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.16;
+    padding: 0;
+  }
+.filters-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  .itc-select {
+    position: relative;
+  }
+  .select-button__block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 13px 17px;
+    color: rgba(5, 5, 5, 0.50);
+    font-weight: 500;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    cursor: pointer;
+    user-select: none;
+    background-color: #fff;
+    margin: 0;
+  }
+
+  .itc-select__toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: rgba(5, 5, 5, 0.50);
+    line-height: 1.285;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .itc-select__toggle:focus {
+    outline: none;
+  }
+
+  .itc-select_show .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .itc-select__dropdown {
+    box-sizing: border-box;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+    overflow-y: auto;
+    border-radius: 14px;
+    background: #FFF;
+    padding-inline: 18px;
+    border-top: 14px solid #fff;
+    border-bottom: 14px solid #fff;
+    box-shadow: 0px 4px 36px 0px rgba(0,§ 0, 0, 0.02);
+    cursor: pointer;
+  }
+  #dropdown-time {
+    max-height: 124px;
+  }
+  #dropdown-area {
+    max-height: 176px;
+  }
+  #dropdown-ingridients {
+    max-height: 176px;
+  }
+  .itc-select_show .itc-select__dropdown {
+    display: block;
+  }
+  
+  .itc-select_show .itc-select__backdrop {
+    display: block;
+  }
+  
+  .itc-select__options {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .itc-select__option {
+    color: rgba(5, 5, 5, 0.30);
+    font-weight: 500;
+  }
+  
+  .itc-select__option_selected {
+    color: #050505;
+  }
+  
+  .itc-select__option:hover {
+    color: rgba(5, 5, 5, 0.60);
+    cursor: pointer;
+    transition: 0.2s color ease-in-out;
+  }
+  
+  #dropdown::-webkit-scrollbar {
+    width: 18px;
+    background-color: #fff;
+  
+  }
+  #dropdown::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: rgba(5, 5, 5, 0.10);
+    border: 6px solid #fff;
+  }
+  .dropdown__input-hidden {
+      display: none;
+  }
+  
+  
+  .search__recepies {
+    display: inline-block;
+    flex: 0 0 100%;
+  }
+  .search__recepies-input__block {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    background-color: #fff;
+    padding: 13px 17px;
+  }
+  .search-icon {
+    margin-right: 13px;
+  }
+  .search__recepies-input {
+    padding:0;
+    border: none;
+    outline: #FFF;
+    color: #050505;
+  }
+  .search__recepies-input::placeholder {
+    color: rgba(5, 5, 5, 0.50);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .close-icon {
+    margin-left: auto;
+    display: none;
+  }
+
+  #select-time {
+    flex: 0 1 47.76%;
+  }
+  #select-area {
+    flex: 0 1 47.76%;
+  }
+  #select-ingridients {
+    flex: 0 1 100%;
+  }
+  .filters-reset {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    cursor: pointer;
+/*     transform: translateY(50%); */
+  }
+  .filters-reset svg {
+    fill: var(--color-accent-primary);
+  }
+  .filters-reset span {
+    margin-bottom: 0;
+  }
+  @media screen and (min-width:768px) {
+    .filters__block {
+        max-width: 496px;
+        gap: 16px;
+        padding-bottom: 44px;
+        margin: 0 0 0 208px;
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    .filters-label {
+        font-size: 14px;
+        line-height: 1.28;
+    }
+    .itc-select__toggle {
+        line-height: 1.25;
+    }
+    .search__recepies-input {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+    .filters-reset label {
+        font-size: 12px;
+        line-height: 1.33;
+    }
+    .search__recepies{
+        max-width: 278px;
+ /*        flex: 0 1 56%; */
+    }
+    .itc-select__dropdown{
+        top: 75px;
+    }
+    #select-time {
+/*         flex: 0 1 25%; */
+        max-width: 125px;
+      }
+      #select-area {
+        max-width: 141px;
+/*         flex: 0 1 28.4%; */
+      }
+      #select-ingridients {
+        max-width: 188px;
+/*         flex: 0 1 37.9%; */
+      }
+      .filters-reset {
+        bottom: 14px;
+      }
+      #dropdown-time {
+        max-height: 128px;
+      }
+      #dropdown-area {
+        max-height: 188px;
+      }
+      #dropdown-ingridients {
+        max-height: 188px;
+      }
+  }
+  @media screen and (min-width:1160px) {
+    .filters__block {
+        max-width: 780px;
+        gap: 16px;
+        padding-bottom: 44px;
+        margin: 0 0 0 299px;
+    }
+  }
+
+  .filters-reset-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

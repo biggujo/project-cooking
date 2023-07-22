@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="filters__block">
+        <form action="" class="search__recepies">
+            <label class="search__recepies-label filters-label" for="search__recepies-input">Search</label>
+            <div class="search__recepies-input__block">
+              <div class="search-icon filters-icons">
+                <svg class="search-icon1" style='
+                width: 15px;
+                height: 15px;
+  
+                color: var(--color-gray-pale-alpha050);
+                fill: currentColor;
+                '>
+                  <use href='./img/icons.svg#search-magnifier'></use>
+                </svg>
+              </div>
+              <input type="text" id="search__recepies-input" name="search-input" class="search__recepies-input" placeholder="Enter Text">
+              <div class="close-icon filters-icons">
+                <svg style='
+                width: 18px;
+                height: 18px;
+  
+                color: var(--color-text-primary);
+                stroke: currentColor;
+                '>
+                  <use href='./img/icons.svg#close-search'></use>
+                </svg>
+              </div>
+            </div>
+        </form>
+        <div class="itc-select" id="select-time">
+            <label class="filters-label" for="toggle-time">Time</label>
+            <div class="select-button__block">
+                <button type="button" class="itc-select__toggle" id="toggle-time" name="time" value="" data-select="toggle" data-index="-1" disabled>0 min</button>
+                <div class="dropdown-icon filters-icons">
+                    <svg style='
+                    width: 18px;
+                    height: 18px;
+      
+                    color: var(--color-gray-pale-alpha050);
+                    fill: none;
+                    stroke: currentColor;
+                    '>
+                      <use href='./img/icons.svg#dropdown'></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="itc-select__dropdown" id="dropdown-time">
+              <ul class="itc-select__options" id="options-time"></ul>
+              <input type="text" name="select-category" value="" class="dropdown__input-hidden" >
+            </div>
+        </div>
+        <div class="itc-select" id="select-area">
+            <label class="filters-label" for="toggle-area">Area</label>
+            <div class="select-button__block">
+                <button type="button" class="itc-select__toggle" id="toggle-area" name="area" value="" data-select="toggle" data-index="-1" disabled>Region</button>
+                <div class="dropdown-icon filters-icons">
+                    <svg style='
+                    width: 18px;
+                    height: 18px;
+      
+                    color: var(--color-gray-pale-alpha050);
+                    fill: none;
+                    stroke: currentColor;
+                    '>
+                      <use href='./img/icons.svg#dropdown'></use>
+                    </svg>
+                </div>
+            </div>
+            <div div class="itc-select__dropdown" id="dropdown-area">
+                <ul class="itc-select__options" id="options-area"></ul>
+                <input type="text" name="select-category" value="" class="dropdown__input-hidden" >
+          </div>
+        </div>
+        <div class="itc-select" id="select-ingridients">
+            <label class="filters-label" for="toggle-ingridients">Ingredients</label>
+            <div class="select-button__block">
+                <button type="button" class="itc-select__toggle" id="toggle-ingridients" name="ingredients" value="" data-select="toggle" data-index="-1" disabled>Product</button>
+                <div class="dropdown-icon filters-icons">
+                    <svg style='
+                    width: 18px;
+                    height: 18px;
+      
+                    color: var(--color-gray-pale-alpha050);
+                    fill: none;
+                    stroke: currentColor;
+                    '>
+                      <use href='./img/icons.svg#dropdown'></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="itc-select__dropdown" id="dropdown-ingridients">
+                <ul class="itc-select__options" id="options-ingridients" ></ul>
+                <input type="text" name="select-category" value="" class="dropdown__input-hidden" >
+            </div>
+        </div>
+        <div class="filters-reset">
+            <div class="filters-reset-icon filters-icons">
+                <svg style='
+                width: 16px;
+                height: 16px;
+  
+                color: var(--color-text-primary);
+                stroke: currentColor;
+                '>
+                  <use href='./img/icons.svg#close-reset-filter'></use>
+                </svg>
+            </div>
+            <span class="filters-label">Reset the filter</span>
+        </div>
+    </div>
+</div>
