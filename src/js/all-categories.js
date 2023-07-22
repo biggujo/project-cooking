@@ -8,7 +8,7 @@ const allCategoriesButtons = document.querySelectorAll('.all-categories-item-but
 
 let activeCategory = null;
 
-async function handleClickedCategories(event) {
+function handleClickedCategories(event) {
   const target = event.target;
 
   if (target.classList.contains('all-categories-item-button')) {
@@ -23,48 +23,48 @@ async function handleClickedCategories(event) {
     } else {
       target.classList.add('is-active');
       activeCategory = target.innerText;
+      allCategoriesButton.classList.remove('is-active'); // Знімаємо активний клас з кнопки "All categories"
     }
 
-    allCategoriesButton.classList.remove('is-active');
-    await fetchRecipes(activeCategory);
+    fetchRecipes(activeCategory)
+      .then(recipes => {
+        console.log(recipes);
+      })
+      .catch(error => {
+        console.error('ERROR', error);
+      });
   }
 }
 
-async function handleClickedAllCategories(event) {
+function handleClickedAllCategories(event) {
   allCategoriesButtons.forEach(button => {
-    if (button !== allCategoriesButton) {
-      button.classList.remove('is-active');
-    }
+    button.classList.remove('is-active');
   });
 
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
-  await fetchRecipes(activeCategory);
+  fetchRecipes(activeCategory)
+    .then(recipes => {
+      console.log(recipes);
+    })
+    .catch(error => {
+      console.error('ERROR', error);
+    });
 }
 
 async function fetchRecipes(category) {
+  let url = `${API_URL}/recipes`;
+
+  if (category) {
+    url += `?category=${category}`;
+  }
+
   try {
-    let url = `${API_URL}/recipes`;
-
-    if (category) {
-      url += `?category=${category}`;
-    }
-
     const response = await axios.get(url);
     const recipes = response.data;
-
-    console.log(recipes);
-
- 
-    const activeButton = document.querySelector('.all-categories-item-button.is-active');
-    if (activeButton) {
-      activeButton.classList.remove('is-active');
-    }
-    if (activeCategory === null) {
-      allCategoriesButton.classList.add('is-active');
-    }
+    return recipes;
   } catch (error) {
-    console.error('ERROR', error);
+    throw error;
   }
 }
 
