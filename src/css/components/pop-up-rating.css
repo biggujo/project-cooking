@@ -25,13 +25,9 @@
   left: 50%;
   width: 335px;
   height: 216px;
-  transform: translate(-50%, -50%);
-  padding: 32px 20px;
   background-color: var(--yellow-main);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
-  border-radius: 30px;
 }
-@media screen and (min-width: --breakpoint-tablet-width) {
+@media screen and (min-width: var(--breakpoint-tablet-width)) {
   .modal {
     width: 424px;
     height: 254px;
@@ -45,4 +41,9 @@
   margin-bottom: 4px;
   display: block;
   text-align: left;
+}
+
+.rating-icon :hover,
+.rating-item-icon {
+  fill: var(--color-star-marked);
 }
