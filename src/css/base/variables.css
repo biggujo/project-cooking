@@ -46,4 +46,7 @@
   /* Star */
   --color-star-marked: #EEA10C;
   --color-star-unmarked: var(--color-gray-accent-secondary);
+
+  /* Pagination */
+  --color-pagination-arrow: rgba(248, 248, 248, 0.5);
 }
