@@ -1,24 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
-    <link rel="stylesheet" href='./css/main.css' />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <button class="open-btn" data-modal-open>See recipe</button>
-<div class="backdrop is-hidden" data-modal>
+    <div class="backdrop is-hidden" data-modal>
       <div class="modal">
         <button class="close-btn" data-modal-close>
-          <svg class="close-svg">
-            <use href="./images/icons.svg#closebtn"></use>
-          </svg>
+          Close
+          <!-- <svg class="close-svg"> -->
+          <!-- <use href="./images/icons.svg#closebtn"></use> -->
+          <!-- </svg> -->
         </button>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ipsa
+          magnam, architecto voluptas maiores vero inventore perspiciatis
+          perferendis consequuntur odio cum, dolore doloremque porro? Velit
+          asperiores debitis non consectetur praesentium!
+        </p>
       </div>
     </div>
-<script type='module' src='./js/pop-up-recipe.js'></script>
-    
+    <script type="module" src="./js/pop-up-recipe.js"></script>
   </body>
 </html>
