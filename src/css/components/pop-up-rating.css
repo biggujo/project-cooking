@@ -1,0 +1,48 @@
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(94, 99, 99, 0.702);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+  transform: scale(1);
+  transition: var(--animation);
+}
+
+.backdrop.is__hidden {
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 335px;
+  height: 216px;
+  transform: translate(-50%, -50%);
+  padding: 32px 20px;
+  background-color: var(--yellow-main);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 30px;
+}
+@media screen and (min-width: --breakpoint-tablet-width) {
+  .modal {
+    width: 424px;
+    height: 254px;
+  }
+}
+.modal__title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #050505;
+  margin-bottom: 4px;
+  display: block;
+  text-align: left;
+}
