@@ -66,4 +66,5 @@
 
   /* Like */
   --color-like-disabled: var(--color-icon-disabled);
+  --color-like-enabled: #ffffff;
 }
