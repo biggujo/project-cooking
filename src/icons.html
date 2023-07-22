@@ -4,6 +4,7 @@
     <meta charset='UTF-8' />
     <link rel='icon' type='image/svg+xml' href='./img/favicon.svg' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='./css/main.css'>
     <title>Vanilla App Template</title>
     <style>
       ul {
@@ -15,6 +16,7 @@
       li {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         width: 32px;
         height: 32px;
@@ -32,19 +34,19 @@
           <ul>
             <li>
               <svg style='
-              width: 32px;
-              height: 32px;
+              width: 18px;
+              height: 18px;
 
-              color: red; fill: var(--color-star-marked)'>
+              color: var(--color-star-marked); fill: currentColor'>
                 <use href='./img/icons.svg#star'></use>
               </svg>
             </li>
             <li>
               <svg style='
-              width: 32px;
-              height: 32px;
+              width: 18px;
+              height: 18px;
 
-              color: red; fill: var(--color-star-unmarked)'>
+              color: var(--color-star-unmarked); fill: currentColor'>
                 <use href='./img/icons.svg#star'></use>
               </svg>
             </li>
@@ -62,8 +64,8 @@
               width: 8px;
               height: 14px;
 
-               color: red;
-               fill: var(--color-pagination-arrow-disabled)'>
+               color: var(--color-pagination-arrow-disabled);
+               fill: currentColor'>
                 <use href='./img/icons.svg#pagination-arrow'></use>
               </svg>
             </li>
@@ -81,13 +83,13 @@
                width: 8px;
                height: 14px;
 
-               color: red;
-               fill: var(--color-pagination-arrow-disabled)'>
+               color: var(--color-pagination-arrow-disabled);
+               fill: currentColor'>
                 <use href='./img/icons.svg#pagination-arrow'></use>
               </svg>
               <svg width='8' height='14' style='
-               color: red;
-               fill: var(--color-pagination-arrow-disabled)'>
+               color: var(--color-pagination-arrow-disabled);
+               fill: currentColor'>
                 <use href='./img/icons.svg#pagination-arrow'></use>
               </svg>
             </li>
@@ -104,8 +106,8 @@
             background-color: var(--color-pagination-arrow-background-enabled);
             border-radius: 50%'>
               <svg width='8' height='14' style='
-               color: red;
-               fill: var(--color-pagination-arrow-enabled)'>
+               color: var(--color-pagination-arrow-enabled);
+               fill: currentColor'>
                 <use href='./img/icons.svg#pagination-arrow'></use>
               </svg>
             </li>
@@ -125,14 +127,25 @@
                width: 8px;
                height: 14px;
 
-               color: red;
-               fill: var(--color-pagination-arrow-enabled)'>
+               color: var(--color-pagination-arrow-enabled);
+               fill: currentColor'>
                 <use href='./img/icons.svg#pagination-arrow'></use>
               </svg>
               <svg width='8' height='14' style='
-               color: red;
-               fill: var(--color-pagination-arrow-enabled)'>
+               color: var(--color-pagination-arrow-enabled);
+               fill: currentColor'>
                 <use href='./img/icons.svg#pagination-arrow'></use>
+              </svg>
+            </li>
+            <li>
+              <svg style='
+              width: 32px;
+              height: 32px;
+
+              color: red;
+              stroke: currentColor;
+              '>
+                <use href='./img/icons.svg#burger-menu'></use>
               </svg>
             </li>
           </ul>
