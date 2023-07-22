@@ -36,6 +36,11 @@
   --color-gray-pale-alpha050: rgba(5, 5, 5, 0.50);
   --color-gray-pale-alpha080: rgba(5, 5, 5, 0.80);
 
+  /* Header */
+  --color-header-icon-primary: var(--color-text-primary);
+  --color-header-icon-accent: var(--color-accent-primary);
+
+
   /* Hero */
   --color-hero-card-title: rgba(248, 248, 248, 0.60);
   --color-hero-card-subtitle: rgba(248, 248, 248, 0.20);
