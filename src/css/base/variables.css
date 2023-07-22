@@ -48,5 +48,12 @@
   --color-star-unmarked: var(--color-gray-accent-secondary);
 
   /* Pagination */
-  --color-pagination-arrow: rgba(248, 248, 248, 0.5);
+  --color-pagination-arrow-disabled: rgba(248, 248, 248, 0.5);
+  --color-pagination-arrow-background-disabled: var(--color-text-primary);
+
+  --color-pagination-arrow-enabled: var(--color-text-primary);
+  --color-pagination-arrow-background-enabled: var(--color-accent-primary);
+
+  --color-pagination-text: var(--color-text-primary);
+  --color-pagination-text-background-selected: var(--color-accent-primary);
 }
