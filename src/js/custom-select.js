@@ -1,11 +1,11 @@
 export class CustomSelect {
-    static EL = 'itc-select';
-    static EL_SHOW = 'itc-select_show';
-    static EL_OPTION = 'itc-select__option';
-    static EL_OPTION_SELECTED = 'itc-select__option_selected';
+    static EL = 'filter-select';
+    static EL_SHOW = 'filter-select_show';
+    static EL_OPTION = 'filter-select__option';
+    static EL_OPTION_SELECTED = 'filter-select__option_selected';
     static DATA = '[data-select]';
     static DATA_TOGGLE = '[data-select="toggle"]';
-    static INPUT = '.dropdown__input-hidden';
+    static INPUT = '.filter-select__input-hidden';
   
     static hideOpenSelect() {
       document.addEventListener('click', (e) => {
@@ -39,7 +39,7 @@ export class CustomSelect {
     _onClick(e) {
       const { target } = e;
       const type = target.closest(this.constructor.DATA).dataset.select;
-      if (type === 'toggle') {
+      if (type === 'toggle' || type === 'toggle-block') {
         this.toggle();
       } else if (type === 'option') {
         this._changeValue(target);
@@ -59,7 +59,7 @@ export class CustomSelect {
       elInput.value=this._elToggle.textContent;
       this._elToggle.value = elOption.dataset.value;
       this._elToggle.dataset.index = elOption.dataset.index;
-      this._el.dispatchEvent(new CustomEvent('itc.select.change'));
+      this._el.dispatchEvent(new CustomEvent('filter.select.change'));
       this._params.onSelected ? this._params.onSelected(this, elOption) : null;
       return elOption.dataset.value;
     }
@@ -69,10 +69,10 @@ export class CustomSelect {
       if (selected) {
         selected.classList.remove(this.constructor.EL_OPTION_SELECTED);
       }
-      this._elToggle.textContent = 'Выберите из списка';
+      this._elToggle.textContent = '';
       this._elToggle.value = '';
       this._elToggle.dataset.index = '-1';
-      this._el.dispatchEvent(new CustomEvent('itc.select.change'));
+      this._el.dispatchEvent(new CustomEvent('filter.select.change'));
       this._params.onSelected ? this._params.onSelected(this, null) : null;
       return '';
     }
