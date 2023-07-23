@@ -1,7 +1,5 @@
 .open-btn {
   text-align: center;
-  /* width: 89px;
-    height: 31px; */
   color: #f8f8f8;
   padding: 8px 14px;
   font-size: 12px;
@@ -59,29 +57,31 @@
   width: 24px;
   margin-right: 14px;
   margin-top: 14px;
-  background-color: var(--footer-text-color);
+
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .close-btn:hover {
-  background: var(--active);
+  
 }
 
 .close-svg {
-  width: 8px;
-  height: 8px;
+  width: 20px;
+  height: 20px;
+  color:rgba(0, 0, 0, 1);
   fill: rgba(0, 0, 0, 1);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  stroke:rgba(0, 0, 0, 1);
+  /* transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .close-btn:hover .close-svg {
-  fill: var(--body-background-color);
+  /* fill: var(--body-background-color); */
 }
 
 /* ----recipe-markup ----*/
