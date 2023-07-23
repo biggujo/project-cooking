@@ -6,13 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <load ="./partials/header.html" />
+
     <section class="popular-recipes">
       <h2 class="popular-recipes-title">Popular recipes</h2>
       <ul class="popular-recipes-list"></ul>
     </section>
+
+    <span class="loader"></span>
+
+    <!--REMOVE THIS-->
+    <div class="container" style="height: 200vh"></div>
+    <!--ADDITIONAL-->
+    <a href="#" id="roll_back" class="animate"
+      ><i class="fa fa-angle-up"></i
+    ></a>
+
     <script type="module" src="./index.js"></script>
   </body>
 </html>
