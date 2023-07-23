@@ -1,4 +1,6 @@
 // https://tasty-treats-backend.p.goit.global/api/recipes/recipeID;
+import axios from 'axios';
+
 
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open]'),
