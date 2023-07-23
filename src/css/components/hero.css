@@ -1,4 +1,4 @@
-.container {
+/* .container {
   max-width: 355px;
   margin: 0 auto;
   padding: 0 10px;
@@ -16,7 +16,7 @@
     max-width: 1104px;
     padding: 0 12px;
   }
-}
+} */
 
 .hero {
   padding-top: 137px;
@@ -34,6 +34,7 @@
 
 .decor-green-text {
   font-style: italic;
+  font-weight: 400;
   color: var(--accent-color);
 }
 

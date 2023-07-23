@@ -30,11 +30,11 @@
   --color-gray-accent-primary: #f8f8f8;
   --color-gray-accent-secondary: #d9d9d9;
 
-  --color-gray-pale-alpha010: rgba(5, 5, 5, 0.10);
-  --color-gray-pale-alpha020: rgba(5, 5, 5, 0.20);
-  --color-gray-pale-alpha030: rgba(5, 5, 5, 0.30);
-  --color-gray-pale-alpha050: rgba(5, 5, 5, 0.50);
-  --color-gray-pale-alpha080: rgba(5, 5, 5, 0.80);
+  --color-gray-pale-alpha010: rgba(5, 5, 5, 0.1);
+  --color-gray-pale-alpha020: rgba(5, 5, 5, 0.2);
+  --color-gray-pale-alpha030: rgba(5, 5, 5, 0.3);
+  --color-gray-pale-alpha050: rgba(5, 5, 5, 0.5);
+  --color-gray-pale-alpha080: rgba(5, 5, 5, 0.8);
 
   --color-icon-disabled: rgba(248, 248, 248, 0.5);
 
@@ -42,16 +42,15 @@
   --color-header-icon-primary: var(--color-text-primary);
   --color-header-icon-accent: var(--color-accent-primary);
 
-
   /* Hero */
-  --color-hero-card-title: rgba(248, 248, 248, 0.60);
-  --color-hero-card-subtitle: rgba(248, 248, 248, 0.20);
+  --color-hero-card-title: rgba(248, 248, 248, 0.6);
+  --color-hero-card-subtitle: rgba(248, 248, 248, 0.2);
 
   /* Modal */
   --color-modal-background: #ffffff;
 
   /* Star */
-  --color-star-marked: #EEA10C;
+  --color-star-marked: #eea10c;
   --color-star-unmarked: var(--color-gray-accent-secondary);
 
   /* Pagination */
