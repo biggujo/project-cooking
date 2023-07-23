@@ -6,6 +6,7 @@
 */
 
 @import url('./base/main.css');
+@import url('./utils/main.css');
 @import url('./components/main.css');
 
 :root {
