@@ -12,9 +12,45 @@
     </header>
 
     <main>
-      <section>
+      <section class='fav-hero'>
         <div class='container'>
-
+          <picture>
+            <source srcset='./img/favorites/fav-hero-computer.webp 1x,
+            ./img/favorites/fav-hero-computer@2x.webp 2x,
+            ./img/favorites/fav-hero-computer@3x.webp 3x'
+                    media='(min-width: 1160px)'
+                    type='image/webp'
+            >
+            <source srcset='./img/favorites/fav-hero-computer.jpg 1x,
+                            ./img/favorites/fav-hero-computer@2x.jpg 2x,
+                            ./img/favorites/fav-hero-computer@3x.jpg 3x'
+                    media='(min-width: 1160px)'
+                    type='image/jpg'
+            >
+            <source srcset='./img/favorites/fav-hero-tablet.webp 1x,
+            ./img/favorites/fav-hero-tablet@2x.webp 2x,
+            ./img/favorites/fav-hero-tablet@3x.webp 3x'
+                    media='(min-width: 768px)'
+                    type='image/webp'
+            >
+            <source srcset='./img/favorites/fav-hero-tablet.jpg 1x,
+            ./img/favorites/fav-hero-tablet@2x.jpg 2x,
+            ./img/favorites/fav-hero-tablet@3x.jpg 3x'
+                    media='(min-width: 768px)'
+                    type='image/jpg'
+            >
+            <source srcset='./img/favorites/fav-hero-mobile.webp 1x,
+            ./img/favorites/fav-hero-mobile@2x.webp 2x,
+            ./img/favorites/fav-hero-mobile@3x.webp 3x'
+                    type='image/webp'
+            >
+            <source srcset='./img/favorites/fav-hero-mobile.jpg 1x,
+            ./img/favorites/fav-hero-mobile@2x.jpg 2x,
+            ./img/favorites/fav-hero-mobile@3x.jpg 3x'
+                    type='image/jpg'
+            >
+            <img src='./img/favorites/fav-hero-computer.jpg' alt='Some meal'>
+          </picture>
         </div>
       </section>
     </main>
