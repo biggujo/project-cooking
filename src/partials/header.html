@@ -1,58 +1,94 @@
 <header>
-  <div class="container header">
-    <nav class="modal-nav-orig">
-      <ul class="modal-list">
-        <li class="modal-item-list home">
-          <a href="./index.html" class="link-home">Home</a>
-        </li>
+  <section class="section">
+    <div class="container header">
+      <nav class="modal-nav-orig">
+        <ul class="modal-list">
+          <li class="modal-item-list home">
+            <a href="./index.html" class="link-home dark-site">Home</a>
+          </li>
 
-        <li class="modal-item-list">
-          <a href="" class="link-favorites">Favorites</a>
-        </li>
-      </ul>
-    </nav>
-    <a href="" class="logo"
-      >tasty<span class="colorlogo dark-site">treats.</span></a
-    >
+          <li class="modal-item-list">
+            <a href="" class="link-favorites dark-site">Favorites</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="" class="logo"
+        >tasty<span class="colorlogo dark-site">treats.</span></a
+      >
 
-    <button class="shopping-cart-button dark-site" type="button">
-      <svg class="shopping-cart-button-svg dark-site">
-        <use href="../img/icons.svg#cart"></use>
-      </svg>
-    </button>
-    <button class="switcher" type="button">
-      <svg class="switcher-org-svg">
-        <use href="./image/symbol-defs.svg#icon-switch"></use>
-      </svg>
-    </button>
-    <button class="burger-button dark-site" data-modal-open type="button">
-      <svg class="burger-button-svg dark-site">
-        <use href="../img/icons.svg#burger-menu"></use>
-      </svg>
-    </button>
-  </div>
+      <button
+        class="shopping-cart-button dark-site"
+        data-order-open
+        type="button"
+      >
+        <svg class="shopping-cart-button-svg dark-site">
+          <use href="../img/icons.svg#cart"></use>
+        </svg>
+      </button>
+      <button class="switcher-menu dark-site" type="button">
+        <svg class="switcher-org-svg">
+          <use href="../img/icons.svg#icon-switch"></use>
+        </svg>
+      </button>
+      <button class="burger-button dark-site" data-modal-open type="button">
+        <svg class="burger-button-svg dark-site">
+          <use href="../img/icons.svg#burger-menu"></use>
+        </svg>
+      </button>
+    </div>
 
-  <div class="modal is-hidden" data-modal>
-    <button class="modal-button" data-modal-close type="button">
-      <svg class="modal-button-svg">
-        <use href="./image/symbol-defs.svg#icon-x"></use>
-      </svg>
-    </button>
-    <nav class="modal-nav">
-      <ul class="modal-list">
-        <li class="modal-item-list home">
-          <a href="./index.html" class="link-home">Home</a>
-        </li>
+    <div class="modal dark-site is-hidden" data-modal>
+      <button class="modal-button" data-modal-close type="button">
+        <svg class="modal-button-svg">
+          <use href="../img/icons.svg#icon-x"></use>
+        </svg>
+      </button>
+      <nav class="modal-nav">
+        <ul class="modal-list">
+          <li class="modal-item-list home">
+            <a href="./index.html" class="link-home">Home</a>
+          </li>
 
-        <li class="modal-item-list">
-          <a href="" class="link-favorites">Favorites</a>
-        </li>
-      </ul>
-    </nav>
-    <button class="switcher" type="button">
-      <svg class="switcher-svg">
-        <use href="./image/symbol-defs.svg#icon-switch"></use>
-      </svg>
-    </button>
-  </div>
+          <li class="modal-item-list">
+            <a href="" class="link-favorites">Favorites</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="switcher" type="button">
+        <svg class="switcher-svg">
+          <use href="../img/icons.svg#icon-switch"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-order is-hiddens" data-order>
+      <div class="modal-content dark-site">
+        <button class="order-button-close" data-order-close>
+          <svg class="order-button-close-svg">
+            <use href="../img/icons.svg#icon-x"></use>
+          </svg>
+        </button>
+        <h2 class="ordername">ORDER NOW</h2>
+        <form class="form">
+          <label class="label" for="name">Name</label>
+          <input class="input" type="text" id="name" required />
+
+          <label class="label" for="phone">Phone</label>
+          <input class="input" type="tel" id="phone" required />
+
+          <label class="label" for="email">Email</label>
+          <input class="input" type="email" id="email" required />
+
+          <label class="label" for="message">Message</label>
+          <textarea class="textarea" id="message" required></textarea>
+
+          <button class="button-send" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </section>
 </header>
+<script type="module" src="../js/open-modal.js"></script>
+<script type="module" src="../js/dark.js"></script>
+<script type="module" src="../js/dark-menu.js"></script>
+<script type="module" src="../js/open-modal.js"></script>
+<script type="module" src="../js/ordernow.js"></script>
