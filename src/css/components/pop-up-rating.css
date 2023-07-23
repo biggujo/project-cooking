@@ -13,12 +13,6 @@
   transition: var(--animation);
 }
 
-.backdrop.is__hidden {
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
 .modal {
   position: absolute;
   top: 50%;
@@ -27,7 +21,7 @@
   height: 216px;
   background-color: var(--yellow-main);
 }
-@media screen and (min-width: var(--breakpoint-tablet-width)) {
+@media screen and (min-width: 768px) {
   .modal {
     width: 424px;
     height: 254px;
@@ -37,7 +31,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  color: #050505;
+  color: var(--color-text-primary);
   margin-bottom: 4px;
   display: block;
   text-align: left;
