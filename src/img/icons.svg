@@ -55,7 +55,7 @@
 
 
     <!-- Close pop-up  -->
-    <symbol id="close-pop-up" viewBox="0 0 32 32">
+      <symbol id="close-pop-up" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
             d="M24 8l-16 16"></path>
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667"
