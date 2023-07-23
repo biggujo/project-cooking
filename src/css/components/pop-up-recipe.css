@@ -7,7 +7,7 @@
 
   --breakpoint-computer-width: 1160px; */
 
-@media screen and (min-width: 375px) {
+@media screen and (max-width: 767px) {
   .swith-places {
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 335px;
+    max-width: 335px;
     max-height: 600px;
     padding: 40px 20px;
     box-shadow:
@@ -76,16 +76,14 @@
     margin-top: 14px;
     padding: 0;
     border: none;
-    /* background-color: transparent; */
+    background-color: transparent;
     cursor: pointer;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .close-btn:hover {
-  }
   .close-svg {
-    color: red;
-    fill: currentColor;
+    color: #050505;
+    stroke: currentColor;
     width: 20px;
     height: 20px;
   }
@@ -252,13 +250,22 @@
 @media screen and (min-width: 768px) {
   .modal {
     width: 531px;
+    padding: 32px;
+  }
+  .close-btn{
+    background-color: transparent;
   }
 
+  .close-svg {
+    width: 24px;
+    height: 24px;
+  }
   .pop-up-recipe-title {
     text-align: left;
     line-height: 1.2222;
+    margin-bottom: 16px;
   }
-  .swith-places {
+  .switch-places {
     flex-direction: column-reverse;
   }
 
