@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchCategories } from './API-categories.js';
+import { fetchCategories } from './API-categories';
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
@@ -43,6 +43,7 @@ function handleClickedAllCategories(event) {
 
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
+
   fetchRecipes(activeCategory)
     .then(recipes => {
       console.log(recipes);
@@ -52,20 +53,23 @@ function handleClickedAllCategories(event) {
     });
 }
 
-async function fetchRecipes(category) {
+
+function fetchRecipes(category) {
   let url = `${API_URL}/recipes`;
 
   if (category) {
     url += `?category=${category}`;
   }
 
-  try {
-    const response = await axios.get(url);
-    const recipes = response.data;
-    return recipes;
-  } catch (error) {
-    throw error;
-  }
+  return axios
+    .get(url)
+    .then((response) => {
+      const recipes = response.data;
+      return recipes;
+    })
+    .catch((error) => {
+      throw error;
+    });
 }
 
 async function markupAllCategoriesListItem() {

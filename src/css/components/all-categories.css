@@ -4,13 +4,8 @@
   |============================
 */
 
-.button {
-  background: none;
   border-radius: 15px;
-  padding: 14px 28px;
-  font-weight: 500;
-  cursor: pointer;
-}
+
 
 .all-categories-button {
   font-size: 18px;
@@ -21,15 +16,17 @@
   border: 1px solid var(--color-gray-pale-alpha020);
 
   margin-bottom: 30px;
+  transition: all var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .all-categories-button:hover,
 .all-categories-button:focus,
-.all-categories-button.is-active {
+.all-categories-button .is-active {
   background-color: var(--color-accent-primary);
   color: var(--color-gray-accent-primary);
   border: 1px solid var(--color-accent-primary);
-  transition: all 0.3s;
+  transition: all var(--primary-animation-duration) var(--primary-animation-time-func);
+
 }
 
 .all-categories-list {
@@ -37,7 +34,7 @@
   flex-direction: column;
   align-items: start;
   gap: 18px;
-  width: 326px;
+  width: 100%;
   height: 198px;
   overflow-y: scroll;
 }
@@ -52,12 +49,15 @@
   border: none;
   background: none;
   color: var(--color-gray-pale-alpha030);
+  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .all-categories-item-button:hover,
 .all-categories-item-button:focus,
-.all-categories-item-button.is-active {
+.all-categories-item-button .is-active {
   color: var(--color-accent-primary);
+  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
+
 }
 
 @media screen and (min-width: 768px) {
@@ -70,7 +70,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1160px) {
  
 
   .all-categories-button {
@@ -78,32 +78,4 @@
   }
 }
 
-/**
-  |============================
-  | Styles Scroll
-  |============================
-*/
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 116px;
-}
-
-@media screen and (min-width: 768px) {
-  
-  ::-webkit-scrollbar {
-    height: 201px;
-  }
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgba(5, 5, 5, 0.18);
-  border-radius: 12px;
-}
-
-::-webkit-scrollbar-button {
-  display: none;
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--color-modal-background);
-}
