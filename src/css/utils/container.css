@@ -4,21 +4,21 @@
   padding: 0 10px;
 }
 
-@media screen and (min-width: var(--breakpoint-mobile-width)) {
+@media screen and (min-width: 375px) {
   .container {
     width: var(--breakpoint-mobile-width);
     padding: 0 var(--breakpoint-mobile-container-padding-inline);
   }
 }
 
-@media screen and (min-width: var(--breakpoint-tablet-width)) {
+@media screen and (min-width: 768px) {
   .container {
     width: var(--breakpoint-tablet-width);
     padding: 0 var(--breakpoint-tablet-container-padding-inline);
   }
 }
 
-@media screen and (min-width: var(--breakpoint-computer-width)) {
+@media screen and (min-width: 1160px) {
   .container {
     width: var(--breakpoint-computer-width);
     padding: 0 var(--breakpoint-computer-container-padding-inline);
