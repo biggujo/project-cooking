@@ -1,16 +1,19 @@
 .backdrop {
   position: fixed;
-  z-index: 100;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(94, 99, 99, 0.702);
+  background-color: rgba(46, 47, 66, 0.4);
   opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-  transform: scale(1);
-  transition: var(--animation);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .modal {
@@ -19,7 +22,17 @@
   left: 50%;
   width: 335px;
   height: 216px;
-  background-color: var(--yellow-main);
+  padding: 40px 20px;
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background: #fff;
+  overflow: auto;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
   .modal {
@@ -27,6 +40,45 @@
     height: 254px;
   }
 }
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  margin-right: 14px;
+  margin-top: 14px;
+  padding: 0;
+  border: none;
+  /* background-color: transparent; */
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn:hover {
+}
+.close-svg {
+  color: red;
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+}
+
+.close-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #000;
+  /* transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+.close-btn:hover .close-svg {
+  /* fill: var(--body-background-color); */
+}
+
 .modal__title {
   font-weight: 600;
   font-size: 14px;
