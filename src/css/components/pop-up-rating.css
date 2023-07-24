@@ -14,11 +14,11 @@
   pointer-events: none;
 }
 
-.backdrop.is-hidden .modal {
+.backdrop.is-hidden .pop-up-rating-modal {
   transform: translate(-50%, -50%) scale(1.2);
 }
 
-.modal {
+.pop-up-rating-modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,7 +42,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modal {
+  .pop-up-rating-modal {
     gap: 32px;
     width: 424px;
     padding: var(--breakpoint-tablet-container-padding-inline);
@@ -50,7 +50,7 @@
 }
 
 @media screen and (min-width: 1160px) {
-  .modal {
+  .pop-up-rating-modal {
     padding: var(--breakpoint-computer-container-padding-inline);
   }
 }
