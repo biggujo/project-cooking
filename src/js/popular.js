@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const listDiv = document.querySelector('.popular-recipes-list');
 const loader = document.querySelector('.loader');
 
@@ -32,9 +34,9 @@ function getTruncateLength() {
 // const getEventData = async () => {
 
 function getEventData() {
-  return fetch(
-    'https://tasty-treats-backend.p.goit.global/api/recipes/popular'
-  ).then(response => response.json());
+  return axios
+    .get('https://tasty-treats-backend.p.goit.global/api/recipes/popular')
+    .then(response => response.data);
 }
 
 function renderPopular(item) {
@@ -66,24 +68,24 @@ export function popular() {
     const popularRecipesItems = document.querySelectorAll(
       '.popular-recipes-item'
     );
-    popularRecipesItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const attributeId = item.getAttribute('attribute-id');
-        function getId() {
-          return fetch(
-            `https://tasty-treats-backend.p.goit.global/api/recipes/${attributeId}`
-          )
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        }
-        getId();
-      });
-    });
+    // popularRecipesItems.forEach(item => {
+    //   item.addEventListener('click', () => {
+    //     const attributeId = item.getAttribute('attribute-id');
+    //     function getId() {
+    //       return fetch(
+    //         `https://tasty-treats-backend.p.goit.global/api/recipes/${attributeId}`
+    //       )
+    //         .then(response => response.json())
+    //         .then(data => {
+    //           console.log(data);
+    //         })
+    //         .catch(error => {
+    //           console.error(error);
+    //         });
+    //     }
+    //     getId();
+    //   });
+    // });
   }
 
   let resizeTimer;

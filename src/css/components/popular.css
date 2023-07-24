@@ -5,18 +5,20 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: start;
-  /* height: 500px; */
+
+  /* height: 500px;
+  width: 240px; */
 }
 body {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   /* background-color: #161616;
   color: #fff; */
 }
 .popular-recipes-title {
-  color: #050505;
+  color: var(--color-text-primary);
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
@@ -54,7 +56,7 @@ body {
 .popular-recipes-text-title {
   width: 252px;
   height: 18px;
-  color: #050505;
+  color: var(--color-text-primary);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -68,7 +70,7 @@ body {
 .popular-recipes-text-description {
   width: 252px;
   height: 41px;
-  color: rgba(5, 5, 5, 0.8);
+  color: var(--color-gray-pale-alpha080);
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
