@@ -5,7 +5,6 @@
 */
 
 
-
 .all-categories-button {
   font-size: 18px;
   line-height: calc(22 / 18);
@@ -15,7 +14,9 @@
   border: 1px solid var(--color-gray-pale-alpha020);
 
   margin-bottom: 30px;
-  transition: all var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func),
+  border var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .all-categories-button:hover,
@@ -24,7 +25,9 @@
   background-color: var(--color-accent-primary);
   color: var(--color-gray-accent-primary);
   border: 1px solid var(--color-accent-primary);
-  transition: all var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func),
+  border var(--primary-animation-duration) var(--primary-animation-time-func);
 
 }
 
@@ -60,7 +63,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  
+
 
   .all-categories-list {
     width: 176px;
@@ -70,7 +73,7 @@
 }
 
 @media screen and (min-width: 1160px) {
- 
+
 
   .all-categories-button {
     margin-bottom: 42px;
