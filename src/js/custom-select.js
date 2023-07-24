@@ -95,7 +95,6 @@ export class CustomSelect {
     }
     this._updateOption(el);
     this.hide();
-    console.log(this._elToggle.textContent);
   }
   show() {
     this.constructor.openInstances.forEach((instance) => {

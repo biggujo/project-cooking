@@ -1,14 +1,32 @@
 import axios from 'axios';
 import {CustomSelect} from './custom-select';
+import './all-categories'
 
-const searchFormEl = document.querySelector('.search__recipes');
 const searchInputEl = document.querySelector('.search__recipes-input');
 const closeIconEl = document.querySelector('.search__close-icon');
 const searchIconEl = document.querySelector('.search__icon-svg');
 
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
+
+const allCategories = document.querySelector('.all-categories');
+const categoryEl = allCategories.querySelector('.is-active');
+const allCategoriesButton = document.querySelector('.all-categories-button');
+const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
+
 let filtersResultForQuery = {};
+
+/* Reset and clear filters/input block */
+function resetAllFilters () {
+  searchInputEl.value = '';
+  filtersResultForQuery = {};
+  clearFiltersInput();
+  selectsEl.forEach(select => {
+     select.textContent = select.dataset.start;
+     select.dataset.index = '-1';
+     select.style.color = 'inherit';
+ });
+}
 
 function clearFiltersInput (){
     closeIconEl.classList.add('is-hidden');
@@ -19,6 +37,7 @@ function clearFiltersInput (){
     }
 }
 
+allCategoriesButton.addEventListener('click', resetAllFilters);
 searchInputEl.addEventListener('input', clearFiltersInput);
 
 closeIconEl.addEventListener('click', () => {
@@ -31,14 +50,13 @@ resetFiltersEl.addEventListener('click', () => {
     document.querySelectorAll('.filter-select__option_selected').forEach(el => {
     el.classList.remove('filter-select__option_selected')
     })
-    searchInputEl.value = '';
-    filtersResultForQuery = {};
-    clearFiltersInput();
-    selectsEl.forEach(select => {
-       select.textContent = select.dataset.start;
-       select.dataset.index = '-1';
-       select.style.color = 'inherit';
-   });
+    resetAllFilters();
+    console.log(categoryEl);
+    if(categoryEl.textContent.trim() === 'All categories'){
+    return
+    } else {
+      filtersResultForQuery['category'] = categoryEl.textContent.trim();
+    }
 })
 
 /* Debounce function for input change and added to query */
@@ -53,15 +71,36 @@ function debounce(func, delay) {
 function handleInput() {
   filtersResultForQuery['title'] = searchInputEl.value;
   console.log(filtersResultForQuery);
+  fetchRecipeByFilter(filtersResultForQuery, 'title');
 }
+
 const debouncedHandleInput = debounce(handleInput, 300);
 searchInputEl.addEventListener('input', debouncedHandleInput);
+
+
+/* Receiving the results of a filter query */
+function fetchRecipeByFilter(filters, value) {
+  let url = `${API_URL}/recipes`;
+    url += `?${value}=${filters[value]}`;
+  return axios
+    .get(url)
+    .then(response => {
+      const recipes = response.data;
+      console.log(recipes);
+      return recipes;
+    })
+    .catch(error => {
+      throw error;
+    });
+}
+
 /* filter change listener */
 function handleFilterSelectChange(e) {
   const filterBtn = e.target.querySelector('.filter-select__toggle');
     let elName = filterBtn.name;
     filtersResultForQuery[elName] = filterBtn.value;
     console.log(filtersResultForQuery); 
+    fetchRecipeByFilter(filtersResultForQuery, elName);
 }
 
 function addFilterToResultQuery (filterName){
@@ -71,7 +110,6 @@ function addFilterToResultQuery (filterName){
 
 /* Fetch and rendering dropdown */
 function fetchDataForFilters(filterName) {
-  const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
   return axios
   .get(`${API_URL}/${filterName}`)
   .then(response => {
