@@ -1,23 +1,3 @@
-/* .container {
-  max-width: 355px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 736px;
-    padding: 0 16px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1104px;
-    padding: 0 12px;
-  }
-} */
-
 .hero {
   padding-top: 137px;
   padding-bottom: 80px;
@@ -70,8 +50,28 @@
 }
 
 .hero-swiper-slide {
-  display: flex !important;
   gap: 8px;
+}
+
+.hero-swiper-slide-1 .hero-swiper-info-img {
+  width: 157px;
+  height: 142px;
+}
+
+.hero-swiper-slide-2 .hero-swiper-info-img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 142px;
+  height: 142px;
+}
+
+.hero-swiper-slide-2 .hero-swiper-dish-img {
+  transform: scale(1.5);
+}
+
+.hero-swiper-slide-3 .hero-swiper-dish-img {
+  transform-origin: top left;
+  transform: scale3d(1.5, 1.5, 1) translateY(-47px) translateX(-33px);
 }
 
 .hero-swiper-slide-wrapper {
@@ -92,8 +92,34 @@
   border: 1px solid rgba(155, 181, 55, 0.3);
 }
 
+.hero-swiper-info-img {
+  margin-bottom: 20px;
+}
+
+.hero-swiper-info-descr {
+  text-align: center;
+}
+
+.hero-swiper-info-dish {
+  margin-bottom: 8px;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: rgba(248, 248, 248, 0.6);
+}
+
+.hero-swiper-info-country {
+  display: block;
+
+  color: rgba(248, 248, 248, 0.2);
+  font-size: 8px;
+  line-height: 1.5;
+}
+
 .hero-img-slide-wrapper {
-  width: 220px;
+  width: 200px;
 }
 
 .hero-swiper-img {
@@ -147,28 +173,47 @@
   .hero-swiper-slide {
     gap: 16px;
   }
+  .hero-swiper-slide-1 .hero-swiper-info-img,
+  .hero-swiper-slide-3 .hero-swiper-info-img {
+    width: 304px;
+    height: 271px;
+  }
+  .hero-swiper-slide-2 .hero-swiper-info-img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 262px;
+    height: 262px;
+  }
   .hero-cook-slide-wrapper {
     width: 137px;
   }
   .hero-info-slide-wrapper {
     width: 351px;
     padding: 67px 24px 32px;
+  }
+  .hero-swiper-info-img {
+    margin-bottom: 32px;
+  }
+  .hero-swiper-info-dish {
+    margin-bottom: 8px;
 
-    border: 1px solid rgba(155, 181, 55, 0.3);
+    font-size: 14px;
+    line-height: 1.28;
+  }
+  .hero-swiper-info-country {
+    font-size: 12px;
+    line-height: 1.16;
   }
   .hero-img-slide-wrapper {
     width: 351px;
   }
-  .hero-swiper-info-img {
-    width: 304px;
-    height: 271px;
-  }
+
   .swiper-pagination {
     bottom: -26px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1160px) {
   .hero {
     padding-top: 160px;
     padding-bottom: 100px;

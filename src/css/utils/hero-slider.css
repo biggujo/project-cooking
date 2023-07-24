@@ -8,7 +8,7 @@
   --swiper-pagination-bullet-opacity: 1;
   --swiper-pagination-bullet-horizontal-gap: 3px;
   --swiper-pagination-bullet-vertical-gap: 6px;
-  --swiper-pagination-left-translate-x: -95px;
+  --swiper-pagination-left-translate-x: -78px;
   --swiper-pagination-bottom-margin: -22px;
 }
 
@@ -23,7 +23,7 @@
     --swiper-pagination-bullet-opacity: 1;
     --swiper-pagination-bullet-horizontal-gap: 3px;
     --swiper-pagination-bullet-vertical-gap: 6px;
-    --swiper-pagination-left-translate-x: -120px;
+    --swiper-pagination-left-translate-x: -126px;
     --swiper-pagination-bottom-margin: -26px;
   }
 }
