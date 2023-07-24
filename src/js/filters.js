@@ -24,6 +24,7 @@ searchInputEl.addEventListener('input', clearFiltersInput);
 closeIconEl.addEventListener('click', () => {
     searchInputEl.value = '';
     clearFiltersInput();
+    delete filtersResultForQuery.title;
 });
 
 resetFiltersEl.addEventListener('click', () => {
@@ -40,6 +41,21 @@ resetFiltersEl.addEventListener('click', () => {
    });
 })
 
+/* Debounce function for input change and added to query */
+function debounce(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+function handleInput() {
+  filtersResultForQuery['title'] = searchInputEl.value;
+  console.log(filtersResultForQuery);
+}
+const debouncedHandleInput = debounce(handleInput, 300);
+searchInputEl.addEventListener('input', debouncedHandleInput);
 /* filter change listener */
 function handleFilterSelectChange(e) {
   const filterBtn = e.target.querySelector('.filter-select__toggle');
