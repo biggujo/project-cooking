@@ -1,24 +1,23 @@
 import axios from 'axios';
 import {CustomSelect} from './custom-select';
 
-const closeIconEl = document.querySelector('.search__close-icon');
-const searchInputEl = document.querySelector('.search__recipes-input');
-const searchIconEl = document.querySelector('.search__icon-svg');
 const searchFormEl = document.querySelector('.search__recipes');
+const searchInputEl = document.querySelector('.search__recipes-input');
+const closeIconEl = document.querySelector('.search__close-icon');
+const searchIconEl = document.querySelector('.search__icon-svg');
+
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
+const allCategoriesList = document.querySelector('.recipes');
 
-resetFiltersEl.addEventListener('click', () => {
-    searchInputEl.value = '';
-    clearFiltersInput();
-    selectsEl.forEach(select => {
-        console.log(select)
-        select.textContent = select.dataset.start;
-        select.dataset.index = '-1';
-        select.style.color = 'inherit'
+function clearFiltersInput (){
+    closeIconEl.classList.add('is-hidden');
+    searchIconEl.style.fill = "currentColor";
+    if (searchInputEl.value !== '') {
+        closeIconEl.classList.remove('is-hidden');
+        searchIconEl.style.fill = "var(--color-accent-primary)";
     }
-    );
-})
+}
 
 searchInputEl.addEventListener('input', clearFiltersInput);
 closeIconEl.addEventListener('click', () => {
@@ -26,17 +25,20 @@ closeIconEl.addEventListener('click', () => {
     clearFiltersInput();
 });
 
-function clearFiltersInput (){
-    closeIconEl.classList.add('is-hidden');
-    searchIconEl.style.fill = "currentColor";   
-    if (searchInputEl.value !== '') {
-        closeIconEl.classList.remove('is-hidden');
-        searchIconEl.style.fill = "var(--color-accent-primary)";
-    }
-}
+resetFiltersEl.addEventListener('click', () => {
+    document.querySelectorAll('.filter-select__option_selected').forEach(el => {
+    el.classList.remove('filter-select__option_selected')
+    })
+    searchInputEl.value = '';
+    clearFiltersInput();
+    selectsEl.forEach(select => {
+       select.textContent = select.dataset.start;
+       select.dataset.index = '-1';
+       select.style.color = 'inherit';
+   });
+})
 
 /* Fetch and rendering dropdown */
-
 function fetchDataForFilters(filterName) {
   const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
   return axios
@@ -57,7 +59,6 @@ function renderFilterList (filterName, values) {
   document.querySelector(`#options-${filterName}`).innerHTML = values.join('');
   new CustomSelect(`#select-${filterName}`);
   document.querySelector(`#toggle-${filterName}`).disabled = false;
-  
 }
 
 function renderTime () {
