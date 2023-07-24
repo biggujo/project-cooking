@@ -1,7 +1,6 @@
 // https://tasty-treats-backend.p.goit.global/api/recipes/recipeID;
 import axios from 'axios';
 
-
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -29,7 +28,7 @@ function onBackdropClick(e) {
 };
 
 function onEscapeKeyPress(e) {
-    if(e.code === 'Escape'){
-        onCloseModal()
-    }
+  if (e.code === 'Escape') {
+    onCloseModal();
+  }
 };
