@@ -22,8 +22,13 @@
   position: absolute;
   top: 50%;
   left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
   width: 335px;
-  height: 216px;
+  height: auto;
   padding: var(--breakpoint-mobile-container-padding-inline);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
   0px 1px 3px rgba(0, 0, 0, 0.12),
@@ -38,8 +43,8 @@
 
 @media screen and (min-width: 768px) {
   .modal {
+    gap: 32px;
     width: 424px;
-    height: 254px;
     padding: var(--breakpoint-tablet-container-padding-inline);
   }
 }
@@ -89,39 +94,51 @@
   text-align: left;
 }
 
-.rating {
+.pop-up-rating {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
 }
 
-.rating-section {
+.pop-up-rating-section {
   display: flex;
   gap: 8px;
 
   align-items: center;
 }
 
-.rating-text {
+.pop-up-rating-text {
   color: var(--color-text-primary);
   font-size: 14px;
   font-weight: 600;
 }
 
-.rating-subtitle {
+.pop-up-rating-subtitle {
   line-height: 1.28;
 }
 
-.rating-number {
+.pop-up-rating-number {
   line-height: 1.5;
 }
 
-.rating-list {
+.pop-up-rating-list {
   display: flex;
   gap: 2px;
 }
 
-.rating-item-icon {
+.pop-up-rating-item-icon {
   fill: var(--color-star-marked);
+}
+
+.email-form {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .email-form {
+    gap: 16px;
+  }
 }
