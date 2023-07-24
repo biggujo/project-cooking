@@ -60,6 +60,8 @@
 .hero-outer-swiper-wrapper {
   height: 302px;
   overflow: hidden;
+  max-width: 496px;
+  width: calc(100% + (100vw - 100%) / 2);
 }
 
 .swiper {
@@ -134,6 +136,10 @@
   .hero-outer-swiper-wrapper {
     height: 468px;
   }
+  .hero-outer-swiper-wrapper {
+    max-width: 871px;
+    width: calc(100% + (100vw - 100%) / 2 - 15px);
+  }
   .swiper {
     width: 871px;
     height: 442px;
@@ -168,7 +174,11 @@
     padding-bottom: 100px;
   }
   .hero-wrapper {
-    display: flex;
-    gap: 32px;
+    display: grid;
+    grid-template-columns: 446px 1fr;
+    grid-gap: 32px;
+  }
+  .hero-outer-swiper-wrapper {
+    width: calc(602px + (100vw - 1090px) / 2 - 15px);
   }
 }
