@@ -13,18 +13,18 @@
   </head>
   <body>
     <load ="./partials/header.html" />
+    <load ="./partials/pop-up-recipe.html" />
+    <load ="./partials/all-categories.html" />
 
-    <section class="popular-recipes">
-      <h2 class="popular-recipes-title">Popular recipes</h2>
-      <ul class="popular-recipes-list"></ul>
-      <span class="loader"></span>
-    </section>
+    <load ="./partials/pop-up-rating.html" />
 
-    <div class="container" style="height: 200vh"></div>
-    <a href="#" id="roll_back" class="animate"
-      ><i class="fa fa-angle-up"></i
-    ></a>
+    <!-- TODO: Remove -->
+    <h2>Modals</h2>
+    <button class="open-btn" data-pop-up-recipe-open>Open recipe</button>
+    <button class="open-btn" data-pop-up-rating-open>Open rating</button>
 
+    <!-- TODO: Add modal -->
+    <button class="open-btn" data-pop-up-rating-open>Open form</button>
     <script type="module" src="./index.js"></script>
   </body>
 </html>
