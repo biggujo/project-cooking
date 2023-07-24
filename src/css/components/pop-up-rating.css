@@ -1,0 +1,144 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(46, 47, 66, 0.4);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 335px;
+  height: auto;
+  padding: var(--breakpoint-mobile-container-padding-inline);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 1px 3px rgba(0, 0, 0, 0.12),
+  0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background: #fff;
+  overflow: auto;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    gap: 32px;
+    width: 424px;
+    padding: var(--breakpoint-tablet-container-padding-inline);
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  .modal {
+    padding: var(--breakpoint-computer-container-padding-inline);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 14px;
+  margin-top: 14px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+}
+
+.close-svg {
+  color: var(--color-text-primary);
+  stroke: currentColor;
+  width: 24px;
+  height: 24px;
+}
+
+.close-btn:hover .close-svg {
+  /* fill: var(--body-background-color); */
+}
+
+.modal__title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  display: block;
+  text-align: left;
+}
+
+.pop-up-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.pop-up-rating-section {
+  display: flex;
+  gap: 8px;
+
+  align-items: center;
+}
+
+.pop-up-rating-text {
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pop-up-rating-subtitle {
+  line-height: 1.28;
+}
+
+.pop-up-rating-number {
+  line-height: 1.5;
+}
+
+.pop-up-rating-list {
+  display: flex;
+  gap: 2px;
+}
+
+.pop-up-rating-item-icon {
+  fill: var(--color-star-marked);
+}
+
+.email-form {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .email-form {
+    gap: 16px;
+  }
+}
