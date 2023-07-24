@@ -20,8 +20,15 @@
         </svg>
       </button>
       <button class="switcher-menu" type="button">
-        <svg class="switcher-org-svg">
+        <svg class="switcher-org-svg" data-light-theme>
           <use href="../img/icons.svg#icon-switch"></use>
+        </svg>
+        <svg
+          class="switcher-org-dark-svg is-hiddenss"
+          data-button
+          data-dark-theme
+        >
+          <use href="../img/icons.svg#icon-switch-dark"></use>
         </svg>
       </button>
       <button class="burger-button" data-modal-open type="button">
@@ -58,24 +65,24 @@
       <div class="modal-content">
         <button class="order-button-close" data-order-close>
           <svg class="order-button-close-svg">
-            <use href="../img/icons.svg#icon-x"></use>
+            <use href="../img/icons.svg#icon-x-close"></use>
           </svg>
         </button>
         <h2 class="ordername">ORDER NOW</h2>
-        <form class="form">
+        <form class="form" id="order-form">
           <label class="label" for="name">Name</label>
           <input class="input" type="text" id="name" required />
 
-          <label class="label" for="phone">Phone</label>
+          <label class="label" for="phone">Phone number</label>
           <input class="input" type="tel" id="phone" required />
 
           <label class="label" for="email">Email</label>
           <input class="input" type="email" id="email" required />
 
-          <label class="label" for="message">Message</label>
+          <label class="label" for="message">Comment</label>
           <textarea class="textarea" id="message" required></textarea>
 
-          <button class="button-send" type="submit">SEND</button>
+          <button class="button-send" type="submit">Send</button>
         </form>
       </div>
     </div>

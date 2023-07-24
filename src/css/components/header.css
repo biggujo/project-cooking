@@ -6,6 +6,7 @@
   color: #9bb537;
   text-decoration: none;
 }
+
 .section {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -27,6 +28,11 @@
   visibility: hidden;
   pointer-events: none;
 }
+.is-hiddenss {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 .shopping-cart-button-svg {
   color: #0e0d0d;
   stroke: currentColor;
@@ -43,9 +49,9 @@
   padding: 0;
   background-color: #ffffff;
 }
-.shopping-cart-button:hover,
-.shopping-cart-button:focus {
-  fill: #9bb537;
+.shopping-cart-button-svg:hover,
+.shopping-cart-button-svg:focus {
+  stroke: #9bb537;
 }
 
 .header {
@@ -85,6 +91,16 @@
     width: 46px;
     height: 20px;
     border: none;
+    position: relative;
+  }
+  .switcher-org-dark-svg {
+    position: absolute;
+    top: 26px;
+    right: 56px;
+    width: 46px;
+    height: 20px;
+    border: none;
+    stroke: #9bb537;
   }
   .modal-list {
     list-style: none;
@@ -130,6 +146,36 @@
     background-color: #ffffff;
     border: none;
   }
+  .modal-order {
+    width: 440px;
+    height: 632px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .modal-content {
+    width: 440px;
+    height: 632px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .form {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .ordername {
+    margin-left: 20px;
+  }
+  .button-send {
+    margin-top: 30px;
+    width: 360px !important;
+    height: 48px !important;
+  }
 }
 @media screen and (min-width: 1200px) {
   .container {
@@ -153,7 +199,7 @@
   }
   .burger-button:hover,
   .burger-button:focus {
-    fill: #9bb537;
+    stroke: #9bb537;
   }
   .modal-nav-orig {
     display: none;
@@ -165,6 +211,7 @@
   .burger-button-svg {
     width: 32px;
     height: 32px;
+    background-color: #ffffff;
   }
 
   .modal {
@@ -185,6 +232,7 @@
     right: 20px;
     top: 20px;
   }
+
   .modal-button {
     background-color: #9bb537;
     border: #9bb537;
@@ -282,6 +330,12 @@
   resize: none;
   height: 100px;
 }
+.input:hover,
+.input:focus,
+.input:active {
+  border: 1px solid #9bb537;
+  outline: #9bb537;
+}
 
 .input,
 .textarea {
@@ -289,14 +343,25 @@
   margin: 10px 0;
 }
 
+.textarea:hover,
+.textarea:focus,
+.textarea:active {
+  border: 1px solid #9bb537;
+  outline: #9bb537;
+}
+
 .order-button-close-svg {
-  background-color: #9e1b1b;
+  background-color: #ffffff;
   position: absolute;
   stroke: #0e0d0d;
   width: 20px;
   height: 20px;
   top: 0px;
   right: 0px;
+}
+.order-button-close-svg:hover,
+.order-button-close-svg:focus {
+  stroke: #9bb537;
 }
 .order-button-close {
   border: none;
@@ -309,6 +374,7 @@
 }
 
 .button-send {
+  margin-top: 30px;
   width: 295px;
   height: 46px;
   border: none;
@@ -316,4 +382,9 @@
   border-color: rgba(155, 181, 55, 1);
   background-color: rgba(155, 181, 55, 1);
   color: #ffffff;
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
 }
