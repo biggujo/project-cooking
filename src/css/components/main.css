@@ -6,4 +6,6 @@
 */
 
 @import url('./header.css');
+@import url('./all-categories.css');
+@import url('./pop-up-recipe.css');
 @import url('./pop-up-rating.css');
