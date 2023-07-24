@@ -6,22 +6,7 @@ html {
 :root {
   scrollbar-color: rgb(210, 210, 210) rgb(46, 54, 69) !important;
   scrollbar-width: thin !important;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  --white: #fff;
-  --black: #131417;
-  --primary: #5bc348;
-  --primarylite: #53b141;
-  --gray: #6d7175;
-  --dark: #253248;
-  --darklite: #364256;
-  --lite: #f8f9fa;
-=======
   --primary: rgba(155, 181, 55, 1);
->>>>>>> Stashed changes
-=======
-  --primary: rgba(155, 181, 55, 1);
->>>>>>> Stashed changes
 }
 
 a {
@@ -59,20 +44,6 @@ a {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  background-color: var(--dark);
-  border-radius: 5px;
-  border: 2px solid var(--primary);
-  padding: 5px 10px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-  box-shadow: 0px 6px 16px -6px rgba(1, 1, 1, 0.5);
-  color: var(--white);
-  font-weight: 900;
-=======
   background-color: transparent;
   border-radius: 100%;
   border: 3px solid var(--primary);
@@ -80,15 +51,6 @@ a {
   display: none;
   align-items: center;
   justify-content: center;
-=======
-  background-color: transparent;
-  border-radius: 100%;
-  border: 3px solid var(--primary);
-  padding: 8px 12px;
-  display: none;
-  align-items: center;
-  justify-content: center;
->>>>>>> Stashed changes
   z-index: 999;
   color: var(--primary);
   font-weight: 700;
@@ -98,8 +60,4 @@ a {
 #roll_back:hover {
   opacity: 1;
   scale: 1.1;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
