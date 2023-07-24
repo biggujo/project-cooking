@@ -7,11 +7,3 @@ export const fetchCategories = async () => {
 
   return categories;
 };
-
-fetchCategories()
-  .then(categories => {
-    console.log(categories);
-  })
-  .catch(error => {
-    console.error('ERROR', error);
-  });

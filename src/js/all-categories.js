@@ -10,6 +10,16 @@ const allCategoriesButtons = document.querySelectorAll(
 
 let activeCategory = null;
 
+fetchCategories()
+  .then(categories => {
+    markupAllCategoriesListItem(categories);
+    allCategoriesList.addEventListener('click', handleClickedCategories);
+    allCategoriesButton.addEventListener('click', handleClickedAllCategories);
+  })
+  .catch(error => {
+    console.error('ERROR', error);
+  });
+
 function handleClickedCategories(event) {
   const target = event.target;
 
@@ -75,9 +85,7 @@ function fetchRecipes(category) {
     });
 }
 
-async function markupAllCategoriesListItem() {
-  const categories = await fetchCategories();
-
+function markupAllCategoriesListItem(categories) {
   const allCategoriesListItem = categories
     .map(category => {
       return `<li class='all-categories-item'>
@@ -90,7 +98,3 @@ async function markupAllCategoriesListItem() {
 
   allCategoriesList.insertAdjacentHTML('afterbegin', allCategoriesListItem);
 }
-
-markupAllCategoriesListItem();
-allCategoriesList.addEventListener('click', handleClickedCategories);
-allCategoriesButton.addEventListener('click', handleClickedAllCategories);
