@@ -13,7 +13,7 @@ new PopUpModal({
 
 // Rating modal
 new PopUpModal({
-  openModalSelector: '[data-pop-up-rating-open]',
-  closeModalSelector: '[data-pop-up-rating-close]',
-  backdropSelector: '[data-pop-up-rating-modal]',
+  openModalSelector: '[data-pop-up-recipe-open]',
+  closeModalSelector: '[data-pop-up-recipe-close]',
+  backdropSelector: '[data-pop-up-recipe-modal]',
 });
