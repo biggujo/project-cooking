@@ -1,9 +1,9 @@
 import {CustomSelect} from './custom-select';
 
 const closeIconEl = document.querySelector('.search__close-icon');
-const searchInputEl = document.querySelector('.search__recepies-input');
+const searchInputEl = document.querySelector('.search__recipes-input');
 const searchIconEl = document.querySelector('.search__icon-svg');
-const searchFormEl = document.querySelector('.search__recepies');
+const searchFormEl = document.querySelector('.search__recipes');
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
 
@@ -18,11 +18,6 @@ resetFiltersEl.addEventListener('click', () => {
     }
     );
 })
-
-/* searchFormEl.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log('ok')
-}) */
 
 searchInputEl.addEventListener('input', clearFiltersInput);
 closeIconEl.addEventListener('click', () => {
@@ -58,9 +53,9 @@ function clearFiltersInput (){
       const values = Object.keys(data).map((key, index) => {
         return `<li class="filter-select__option" data-select="option" data-value="${key}" data-index="${index}">${data[key].name}</li>`;
       });
-      document.querySelector('#options-ingridients').innerHTML = values.join('');
-      new CustomSelect('#select-ingridients');
-      document.querySelector('#toggle-ingridients').disabled = false;
+      document.querySelector('#options-ingredients').innerHTML = values.join('');
+      new CustomSelect('#select-ingredients');
+      document.querySelector('#toggle-ingredients').disabled = false;
     }
 })();
 function renderTime () {

@@ -3,7 +3,7 @@ import { sayHello } from './js/test.js';
 
 import './js/all-categories.js';
 import { PopUpModal } from './js/pop-up-modal.js';
-import './js/filters';
+import './js/filters.js';
 
 // Recipe modal
 new PopUpModal({
