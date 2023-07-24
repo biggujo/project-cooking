@@ -8,7 +8,7 @@ const searchIconEl = document.querySelector('.search__icon-svg');
 
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
-const allCategoriesList = document.querySelector('.recipes');
+let filtersResultForQuery = {};
 
 function clearFiltersInput (){
     closeIconEl.classList.add('is-hidden');
@@ -20,6 +20,7 @@ function clearFiltersInput (){
 }
 
 searchInputEl.addEventListener('input', clearFiltersInput);
+
 closeIconEl.addEventListener('click', () => {
     searchInputEl.value = '';
     clearFiltersInput();
@@ -30,6 +31,7 @@ resetFiltersEl.addEventListener('click', () => {
     el.classList.remove('filter-select__option_selected')
     })
     searchInputEl.value = '';
+    filtersResultForQuery = {};
     clearFiltersInput();
     selectsEl.forEach(select => {
        select.textContent = select.dataset.start;
@@ -37,6 +39,19 @@ resetFiltersEl.addEventListener('click', () => {
        select.style.color = 'inherit';
    });
 })
+
+/* filter change listener */
+function handleFilterSelectChange(e) {
+  const filterBtn = e.target.querySelector('.filter-select__toggle');
+    let elName = filterBtn.name;
+    filtersResultForQuery[elName] = filterBtn.value;
+    console.log(filtersResultForQuery); 
+}
+
+function addFilterToResultQuery (filterName){
+  const filterSelectContainers = document.querySelector(`${filterName}`);
+  filterSelectContainers.addEventListener('filter.select.change', handleFilterSelectChange);
+}
 
 /* Fetch and rendering dropdown */
 function fetchDataForFilters(filterName) {
@@ -70,6 +85,7 @@ function renderTime () {
     return `<li class="filter-select__option" data-select="option" data-value="${key}" data-index="${index}">${key} min</li>`;
   });
   renderFilterList('time', values);
+  addFilterToResultQuery('#select-time');
 };
 renderTime();
 
@@ -79,6 +95,7 @@ fetchDataForFilters('ingredients')
     return `<li class="filter-select__option" data-select="option" data-value="${data[key]._id}" data-index="${index}">${data[key].name}</li>`;
   });
   renderFilterList('ingredients', values);
+  addFilterToResultQuery('#select-ingredients');
 })
 .catch(error => {
   console.error('ERROR', error);
@@ -90,6 +107,7 @@ fetchDataForFilters('areas')
     return `<li class="filter-select__option" data-select="option" data-value="${data[key].name}" data-index="${index}">${data[key].name}</li>`;
   });
   renderFilterList('area', values);
+  addFilterToResultQuery('#select-area');
 })
 .catch(error => {
   console.error('ERROR', error);
