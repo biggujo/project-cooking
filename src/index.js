@@ -2,6 +2,7 @@
 import { sayHello } from './js/test.js';
 
 import './js/all-categories.js';
+import './js/pagination.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 
 // Recipe modal
