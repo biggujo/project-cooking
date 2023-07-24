@@ -1,10 +1,15 @@
 const listDiv = document.querySelector('.popular-recipes-list');
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 // window.screen.availWidth < 720;
 =======
 const loader = document.querySelector('.loader');
 
+=======
+const loader = document.querySelector('.loader');
+
+>>>>>>> Stashed changes
 // function showLoader() {
 //   loader.classList.remove('is-hidden');
 //   listDiv.classList.add('is-hidden');
@@ -12,6 +17,9 @@ const loader = document.querySelector('.loader');
 function hideLoader() {
   loader.classList.add('is-hidden');
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 function truncateText(text, limit) {
@@ -22,6 +30,10 @@ function truncateText(text, limit) {
   }
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -31,9 +43,15 @@ function getTruncateLength() {
   if (screenWidth < 768) {
     return 80;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   } else if (screenWidth >= 768 && screenWidth < 1024) {
     return 64;
   } else if (screenWidth > 1024) {
+=======
+  } else if (screenWidth >= 768 && screenWidth < 1280) {
+    return 64;
+  } else if (screenWidth >= 1280) {
+>>>>>>> Stashed changes
 =======
   } else if (screenWidth >= 768 && screenWidth < 1280) {
     return 64;
@@ -44,6 +62,11 @@ function getTruncateLength() {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+// const getEventData = async () => {
+
+>>>>>>> Stashed changes
 =======
 // const getEventData = async () => {
 
@@ -61,6 +84,7 @@ function renderPopular(item) {
   );
   return `
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <li class="popular-recipes-item">
           <img class="popular-recipes-image" src="${item.preview}" alt="${item.title}" />
           <div class="popular-recipes-text">
@@ -69,6 +93,8 @@ function renderPopular(item) {
           </div>
         </li>
 =======
+=======
+>>>>>>> Stashed changes
     <li class="popular-recipes-item" attribute-id="${item._id}">
       <img class="popular-recipes-image" src="${item.preview}" alt="${item.title}" />
       <div class="popular-recipes-text">
@@ -76,12 +102,16 @@ function renderPopular(item) {
         <p class="popular-recipes-text-description">${truncatedDescription}</p>
       </div>
     </li>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   `;
 }
 export function popular() {
   function renderPopularItems(data) {
     listDiv.innerHTML = '';
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
     data.forEach((item, index) => {
@@ -97,6 +127,13 @@ export function popular() {
       const item = data[i];
       const masterClassHTML = renderPopular(item);
       listDiv.innerHTML += masterClassHTML;
+=======
+    const maxIterations = window.screen.availWidth < 768 ? 2 : data.length;
+    for (let i = 0; i < maxIterations; i++) {
+      const item = data[i];
+      const masterClassHTML = renderPopular(item);
+      listDiv.innerHTML += masterClassHTML;
+>>>>>>> Stashed changes
       hideLoader();
     }
 
@@ -120,13 +157,19 @@ export function popular() {
         }
         getId();
       });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     });
   }
 
   let resizeTimer;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   function handleResize() {
@@ -141,7 +184,11 @@ export function popular() {
         })
         .catch(error => console.error(error));
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }, 300);
+=======
+    }, 100);
+>>>>>>> Stashed changes
 =======
     }, 100);
 >>>>>>> Stashed changes
@@ -150,6 +197,7 @@ export function popular() {
   window.addEventListener('resize', handleResize);
   handleResize();
 }
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 // document.addEventListener(
 //   'scroll',
@@ -193,5 +241,7 @@ console.log(screenAvailWidth);
 //     })
 //     .catch(error => console.error(error));
 // }
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
