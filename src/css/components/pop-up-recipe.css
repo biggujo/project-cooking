@@ -7,7 +7,7 @@
 
   --breakpoint-computer-width: 1160px; */
 
-@media screen and (min-width: 10px) {
+/* @media screen and (min-width: 10px) { */
   .open-btn {
     text-align: center;
     color: #f8f8f8;
@@ -43,7 +43,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    max-width: 335px;
+    width: 335px;
     max-height: 600px;
     padding: 40px 20px;
     box-shadow:
@@ -241,14 +241,14 @@
     color: #f8f8f8;
     background: #9bb537;
   }
-}
+/* } */
 
 /* TABLET and DESKTOP */
 
 @media screen and (min-width: 768px) {
   .modal {
     /* max-width: 531px; */
-    max-width: 600px;
+    width: 531px;
     padding: 32px;
   }
   .close-btn {
