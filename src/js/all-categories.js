@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { fetchCategories } from './API-categories';
+import { fetchCategories } from './api-categories.js';
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
 const allCategoriesButton = document.querySelector('.all-categories-button');
-const allCategoriesButtons = document.querySelectorAll('.all-categories-item-button');
+const allCategoriesButtons = document.querySelectorAll(
+  '.all-categories-item-button'
+);
 
 let activeCategory = null;
 
@@ -12,7 +14,9 @@ function handleClickedCategories(event) {
   const target = event.target;
 
   if (target.classList.contains('all-categories-item-button')) {
-    const activeButton = document.querySelector('.all-categories-item-button.is-active');
+    const activeButton = document.querySelector(
+      '.all-categories-item-button.is-active'
+    );
 
     if (activeButton) {
       activeButton.classList.remove('is-active');
@@ -53,7 +57,6 @@ function handleClickedAllCategories(event) {
     });
 }
 
-
 function fetchRecipes(category) {
   let url = `${API_URL}/recipes`;
 
@@ -63,11 +66,11 @@ function fetchRecipes(category) {
 
   return axios
     .get(url)
-    .then((response) => {
+    .then(response => {
       const recipes = response.data;
       return recipes;
     })
-    .catch((error) => {
+    .catch(error => {
       throw error;
     });
 }
@@ -77,9 +80,9 @@ async function markupAllCategoriesListItem() {
 
   const allCategoriesListItem = categories
     .map(category => {
-      return `<li class="all-categories-item">
-                <button class="all-categories-item-button"
-                  type="button">${category}
+      return `<li class='all-categories-item'>
+                <button class='all-categories-item-button'
+                  type='button'>${category}
                 </button>
               </li>`;
     })
