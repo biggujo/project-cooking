@@ -1,9 +1,13 @@
 // * An example of import
 import { sayHello } from './js/test.js';
 
+import { highlightCurrentPage } from './js/header-current-page-marker.js';
+
 import './js/all-categories.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import './js/filters.js';
+
+highlightCurrentPage();
 
 // Recipe modal
 new PopUpModal({
