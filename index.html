@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/project-cooking/assets/index-c0dbbc71.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script type="module" crossorigin src="/project-cooking/assets/index-f2558f29.js"></script>
     <link rel="modulepreload" crossorigin href="/project-cooking/assets/header-current-page-marker-3a4a0fc7.js">
-    <link rel="stylesheet" href="/project-cooking/assets/main-a549bd6c.css">
+    <link rel="stylesheet" href="/project-cooking/assets/main-ee9c8100.css">
   </head>
   <body>
     <header>
@@ -308,6 +312,14 @@
   <ul class="all-categories-list"></ul>
 </div>
 
+    <div class='container'>
+      <article class='popular-recipes'>
+  <h2 class='popular-recipes-title'>Popular recipes</h2>
+  <ul class='popular-recipes-list'></ul>
+  <span class='loader'></span>
+</article>
+
+    </div>
 
     <div class='backdrop is-hidden' data-pop-up-rating-modal>
   <div class='pop-up-rating-modal'>
@@ -362,6 +374,16 @@
     <h2>Modals</h2>
     <button class="open-btn" data-pop-up-recipe-open>Open recipe</button>
     <button class="open-btn" data-pop-up-rating-open>Open rating</button>
+
+    <!-- TODO: Add modal -->
+    <button class="open-btn" data-pop-up-rating-open>Open form</button>
+
+    <!-- Scroll up -->
+<a href='#' id='roll_back' class='animate'
+><i class='fa fa-angle-up'></i
+></a>
+
+
     
   </body>
 </html>
