@@ -23,16 +23,10 @@
           </svg>
         </button>
         <button class='switcher-menu' type='button'>
-          <svg class='switcher-org-svg' data-light-theme>
-            <use href='../img/icons.svg#icon-switch'></use>
-          </svg>
-          <svg
-            class='switcher-org-dark-svg is-hidden'
-            data-button
-            data-dark-theme
-          >
-            <use href='../img/icons.svg#icon-switch-dark'></use>
-          </svg>
+          <label class='switch-button'>
+            <input type='checkbox'>
+            <div class='switch-button-circle'></div>
+          </label>
         </button>
         <button class='burger-button' data-header-menu-modal-open type='button'>
           <svg class='burger-button-svg'>
@@ -60,11 +54,14 @@
             </li>
           </ul>
         </nav>
-        <button class='switcher' type='button'>
-          <svg class='switcher-svg'>
-            <use href='../img/icons.svg#icon-switch'></use>
-          </svg>
-        </button>
+        <div class='switcher-block'>
+          <button class='switcher' type='button'>
+            <label class='switch-button'>
+              <input type='checkbox'>
+              <div class='switch-button-circle'></div>
+            </label>
+          </button>
+        </div>
       </div>
     </div>
     <div class='modal-order is-hiddens' data-order>

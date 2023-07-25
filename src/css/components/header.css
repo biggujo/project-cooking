@@ -134,7 +134,7 @@
   }
 
   .switcher-menu {
-    background-color: #ffffff;
+    background-color: transparent;
     border: none;
   }
 
@@ -181,6 +181,10 @@
   }
 
   .header-modal {
+    display: none;
+  }
+
+  .switcher {
     display: none;
   }
 }
@@ -254,12 +258,15 @@
     top: 20px;
   }
 
+  .switcher-block {
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+  }
+
   .switcher {
     background-color: #9bb537;
     border: #9bb537;
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
   }
 
   .modal-list {
