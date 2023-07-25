@@ -148,7 +148,8 @@
   display: flex;
   gap: 16px;
   flex-direction: column;
-  margin-block: 24px;
+  margin-top: 28px;
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
@@ -156,6 +157,6 @@
     display: flex;
     gap: 18px;
     flex-direction: column;
-    margin-block: 40px;
+    margin-top: 40px;
   }
 }
