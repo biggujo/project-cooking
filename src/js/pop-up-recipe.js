@@ -145,7 +145,7 @@ async function getRecipeInfo() {
 
 // Add to FAVORITES
 
-const favBtn  = document.querySelector('.fav');
+const favBtn = document.querySelector('.fav');
 favBtn.addEventListener('click', onFavBtnClick);
 let localStorageData = [];
 
@@ -181,3 +181,36 @@ function getYouTubeVideoID(url) {
 
 
 
+// function toggleFavourite(recipeTitle) {
+//   const heartIcon = document.querySelector(".like-icon");
+//   const isFilled = heartIcon.classList.contains("filled");
+
+//   if (!isFilled) {
+//     console.log("Add to favourites: ", recipeTitle);
+//     addToFavorites(recipeTitle);
+//   } else {
+//     console.log("Remove from favourites: ", recipeTitle);
+//     removeFromFavorites(recipeTitle);
+//   }
+// }
+
+// function addToFavorites(recipeTitle) {
+//   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+//   if (!favorites.includes(recipeTitle)) {
+//     favorites.push(recipeTitle);
+//     saveToFavorites(favorites);
+//   }
+// }
+
+// function removeFromFavorites(recipeTitle) {
+//   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+//   const index = favorites.indexOf(recipeTitle);
+//   if (index !== -1) {
+//     favorites.splice(index, 1);
+//     saveToFavorites(favorites);
+//   }
+// }
+
+// function saveToFavorites(favorites) {
+//   localStorage.setItem("favorites", JSON.stringify(favorites));
+// }
