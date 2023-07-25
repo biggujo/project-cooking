@@ -1,3 +1,22 @@
+header {
+  padding-top: 20px;
+  padding-bottom: 45px;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    padding-top: 30px;
+    padding-bottom: 45px;
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  header {
+    padding-top: 42px;
+    padding-bottom: 35px;
+  }
+}
+
 .logo {
   font-weight: 600;
   font-size: 16px;
@@ -7,31 +26,8 @@
   letter-spacing: -0.64px;
 }
 
-.section {
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
-
 .colorlogo {
   color: var(--color-accent-primary);
-}
-
-.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.is-hiddens {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.is-hiddenss {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .header-menu-icons {
