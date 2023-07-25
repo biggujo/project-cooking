@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/project-cooking/assets/favicon-4a748afd.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla App Template</title>
+    
+    <script type="module" crossorigin src="/project-cooking/assets/favorites-5b1e681a.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/header-current-page-marker-3a4a0fc7.js">
+    <link rel="stylesheet" href="/project-cooking/assets/main-a549bd6c.css">
+  </head>
+  <body>
+    <header>
+  <section class='section'>
+    <div class='container'>
+      <div class='header'>
+        <nav class='modal-nav-orig'>
+          <ul class='modal-list'>
+            <li class='modal-item-list home'>
+              <a href='./index.html' class='header-link'>Home</a>
+            </li>
+
+            <li class='modal-item-list'>
+              <a href='./favorites.html' class='header-link'>Favorites</a>
+            </li>
+          </ul>
+        </nav>
+        <a href='./index.html' class='logo'
+        ><span class='colorlogo'>tasty</span>treats.</a
+        >
+
+        <div class='header-menu-icons'>
+          <button class='shopping-cart-button header-menu-icons-button'
+                  data-pop-up-order-now-open type='button'>
+            <svg class='shopping-cart-button-svg'>
+              <use href='../img/icons.svg#cart'></use>
+            </svg>
+          </button>
+          <button class='switcher-menu header-menu-icons-button' type='button'>
+            <label class='switch-button'>
+              <input type='checkbox'>
+              <span class='switch-button-circle'></span>
+            </label>
+          </button>
+          <button class='header-menu-icons-button burger-button'
+                  data-header-menu-open
+                  type='button'>
+            <svg class='burger-button-svg'>
+              <use href='../img/icons.svg#burger-menu'></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class='backdrop is-hidden' data-header-menu-modal>
+      <div class='modal modal-s'>
+        <button class='modal-button' data-header-menu-close type='button'>
+          <svg class='modal-button-svg'>
+            <use href='../img/icons.svg#close-header-modal'></use>
+          </svg>
+        </button>
+        <nav class='modal-nav'>
+          <ul class='modal-list'>
+            <li class='modal-item-list'>
+              <a href='./index.html' class='header-modal-link'>Home</a>
+            </li>
+
+            <li class='modal-item-list'>
+              <a href='./favorites.html' class='header-modal-link'>Favorites</a>
+            </li>
+          </ul>
+        </nav>
+        <div class='switcher-block'>
+          <button class='switcher' type='button'>
+            <label class='switch-button'>
+              <input type='checkbox'>
+              <span class='switch-button-circle'></span>
+            </label>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class='backdrop is-hidden' data-pop-up-order-now-modal>
+      <div class='modal'>
+        <button class='close-btn' data-pop-up-order-now-close>
+          <svg class='close-svg'>
+            <use href='/project-cooking/assets/icons-bb57ee8a.svg#close-pop-up'></use>
+          </svg>
+        </button>
+        <h2 class='pop-up-recipe-title'>Order now</h2>
+        <form class='email-form' id='order-form'>
+          <div class='email-form-emphasized'>
+            <label class='form-input-label' for='name'>Name
+              <input class='form-input-text' type='text' id='name'
+                     required /></label>
+
+            <label class='form-input-label' for='phone'>Phone number
+              <input class='form-input-text' type='tel' id='phone' required />
+            </label>
+
+            <label class='form-input-label' for='email'>Email
+              <input class='form-input-text' type='email' id='email' required />
+            </label>
+
+            <label class='form-input-label' for='message'>Comment required
+              <textarea class='form-input-textarea' id='message'></textarea>
+            </label>
+          </div>
+
+          <button class='form-input-button-submit' type='submit'>Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</header>
+
+
+    
+  </body>
+</html>
