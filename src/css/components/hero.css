@@ -13,7 +13,8 @@
 }
 
 .decor-green-text {
-  font-style: italic;
+  /* display: inline-block;
+  transform: skewX(-50deg); */
   font-weight: 400;
   color: var(--accent-color);
 }
