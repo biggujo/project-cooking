@@ -13,11 +13,9 @@
 }
 
 .decor-green-text {
-  /* display: inline-block;
-  transform: skewX(-50deg); */
   font-style: italic;
   font-weight: 400;
-  color: var(--accent-color);
+  color: var(--color-accent-primary);
 }
 
 .hero-text {
@@ -31,7 +29,7 @@
   display: block;
   padding: 10px 20px;
   margin-bottom: 48px;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--color-accent-primary);
 
   border-radius: 12px;
   background-color: transparent;
