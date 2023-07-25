@@ -241,7 +241,9 @@
   .modal-button-svg {
     width: 32px;
     height: 32px;
-    background-color: #9bb537;
+
+    color: #ffffff;
+    stroke: currentColor;
   }
 
   .modal-button {
