@@ -104,20 +104,13 @@
 
 @media screen and (min-width: 768px) {
   .pagination {
-      margin-top: 64px;
-    }
- 
-    .tui-pagination .tui-page-btn {
-      width: 44px !important;
-      height: 44px !important;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: calc(22 / 18);
-      position: relative;
-      color: var(--color-text-primary);
-      border-radius: 50%;
-      border: none;
-    }
+    margin-top: 64px;
+  }
+
+  .tui-pagination .tui-page-btn {
+    width: 44px !important;
+    height: 44px !important;
+  }
 
   .pagination .pag__current-page {
     margin-right: 10px;
