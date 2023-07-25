@@ -22,3 +22,10 @@ new PopUpModal({
   closeModalSelector: '[data-pop-up-recipe-close]',
   backdropSelector: '[data-pop-up-recipe-modal]',
 });
+
+// Header burger-menu modal
+new PopUpModal({
+  openModalSelector: '[data-header-menu-modal-open]',
+  closeModalSelector: '[data-header-menu-modal-close]',
+  backdropSelector: '[data-header-menu-modal]',
+});

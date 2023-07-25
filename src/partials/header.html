@@ -27,14 +27,14 @@
             <use href='../img/icons.svg#icon-switch'></use>
           </svg>
           <svg
-            class='switcher-org-dark-svg is-hiddenss'
+            class='switcher-org-dark-svg is-hidden'
             data-button
             data-dark-theme
           >
             <use href='../img/icons.svg#icon-switch-dark'></use>
           </svg>
         </button>
-        <button class='burger-button' data-modal-open type='button'>
+        <button class='burger-button' data-header-menu-modal-open type='button'>
           <svg class='burger-button-svg'>
             <use href='../img/icons.svg#burger-menu'></use>
           </svg>
@@ -42,28 +42,30 @@
       </div>
     </div>
 
-    <div class='modal is-hidden' data-modal>
-      <button class='modal-button' data-modal-close type='button'>
-        <svg class='modal-button-svg'>
-          <use href='../img/icons.svg#icon-x'></use>
-        </svg>
-      </button>
-      <nav class='modal-nav'>
-        <ul class='modal-list'>
-          <li class='modal-item-list home'>
-            <a href='./index.html' class='link-home'>Home</a>
-          </li>
+    <div class='header-backdrop is-hidden' data-header-menu-modal>
+      <div class='header-modal'>
+        <button class='modal-button' data-header-menu-modal-close type='button'>
+          <svg class='modal-button-svg'>
+            <use href='../img/icons.svg#icon-x'></use>
+          </svg>
+        </button>
+        <nav class='modal-nav'>
+          <ul class='modal-list'>
+            <li class='modal-item-list'>
+              <a href='./index.html' class='header-modal-link'>Home</a>
+            </li>
 
-          <li class='modal-item-list'>
-            <a href='' class='link-favorites'>Favorites</a>
-          </li>
-        </ul>
-      </nav>
-      <button class='switcher' type='button'>
-        <svg class='switcher-svg'>
-          <use href='../img/icons.svg#icon-switch'></use>
-        </svg>
-      </button>
+            <li class='modal-item-list'>
+              <a href='./favorites.html' class='header-modal-link'>Favorites</a>
+            </li>
+          </ul>
+        </nav>
+        <button class='switcher' type='button'>
+          <svg class='switcher-svg'>
+            <use href='../img/icons.svg#icon-switch'></use>
+          </svg>
+        </button>
+      </div>
     </div>
     <div class='modal-order is-hiddens' data-order>
       <div class='modal-content'>
@@ -92,6 +94,4 @@
     </div>
   </section>
 </header>
-<script type='module' src='../js/open-modal.js'></script>
-<script type='module' src='../js/open-modal.js'></script>
 <script type='module' src='../js/ordernow.js'></script>
