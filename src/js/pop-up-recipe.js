@@ -39,86 +39,76 @@ function onEscapeKeyPress(e) {
 async function getRecipeInfo() {
   try {
     const apiUrl =
-      'https://tasty-treats-backend.p.goit.global/api/recipes?category=Beef&page=1&limit=6&time=160&area=Irish&ingredient=640c2dd963a319ea671e3796';
+      'https://tasty-treats-backend.p.goit.global/api/recipes?category=Beef&page=1&limit=6&time=160&area=Irish&ingredients=640c2dd963a319ea671e3796';
     const response = await fetch(apiUrl);
     const data = await response.json();
     const recipeData = data.results[0];
 
+    console.log(recipeData);
+
+    const ingredientsMarkup = recipeData.ingredients
+      .map(({ id, measure }) => {
+        return `<li class='ingred-li-item'>
+                  <p class='ingred-name'>${id}</p>
+                  <p class='ingred-amount'>${measure}</p>
+              </li>`;
+      })
+      .join('');
+
+    const tagsMarkup = recipeData.tags
+      .map(tag => {
+        return `<li>
+                <p>#${tag}</p>
+              </li>`;
+      })
+      .join('');
+
     const modalWindowRecipeMarkup = `
-    <div class="switch-places">
+    <div class='switch-places'>
             <iframe
-          class="video-link"
-          src="${recipeData.youtube}"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          class='video-link'
+          src='https://www.youtube.com/embed/${getYouTubeVideoID(
+            recipeData.youtube
+          )}'
+          title='YouTube video player'
+          frameborder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowfullscreen
         ></iframe>
-        <h1 class="pop-up-recipe-title">${recipeData.title}</h1>
+        <h1 class='pop-up-recipe-title'>${recipeData.title}</h1>
       </div>
-        <div class="media-container">
-          <div class="rating">
-            <span class="middle-rate">${recipeData.rating}</span>
-            <ul class="stars-list">
-              <li><svg class="star-svg">
-                <use href="./img/icons.svg#star"></use>
+        <div class='media-container'>
+          <div class='rating'>
+            <span class='middle-rate'>${recipeData.rating}</span>
+            <ul class='stars-list'>
+              <li><svg class='star-svg'>
+                <use href='./img/icons.svg#star'></use>
               </svg></li>
-              <li><svg class="star-svg">
-                <use href="./img/icons.svg#star"></use>
+              <li><svg class='star-svg'>
+                <use href='./img/icons.svg#star'></use>
               </svg></li>
-              <li><svg class="star-svg">
-                <use href="./img/icons.svg#star"></use>
+              <li><svg class='star-svg'>
+                <use href='./img/icons.svg#star'></use>
               </svg></li>
-              <li><svg class="star-svg">
-                <use href="./img/icons.svg#star"></use>
+              <li><svg class='star-svg'>
+                <use href='./img/icons.svg#star'></use>
               </svg></li>
-              <li><svg class="star-svg">
-                <use href="./img/icons.svg#star"></use>
+              <li><svg class='star-svg'>
+                <use href='./img/icons.svg#star'></use>
               </svg></li>
             </ul>
-            <span class="middle-time">${recipeData.time}</span>
+            <span class='middle-time'>${recipeData.time}</span>
           </div>
-          <div class="ingredients">
+          <div class='ingredientss'>
             <ul class='ingred-list'>
-              <li class='ingred-li-item'>
-                  <p class="ingred-name">${recipeData.ingredient.id}</p>
-                  <p class="ingred-amount">${recipeData.ingredient.measure}</p>
-              </li>
-              <li class='ingred-li-item'>
-                  <p class="ingred-name">${recipeData.ingredient.id}</p>
-                  <p class="ingred-amount">${recipeData.ingredient.measure}</p>
-              </li>
-              <li class='ingred-li-item'>
-                  <p class="ingred-name">${recipeData.ingredient.id}</p>
-                  <p class="ingred-amount">${recipeData.ingredient.measure}</p>
-              </li>
-              <li class='ingred-li-item'>
-                  <p class="ingred-name">${recipeData.ingredient.id}</p>
-                  <p class="ingred-amount">${recipeData.ingredient.measure}</p>
-              </li>
-              <li class='ingred-li-item'>
-                  <p class="ingred-name">${recipeData.ingredient.id}</p>
-                  <p class="ingred-amount">${recipeData.ingredient.measure}</p>
-              </li>
-              <li class='ingred-li-item'>
-                  <p class="ingred-name">${recipeData.ingredient.id}</p>
-                  <p class="ingred-amount">${recipeData.ingredient.measure}</p>
-              </li>
+              ${ingredientsMarkup}
             </ul>
           </div>
-                 <ul class="hashtag-list">
-              <li>
-                <p>#${recipeData.tags[0]}</p>
-               </li>
-               <li>
-                <p>#${recipeData.tags[1]}</p>
-               </li>
-               <li>
-                <p>#${recipeData.tags[2]}</p>
-               </li>
+             <ul class='hashtag-list'>
+              ${tagsMarkup}
+            </ul>
         </div>
-      </ul>
-            <p class="how-to-cook">
+            <p class='how-to-cook'>
                 ${recipeData.instructions}
               </p>
         `;
@@ -126,6 +116,13 @@ async function getRecipeInfo() {
     const modalWindow = document.querySelector('.modal');
     modalWindow.innerHTML = modalWindowRecipeMarkup;
   } catch (error) {
-    console.log('Error fetching data form server');
+    console.log(error);
   }
+}
+
+function getYouTubeVideoID(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+
+  return match && match[2].length === 11 ? match[2] : null;
 }
