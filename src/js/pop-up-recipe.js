@@ -44,8 +44,6 @@ async function getRecipeInfo() {
     const data = await response.json();
     const recipeData = data.results[0];
 
-    console.log(recipeData);
-
     const ingredientsMarkup = recipeData.ingredients
       .map(({ id, measure }) => {
         return `<li class='ingred-li-item'>
@@ -54,6 +52,27 @@ async function getRecipeInfo() {
               </li>`;
       })
       .join('');
+
+
+
+    // if (ingredientsMarkup.id === showId._id) {
+    //   const idName = showId.name;
+    //   console.log(idName);
+    // }
+
+
+
+    const res = await fetch(
+      'https://tasty-treats-backend.p.goit.global/api/ingredients'
+    );
+    const arrOfIngredients = await res.json();
+    console.log(arrOfIngredients);
+    const showId = arrOfIngredients.map(ingredient => ingredient.name);
+    console.log(showId);
+
+
+
+
 
     const tagsMarkup = recipeData.tags
       .map(tag => {
@@ -99,7 +118,7 @@ async function getRecipeInfo() {
             </ul>
             <span class='middle-time'>${recipeData.time}</span>
           </div>
-          <div class='ingredientss'>
+          <div class='ingredients'>
             <ul class='ingred-list'>
               ${ingredientsMarkup}
             </ul>
@@ -113,7 +132,7 @@ async function getRecipeInfo() {
               </p>
         `;
 
-    const modalWindow = document.querySelector('.modal');
+    const modalWindow = document.querySelector('.modal-recipe-content');
     modalWindow.innerHTML = modalWindowRecipeMarkup;
   } catch (error) {
     console.log(error);

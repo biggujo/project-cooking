@@ -161,6 +161,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    margin-bottom: 40px;
   }
 
   .ingred-li-item {
@@ -214,6 +215,10 @@
     margin-bottom: 40px;
   }
 
+  .modal-recipe-content{
+    margin-bottom: 40px;
+  }
+
   .recipe-btn-list {
     display: flex;
     gap: 14px;
@@ -251,6 +256,9 @@
     width: 531px;
     padding: 32px;
   }
+  .modal-recipe-content{
+    margin-bottom: 32px;
+  }
   .close-btn {
     background-color: transparent;
   }
@@ -286,8 +294,10 @@
     margin-right: 1px;
     margin-bottom: 32px;
     /* display: inline-flex; */
-   
-   
+  }
+    .ingred-list{
+      margin-bottom: 32px;
+    }
   }
   .rating {
     order: 2;
@@ -311,4 +321,4 @@
   .btn {
     padding: 14px 28px;
   }
-}
+
