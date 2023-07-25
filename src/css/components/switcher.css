@@ -3,5 +3,49 @@
   /*color: #F8F8F8;*/
 
   /* Example */
-  --color-gray-pale-alpha020: rgba(255, 255, 255, 0.20);
+  /* Main shared */
+  --color-text-primary: #FFFF;
+  --color-accent-primary: #9bb537;
+
+  --color-gray-accent-primary: #FFF;
+  --color-gray-accent-secondary: #3C3B3B;
+
+  --color-gray-pale-alpha010: rgba(255, 255, 255, 0.1);
+  --color-gray-pale-alpha020: rgba(255, 255, 255, 0.2);
+  --color-gray-pale-alpha030: rgba(255, 255, 255, 0.3);
+  --color-gray-pale-alpha050: rgba(255, 255, 255, 0.5);
+  --color-gray-pale-alpha080: rgba(255, 255, 255, 0.8);
+
+  --color-icon-disabled: var(--color-gray-pale-alpha050);
+
+  /* Header */
+  --color-header-icon-primary: var(--color-text-primary);
+  --color-header-icon-accent: var(--color-accent-primary);
+
+  /* Hero */
+  --color-hero-card-title: rgba(255, 255, 255, 0.60);
+  --color-hero-card-subtitle: var(--color-gray-pale-alpha020);
+
+  /* Modal */
+  --color-modal-background: #161616;
+
+  /* Star */
+  --color-star-marked: #eea10c;
+  --color-star-unmarked: rgba(255, 255, 255, 0.10);
+
+  /* Pagination */
+  --color-pagination-arrow-disabled: var(--color-icon-disabled);
+  --color-pagination-arrow-background-disabled: #050505;
+
+  --color-pagination-arrow-enabled: var(--color-text-primary);
+  --color-pagination-arrow-background-enabled: var(--color-accent-primary);
+
+  --color-pagination-text: #050505;
+  --color-pagination-text-background-selected: var(--color-accent-primary);
+
+  /* Like */
+  --color-like-disabled: var(--color-icon-disabled);
+  --color-like-enabled: #ffffff;
+
 }
+
