@@ -2,8 +2,8 @@ function toggleTheme() {
   const body = document.querySelector('body');
   body.classList.toggle('dark-theme');
 
-  const isNotDarkTheme = !body.classList.contains('dark-theme');
-  localStorage.setItem('darkTheme', isNotDarkTheme);
+  const isDarkTheme = !body.classList.contains('dark-theme');
+  localStorage.setItem('darkTheme', isDarkTheme);
 }
 
 const themeToggleBtn = document.querySelector('.switch-input');
