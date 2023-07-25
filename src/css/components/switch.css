@@ -8,7 +8,8 @@
  */
 
 .switch-button {
-  position: absolute;
+  position: relative;
+  display: inline-block;
   width: 46px;
   height: 20px;
 
@@ -27,6 +28,8 @@
 }
 
 .switch-button input {
+  display: inline-block;
+  width: 100%;
   visibility: hidden;
 }
 
