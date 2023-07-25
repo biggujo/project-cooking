@@ -138,6 +138,8 @@
     top: 143px;
     padding-top: 143px;
     margin-bottom: 0;
+
+    text-transform: uppercase;
   }
 
   .recipe-description {
