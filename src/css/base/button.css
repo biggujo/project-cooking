@@ -5,6 +5,7 @@
 */
 
 .button {
+    font-size: 14px;
     background: none;
     border-radius: 15px;
     padding: 14px 28px;
@@ -12,4 +13,61 @@
     cursor: pointer;
   }
 
+ .button:hover,
+ .button:focus{
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func),
+ }
+
+  .all-categories-button {
+    font-size: 18px;
+    line-height: calc(22 / 18);
+    color: var(--color-gray-pale-alpha050);
+    border-color: var(--color-gray-pale-alpha020);
+    border-radius: 15px;
+    border: 1px solid var(--color-gray-pale-alpha020);
+  
+    
+    
+  }
+  
+  .all-categories-button:hover,
+  .all-categories-button:focus,
+  .all-categories-button .is-active {
+    background-color: var(--color-accent-primary);
+    color: var(--color-gray-accent-primary);
+    border: 1px solid var(--color-accent-primary);
+    
+  
+  }
+
+.button-favorite{
+    font-size: 16px;
+    line-height: calc(20 / 16);
+    padding: 14px 18px;
+    color: var(--color-gray-accent-primary);
+   background-color: var(  --color-accent-primary);
+  }
+
+  .button-favorite:hover
+  .button-favorite:focus{
+  color: var(  --color-text-primary);
+  background-color:var(  --color-accent-primary);
+  }
+ 
+.button-order-now{
+  font-size: 16px;
+  line-height: calc(17 / 14);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-accent-primary);
+}
+
+.button-order-now:hover
+.button-order-now:focus
+{
+  color: var(--color-gray-accent-primary); 
+  background-color: var(--color-accent-primary);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func),
+}
 
