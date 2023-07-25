@@ -53,6 +53,13 @@
             d="M8 8l16 16"></path>
     </symbol>
 
+    <!-- Close header modal -->
+    <symbol id="close-header-modal" viewBox="0 0 32 32">
+      <path fill="none" stroke="#f8f8f8" style="stroke: var(--color2, #f8f8f8)" stroke-linejoin="round"
+            stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M24 8l-16 16"></path>
+      <path fill="none" stroke="#f8f8f8" style="stroke: var(--color2, #f8f8f8)" stroke-linejoin="round"
+            stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M8 8l16 16"></path>
+    </symbol>
 
     <!-- Close pop-up  -->
     <symbol id="close-pop-up" viewBox="0 0 32 32">
