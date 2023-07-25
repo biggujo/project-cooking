@@ -40,7 +40,7 @@ function onEscapeKeyPress(e) {
 async function getRecipeInfo() {
   try {
     const apiUrl =
-      'https://tasty-treats-backend.p.goit.global/api/recipes?category=Beef&page=1&limit=6&time=160&area=Irish&ingredients=640c2dd963a319ea671e3796';
+      'https://tasty-treats-backend.p.goit.global/api/recipes?category=Soup&page=1&limit=6&area=Ukrainian&ingredients=6462a8f74c3d0ddd288980d4';
     const response = await fetch(apiUrl);
     const data = await response.json();
     // console.log(data);
