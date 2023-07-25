@@ -69,5 +69,5 @@
   background-color: var(--color-accent-primary);
   transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
     color var(--primary-animation-duration) var(--primary-animation-time-func),
-}
 
+}
