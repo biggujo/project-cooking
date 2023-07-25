@@ -36,7 +36,6 @@ function onEscapeKeyPress(e) {
 
 // get Data for Modal Window
 
-
 async function getRecipeInfo() {
   try {
     const apiUrl =
@@ -46,13 +45,13 @@ async function getRecipeInfo() {
     // console.log(data);
     const recipeData = data.results[0];
     // console.log(data.results[0]);
-   
-    
+
     // colorPickerOptions.find(option => option.label === "blue")
     const res = await fetch(
       'https://tasty-treats-backend.p.goit.global/api/ingredients'
     );
     const arrOfIngredients = await res.json();
+
     // let idName = [];
     // const {id, measure} = recipeData.ingredients;
     //   const{_id, name} = arrOfIngredients;
@@ -66,21 +65,27 @@ async function getRecipeInfo() {
     //   // console.log(element._id);
     //   if(id === element._id){
     //     idName = element.name;
-        
+
     //     return idName;
     //   }
     // });
 
-      console.log(recipeData.ingredients);
+    console.log(recipeData.ingredients);
     const ingredientsMarkup = recipeData.ingredients
-      .map(({ id, measure }) => {
+      .map(({ id: originalId, measure }) => {
+        const { name: ingredientName } = arrOfIngredients.find(
+          ({ _id: ingredientIdToBeFound }) =>
+            originalId === ingredientIdToBeFound
+        );
+
+        console.log(name);
+
         return `<li class='ingred-li-item'>
-                  <p class='ingred-name'>${id}</p>
+                  <p class='ingred-name'>${ingredientName}</p>
                   <p class='ingred-amount'>${measure}</p>
               </li>`;
       })
       .join('');
-
 
     const tagsMarkup = recipeData.tags
       .map(tag => {
@@ -143,28 +148,27 @@ async function getRecipeInfo() {
     const modalWindow = document.querySelector('.modal-recipe-content');
     modalWindow.innerHTML = modalWindowRecipeMarkup;
 
-// Add to FAVORITES
+    // Add to FAVORITES
 
-const favBtn = document.querySelector('.fav');
-favBtn.addEventListener('click', onFavBtnClick);
-let localStorageData = [];
+    const favBtn = document.querySelector('.fav');
+    favBtn.addEventListener('click', onFavBtnClick);
+    let localStorageData = [];
 
-function onFavBtnClick(evt) {
-  const localStorCheck = localStorage.getItem('favorites');
-  const parsed = JSON.parse(localStorCheck);
-  console.log(parsed);
+    function onFavBtnClick(evt) {
+      const localStorCheck = localStorage.getItem('favorites');
+      const parsed = JSON.parse(localStorCheck);
+      console.log(parsed);
 
-  if(!parsed){
-    localStorageData.push(`${recipeData.title}`); 
-    localStorage.setItem('favorites', JSON.stringify(localStorageData));
-    favBtn.textContent = 'Remove from Favorites';
-  } else if (localStorageData.includes(`${recipeData.title}`)){
-    favBtn.textContent = 'Remove from Favorites';
-    localStorage.removeItem('favorites');
-    favBtn.textContent = 'Add to Favorites';
-    
-  }
-}
+      if (!parsed) {
+        localStorageData.push(`${recipeData.title}`);
+        localStorage.setItem('favorites', JSON.stringify(localStorageData));
+        favBtn.textContent = 'Remove from Favorites';
+      } else if (localStorageData.includes(`${recipeData.title}`)) {
+        favBtn.textContent = 'Remove from Favorites';
+        localStorage.removeItem('favorites');
+        favBtn.textContent = 'Add to Favorites';
+      }
+    }
   } catch (error) {
     console.log(error);
   }
@@ -176,10 +180,6 @@ function getYouTubeVideoID(url) {
 
   return match && match[2].length === 11 ? match[2] : null;
 }
-
-
-
-
 
 // function toggleFavourite(recipeTitle) {
 //   const heartIcon = document.querySelector(".like-icon");
