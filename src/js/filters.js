@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {CustomSelect} from './custom-select';
-import './all-categories.js';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const searchFormEl = document.querySelector('.search__recipes');
@@ -12,18 +12,19 @@ const searchIconEl = document.querySelector('.search__icon-svg');
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
 
-const allCategories = document.querySelector('.all-categories');
-const activeCategoryEl = allCategories.querySelector('.is-active');
-const allCategoriesButton = document.querySelector('.all-categories-button');
-const activeCategory = activeCategoryEl.textContent.trim();
-
-let filtersResultForQuery = {};
+export let filtersResultForQuery = {};
 
 /* Reset and clear filters/input block */
-function resetAllFilters () {
+export function resetAllFilters () {
   searchInputEl.value = '';
-  filtersResultForQuery = {};
+  const propertiesToDelete = ['title', 'area', 'ingredient', 'time'];
+  propertiesToDelete.forEach(prop => {
+    delete filtersResultForQuery[prop];
+  });
   changesInInput();
+  document.querySelectorAll('.filter-select__option_selected').forEach(el => {
+    el.classList.remove('filter-select__option_selected')
+  })
   selectsEl.forEach(select => {
      select.textContent = select.dataset.start;
      select.dataset.index = '-1';
@@ -40,15 +41,20 @@ function changesInInput (){
     }
 }
 
+const debouncedFetchRecipe = debounce((filters) => {
+  fetchRecipeByFilter(filters);
+}, 300);
+
 searchFormEl.addEventListener('submit', (e) => {
   e.preventDefault();
-  fetchRecipeByFilter(filtersResultForQuery);
+  debouncedFetchRecipe(filtersResultForQuery);
 })
+
 searchIconEl.addEventListener('click', () => {
   console.log('hi');
   fetchRecipeByFilter(filtersResultForQuery);
 });
-allCategoriesButton.addEventListener('click', resetAllFilters);
+
 searchInputEl.addEventListener('input', changesInInput);
 
 closeIconEl.addEventListener('click', () => {
@@ -59,17 +65,8 @@ closeIconEl.addEventListener('click', () => {
 });
 
 resetFiltersEl.addEventListener('click', () => {
-    document.querySelectorAll('.filter-select__option_selected').forEach(el => {
-    el.classList.remove('filter-select__option_selected')
-    })
     resetAllFilters();
     fetchRecipeByFilter(filtersResultForQuery);
-    
-    if(activeCategory === 'All categories'){
-    return
-    } else {
-      filtersResultForQuery['category'] = activeCategory;
-    }
 })
 
 /* Debounce function for input change and added to query */
@@ -89,11 +86,11 @@ searchInputEl.addEventListener('input', debounce(() => {
 /* Receiving the results of a filter query */
 function fetchRecipeByFilter(filters) {
   let url = `${API_URL}/recipes?`;
-  if(activeCategory !== 'All categories'){
-    url += `category=${activeCategory}`;
+  if( filters.category){
+    url += `category=${filters.category}`;
   }
   if (filters.title) {
-    url += `title=${filters.title}`;
+    url += `&title=${filters.title}`;
   }
   if (filters.time) {
     url += `&time=${filters.time}`;
