@@ -1,10 +1,10 @@
 .logo {
-  font-style: inherit;
   font-weight: 600;
   font-size: 16px;
-  line-height: 1.2;
-  color: #9bb537;
+  line-height: 1.12;
+  color: var(--color-text-primary);
   text-decoration: none;
+  letter-spacing: -0.64px;
 }
 
 .section {
@@ -13,11 +13,7 @@
 }
 
 .colorlogo {
-  font-style: inherit;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.2;
-  color: #050505;
+  color: var(--color-accent-primary);
 }
 
 .is-hidden {
@@ -81,20 +77,7 @@
   border: none;
 }
 
-@media screen and (min-width: 480px) {
-  .container {
-    max-width: 335px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 728px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 
   .burger-button {
     display: none;
@@ -190,12 +173,14 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1160px;
-    padding-left: 20px;
-    padding-right: 20px;
+@media screen and (min-width: 768px) {
+  .logo {
+    font-size: 18px;
+    letter-spacing: -0.72px;
   }
+}
+
+@media screen and (min-width: 1160px) {
 
   .logo {
     margin-left: auto;
