@@ -11,6 +11,7 @@ import { highlightCurrentPage } from './js/header-current-page-marker.js';
 import './js/all-categories.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import './js/filters.js';
+import './js/switcher.js';
 
 highlightCurrentPage();
 
