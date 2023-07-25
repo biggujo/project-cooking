@@ -143,3 +143,19 @@
     gap: 16px;
   }
 }
+
+.email-form-emphasized {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  margin-block: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .email-form-emphasized {
+    display: flex;
+    gap: 18px;
+    flex-direction: column;
+    margin-block: 40px;
+  }
+}

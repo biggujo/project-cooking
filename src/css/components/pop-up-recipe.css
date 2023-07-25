@@ -246,6 +246,10 @@
     padding: 32px;
   }
 
+  .modal-s {
+    width: 440px;
+  }
+
   .close-btn {
     background-color: transparent;
   }
