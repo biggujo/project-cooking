@@ -1,0 +1,15 @@
+/**
+  |============================
+  | Base Styles Buttons
+  |============================
+*/
+
+.button {
+    background: none;
+    border-radius: 15px;
+    padding: 14px 28px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+
