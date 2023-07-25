@@ -1,5 +1,5 @@
 .hero {
-  padding-top: 137px;
+  padding-top: 92px;
   padding-bottom: 80px;
 }
 
@@ -141,7 +141,7 @@
 
 @media screen and (min-width: 768px) {
   .hero {
-    padding-top: 141px;
+    padding-top: 96px;
     padding-bottom: 80px;
   }
 
@@ -233,7 +233,7 @@
 
 @media screen and (min-width: 1160px) {
   .hero {
-    padding-top: 160px;
+    padding-top: 125px;
     padding-bottom: 100px;
   }
 
