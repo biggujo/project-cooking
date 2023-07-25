@@ -1,5 +1,4 @@
 export const createHeroSliderMarkup = async data => {
-  console.log(await data);
   return (await data)
     .map(({ cook, topic }, index) => {
       return `
