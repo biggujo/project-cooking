@@ -66,4 +66,12 @@
   /* Like */
   --color-like-disabled: var(--color-icon-disabled);
   --color-like-enabled: #ffffff;
+
+  /*
+   * Animation
+   */
+
+  --primary-animation-duration: 250ms;
+  --primary-animation-time-func: ease-in-out;
 }
+
