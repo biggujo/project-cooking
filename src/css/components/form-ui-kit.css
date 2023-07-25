@@ -1,4 +1,4 @@
-.form-input-text {
+.form-input-text, .form-input-textarea {
   display: flex;
   align-items: center;
   height: 46px;
@@ -15,8 +15,24 @@
   border-radius: 15px;
 }
 
-.form-input-text::placeholder {
+.form-input-text::placeholder,
+.form-input-textarea::placeholder {
   color: var(--color-gray-pale-alpha050);
+}
+
+.form-input-textarea {
+  height: 100px;
+}
+
+.form-input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: var(--color-gray-pale-alpha050);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
 }
 
 @media screen and (min-width: 768px) {
