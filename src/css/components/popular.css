@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  /* height: 500px;
-  width: 240px; */
+  height: 220px;
+  width: 335px;
 }
 
 .popular-recipes-title {
@@ -77,6 +77,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .popular-recipes {
+    height: 415px;
+    width: 185px;
+  }
   .popular-recipes-image {
     width: 48px;
     height: 48px;
@@ -97,6 +101,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .popular-recipes {
+    height: 415px;
+    width: 235px;
+  }
   .popular-recipes-image {
     width: 64px;
     height: 64px;
