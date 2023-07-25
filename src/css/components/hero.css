@@ -15,6 +15,7 @@
 .decor-green-text {
   /* display: inline-block;
   transform: skewX(-50deg); */
+  font-style: italic;
   font-weight: 400;
   color: var(--accent-color);
 }
@@ -143,68 +144,84 @@
     padding-top: 141px;
     padding-bottom: 80px;
   }
+
   .hero-info {
     max-width: 446px;
   }
+
   .hero-title {
     margin-bottom: 16px;
 
     font-size: 36px;
   }
+
   .hero-text {
     margin-bottom: 32px;
 
     font-size: 16px;
     line-height: 1.5;
   }
+
   .hero-btn {
     padding: 14px 28px;
   }
+
   .hero-outer-swiper-wrapper {
     height: 468px;
   }
+
   .hero-outer-swiper-wrapper {
     max-width: 871px;
     width: calc(100% + (100vw - 100%) / 2 - 15px);
   }
+
   .swiper {
     width: 871px;
     height: 442px;
   }
+
   .hero-swiper-slide {
     gap: 16px;
   }
+
   .hero-swiper-slide-1 .hero-swiper-info-img,
   .hero-swiper-slide-3 .hero-swiper-info-img {
     width: 304px;
     height: 271px;
   }
+
   .hero-swiper-slide-2 .hero-swiper-info-img {
     margin-left: auto;
     margin-right: auto;
     width: 262px;
     height: 262px;
   }
+
   .hero-cook-slide-wrapper {
     width: 137px;
   }
+
   .hero-info-slide-wrapper {
     width: 351px;
     padding: 67px 24px 32px;
   }
+
   .hero-swiper-info-img {
     margin-bottom: 32px;
   }
+
   .hero-swiper-info-dish {
     margin-bottom: 8px;
 
     font-size: 14px;
     line-height: 1.28;
   }
+
   .hero-swiper-info-country {
     font-size: 12px;
     line-height: 1.16;
   }
+
   .hero-img-slide-wrapper {
     width: 351px;
   }
@@ -219,11 +236,13 @@
     padding-top: 160px;
     padding-bottom: 100px;
   }
+
   .hero-wrapper {
     display: grid;
     grid-template-columns: 446px 1fr;
     grid-gap: 32px;
   }
+
   .hero-outer-swiper-wrapper {
     width: calc(602px + (100vw - 1090px) / 2 - 15px);
   }
