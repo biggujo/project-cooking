@@ -155,7 +155,6 @@ function onFavBtnClick(evt) {
   console.log(parsed);
 
   if(!parsed){
-    
     localStorageData.push(`${recipeData.title}`); 
     localStorage.setItem('favorites', JSON.stringify(localStorageData));
     favBtn.textContent = 'Remove from Favorites';
