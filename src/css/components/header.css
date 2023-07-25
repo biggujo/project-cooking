@@ -38,13 +38,14 @@
   color: #0e0d0d;
   stroke: currentColor;
   fill: none;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
 }
 
 .shopping-cart-button {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border: none;
   margin-left: auto;
   margin-right: 14px;
