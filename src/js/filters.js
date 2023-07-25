@@ -1,7 +1,10 @@
 import axios from 'axios';
 import {CustomSelect} from './custom-select';
-import './all-categories'
+import './all-categories.js';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
+const searchFormEl = document.querySelector('.search__recipes');
 const searchInputEl = document.querySelector('.search__recipes-input');
 const closeIconEl = document.querySelector('.search__close-icon');
 const searchIconEl = document.querySelector('.search__icon-svg');
@@ -10,9 +13,9 @@ const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
 
 const allCategories = document.querySelector('.all-categories');
-const categoryEl = allCategories.querySelector('.is-active');
+const activeCategoryEl = allCategories.querySelector('.is-active');
 const allCategoriesButton = document.querySelector('.all-categories-button');
-const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
+const activeCategory = activeCategoryEl.textContent.trim();
 
 let filtersResultForQuery = {};
 
@@ -20,7 +23,7 @@ let filtersResultForQuery = {};
 function resetAllFilters () {
   searchInputEl.value = '';
   filtersResultForQuery = {};
-  clearFiltersInput();
+  changesInInput();
   selectsEl.forEach(select => {
      select.textContent = select.dataset.start;
      select.dataset.index = '-1';
@@ -28,7 +31,7 @@ function resetAllFilters () {
  });
 }
 
-function clearFiltersInput (){
+function changesInInput (){
     closeIconEl.classList.add('is-hidden');
     searchIconEl.style.fill = "currentColor";
     if (searchInputEl.value !== '') {
@@ -37,13 +40,22 @@ function clearFiltersInput (){
     }
 }
 
+searchFormEl.addEventListener('submit', (e) => {
+  e.preventDefault();
+  fetchRecipeByFilter(filtersResultForQuery);
+})
+searchIconEl.addEventListener('click', () => {
+  console.log('hi');
+  fetchRecipeByFilter(filtersResultForQuery);
+});
 allCategoriesButton.addEventListener('click', resetAllFilters);
-searchInputEl.addEventListener('input', clearFiltersInput);
+searchInputEl.addEventListener('input', changesInInput);
 
 closeIconEl.addEventListener('click', () => {
     searchInputEl.value = '';
-    clearFiltersInput();
+    changesInInput();
     delete filtersResultForQuery.title;
+    fetchRecipeByFilter(filtersResultForQuery);
 });
 
 resetFiltersEl.addEventListener('click', () => {
@@ -51,11 +63,12 @@ resetFiltersEl.addEventListener('click', () => {
     el.classList.remove('filter-select__option_selected')
     })
     resetAllFilters();
-    console.log(categoryEl);
-    if(categoryEl.textContent.trim() === 'All categories'){
+    fetchRecipeByFilter(filtersResultForQuery);
+    
+    if(activeCategory === 'All categories'){
     return
     } else {
-      filtersResultForQuery['category'] = categoryEl.textContent.trim();
+      filtersResultForQuery['category'] = activeCategory;
     }
 })
 
@@ -68,28 +81,41 @@ function debounce(func, delay) {
   };
 }
 
-function handleInput() {
+searchInputEl.addEventListener('input', debounce(() => {
   filtersResultForQuery['title'] = searchInputEl.value;
-  console.log(filtersResultForQuery);
-  fetchRecipeByFilter(filtersResultForQuery, 'title');
-}
-
-const debouncedHandleInput = debounce(handleInput, 300);
-searchInputEl.addEventListener('input', debouncedHandleInput);
-
+  fetchRecipeByFilter(filtersResultForQuery);
+}, 300));
 
 /* Receiving the results of a filter query */
-function fetchRecipeByFilter(filters, value) {
-  let url = `${API_URL}/recipes`;
-    url += `?${value}=${filters[value]}`;
+function fetchRecipeByFilter(filters) {
+  let url = `${API_URL}/recipes?`;
+  if(activeCategory !== 'All categories'){
+    url += `category=${activeCategory}`;
+  }
+  if (filters.title) {
+    url += `title=${filters.title}`;
+  }
+  if (filters.time) {
+    url += `&time=${filters.time}`;
+  }
+  if (filters.area) {
+    url += `&area=${filters.area}`;
+  }
+  if (filters.ingredient) {
+    url += `&ingredient=${filters.ingredient}`;
+  }
   return axios
     .get(url)
     .then(response => {
       const recipes = response.data;
       console.log(recipes);
+      if( recipes.results.length === 0){
+        Notify.failure('Sorry, nothing found. Change your filters, or check the entered values.');
+      }
       return recipes;
     })
     .catch(error => {
+      Notify.failure('Sorry, there is something wrong with your request!');
       throw error;
     });
 }
@@ -100,7 +126,7 @@ function handleFilterSelectChange(e) {
     let elName = filterBtn.name;
     filtersResultForQuery[elName] = filterBtn.value;
     console.log(filtersResultForQuery); 
-    fetchRecipeByFilter(filtersResultForQuery, elName);
+    fetchRecipeByFilter(filtersResultForQuery);
 }
 
 function addFilterToResultQuery (filterName){
@@ -120,6 +146,7 @@ function fetchDataForFilters(filterName) {
     }
   })
   .catch(error => {
+    Notify.failure('Sorry, there is something wrong with your request!');
     console.error('ERROR', error);
   });
 }
@@ -152,6 +179,7 @@ fetchDataForFilters('ingredients')
   addFilterToResultQuery('#select-ingredients');
 })
 .catch(error => {
+  Notify.failure('Sorry, there is something wrong with your request data fo filter!');
   console.error('ERROR', error);
 });
 
@@ -164,5 +192,6 @@ fetchDataForFilters('areas')
   addFilterToResultQuery('#select-area');
 })
 .catch(error => {
+  Notify.failure('Sorry, there is something wrong with your request data fo filter!!');
   console.error('ERROR', error);
 });
