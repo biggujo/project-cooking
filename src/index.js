@@ -29,3 +29,10 @@ new PopUpModal({
   closeModalSelector: '[data-header-menu-modal-close]',
   backdropSelector: '[data-header-menu-modal]',
 });
+
+// "Order now" modal
+new PopUpModal({
+  openModalSelector: '[data-pop-up-order-now-open]',
+  closeModalSelector: '[data-pop-up-order-now-close]',
+  backdropSelector: '[data-pop-up-order-now-modal]',
+});
