@@ -50,13 +50,17 @@ export class CustomSelect {
 
   _onClick(e) {
     const { target } = e;
-    const type = target.closest(this.constructor.DATA).dataset.select;
+    if (!target) {
+      return; // If target is null or undefined, exit the function early
+    }
+    const type = target.closest(this.constructor.DATA)?.dataset.select;
     if (type === 'toggle' || type === 'toggle-block') {
       this.toggle();
     } else if (type === 'option') {
       this._changeValue(target);
     }
   }
+  
 
   _updateOption(el) {
     const elOption = el.closest(`.${this.constructor.EL_OPTION}`);
