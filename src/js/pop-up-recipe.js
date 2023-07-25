@@ -145,3 +145,22 @@ function getYouTubeVideoID(url) {
 
   return match && match[2].length === 11 ? match[2] : null;
 }
+
+
+
+// Add to FAVORITES
+
+const favBtn  = document.querySelector('.fav');
+favBtn.addEventListener('click', onFavBtnClick);
+const localStorageData = [];
+
+function onFavBtnClick(evt) {
+  evt.preventDefault();
+  console.log(evt.target);
+
+  localStorageData.push(id); 
+ 
+  localStorage.setItem('favorites', JSON.stringify(localStorageData));
+
+
+}
