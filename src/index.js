@@ -19,4 +19,3 @@ new PopUpModal({
   closeModalSelector: '[data-pop-up-recipe-close]',
   backdropSelector: '[data-pop-up-recipe-modal]',
 });
-
