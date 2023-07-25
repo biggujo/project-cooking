@@ -150,20 +150,20 @@ favBtn.addEventListener('click', onFavBtnClick);
 let localStorageData = [];
 
 function onFavBtnClick(evt) {
-  // evt.preventDefault();
-
   const localStorCheck = localStorage.getItem('favorites');
   const parsed = JSON.parse(localStorCheck);
   console.log(parsed);
 
   if(!parsed){
+    
     localStorageData.push(`${recipeData.title}`); 
     localStorage.setItem('favorites', JSON.stringify(localStorageData));
     favBtn.textContent = 'Remove from Favorites';
   } else if (localStorageData.includes(`${recipeData.title}`)){
     favBtn.textContent = 'Remove from Favorites';
-    localStorage.setItem
-    return
+    localStorage.removeItem('favorites');
+    favBtn.textContent = 'Add to Favorites';
+    
   }
 }
   } catch (error) {
@@ -177,3 +177,8 @@ function getYouTubeVideoID(url) {
 
   return match && match[2].length === 11 ? match[2] : null;
 }
+
+
+
+
+
