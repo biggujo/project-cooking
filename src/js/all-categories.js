@@ -30,11 +30,9 @@ function handleClickedCategories(event) {
   const target = event.target;
 
   if (target.classList.contains('all-categories-item-button')) {
-    const activeButton = document.querySelector(
-      '.all-categories-item-button.is-active'
-    );
+    const activeButton = document.querySelector('.all-categories-item-button.is-active');
 
-    if (activeButton) {
+    if (activeButton && activeButton !== target) {
       activeButton.classList.remove('is-active');
     }
 
@@ -59,9 +57,11 @@ function handleClickedCategories(event) {
 }
 
 function handleClickedAllCategories() {
-  allCategoriesButtons.forEach(button => {
-    button.classList.remove('is-active');
-  });
+  const activeButton = document.querySelector('.all-categories-item-button.is-active');
+
+  if (activeButton) {
+    activeButton.classList.remove('is-active');
+  }
 
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
