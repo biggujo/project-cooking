@@ -6,5 +6,17 @@
 */
 
 @import url('./header.css');
+@import url('./hero.css');
+@import url('./all-categories.css');
+@import url('./pop-up-recipe.css');
+@import url('./pop-up-rating.css');
+@import url('./form-ui-kit.css');
+@import url('./popular.css');
+@import url('./scroll-up.css');
+@import url('./filters.css');
+@import url('./switch.css');
+@import url('./card.css');
+
+
 @import url('fav-hero.css');
 @import url('fav-recipes.css');
