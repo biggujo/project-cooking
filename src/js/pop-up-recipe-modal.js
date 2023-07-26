@@ -110,6 +110,10 @@ export class PopUpRecipeModal extends PopUpModal {
       const favBtn = document.querySelector('.fav');
       favBtn.addEventListener('click', onFavBtnClick);
 
+      if(favBtn.textContent = 'Remove from Favorites'){
+        favBtn.textContent = 'Add to Favorites';
+      }
+
       let dishName = this.recipeData._id;
       console.log(dishName);
 
