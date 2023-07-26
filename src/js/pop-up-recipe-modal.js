@@ -107,27 +107,34 @@ export class PopUpRecipeModal extends PopUpModal {
     // Add to favorites
 
     try {
+      let favortiesIdsArray =
+        JSON.parse(localStorage.getItem('favorites')) || [];
+      console.log(favortiesIdsArray);
+
+      let dishId = this.recipeData._id;
+      console.log(dishId);
+
       const favBtn = document.querySelector('.fav');
       favBtn.addEventListener('click', onFavBtnClick);
 
-      let dishName = this.recipeData._id;
-      console.log(dishName);
-
-      let parsed = JSON.parse(localStorage.getItem('favorites')) || [];
-      console.log(parsed);
+      if (favortiesIdsArray.includes(dishId)) {
+        favBtn.textContent = 'Remove from Favorites';
+      } else {
+        favBtn.textContent = 'Add to Favorites';
+      }
 
       function onFavBtnClick() {
-        if (!parsed.includes(dishName)) {
-          console.log('Add to favourites: ', dishName);
-          parsed.push(dishName);
-          saveToFavorites(parsed);
+        if (!favortiesIdsArray.includes(dishId)) {
+          console.log('Add to favourites: ', dishId);
+          favortiesIdsArray.push(dishId);
+          saveToFavorites(favortiesIdsArray);
           favBtn.textContent = 'Remove from Favorites';
         } else {
-          console.log('Remove from favourites: ', dishName);
-          const index = parsed.indexOf(dishName);
+          console.log('Remove from favourites: ', dishId);
+          const index = favortiesIdsArray.indexOf(dishId);
           if (index !== -1) {
-            parsed.splice(index, 1);
-            saveToFavorites(parsed);
+            favortiesIdsArray.splice(index, 1);
+            saveToFavorites(favortiesIdsArray);
             favBtn.textContent = 'Add to Favorites';
           }
         }
