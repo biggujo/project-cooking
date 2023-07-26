@@ -1,14 +1,8 @@
 .dark-theme {
-  /*background-color: #161616;*/
-  /*color: #F8F8F8;*/
+  --color-text-primary: #ffffff;
 
-  /* Example */
-  /* Main shared */
-  --color-text-primary: #FFFF;
-  --color-accent-primary: #9bb537;
-
-  --color-gray-accent-primary: #FFF;
-  --color-gray-accent-secondary: #3C3B3B;
+  --color-gray-accent-primary: #fff;
+  --color-gray-accent-secondary: #3c3b3b;
 
   --color-gray-pale-alpha010: rgba(255, 255, 255, 0.1);
   --color-gray-pale-alpha020: rgba(255, 255, 255, 0.2);
@@ -23,29 +17,18 @@
   --color-header-icon-accent: var(--color-accent-primary);
 
   /* Hero */
-  --color-hero-card-title: rgba(255, 255, 255, 0.60);
+  --color-hero-card-title: rgba(255, 255, 255, 0.6);
   --color-hero-card-subtitle: var(--color-gray-pale-alpha020);
 
   /* Modal */
   --color-modal-background: #161616;
 
-  /* Star */
-  --color-star-marked: #eea10c;
-  --color-star-unmarked: rgba(255, 255, 255, 0.10);
+  /* Scrollbar */
+  --color-scrollbar: rgba(255, 255, 255, 0.18);
 
-  /* Pagination */
-  --color-pagination-arrow-disabled: var(--color-icon-disabled);
-  --color-pagination-arrow-background-disabled: #050505;
+  /* Theme */
+  --color-theme: #161616;
 
-  --color-pagination-arrow-enabled: var(--color-text-primary);
-  --color-pagination-arrow-background-enabled: var(--color-accent-primary);
-
-  --color-pagination-text: #050505;
-  --color-pagination-text-background-selected: var(--color-accent-primary);
-
-  /* Like */
-  --color-like-disabled: var(--color-icon-disabled);
-  --color-like-enabled: #ffffff;
-
+  color: var(--color-text-primary);
+  background-color: var(--color-modal-background);
 }
-
