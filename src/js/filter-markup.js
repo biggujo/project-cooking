@@ -1,3 +1,32 @@
+function scrollToTop() {
+  const scrollDuration = 300;
+  const scrollStep = -window.scrollY / (scrollDuration / 15);
+
+  const scrollInterval = setInterval(function () {
+    if (window.scrollY !== 0) {
+      window.scrollBy(0, scrollStep);
+    } else {
+      clearInterval(scrollInterval);
+    }
+  }, 15);
+}
+
+window.addEventListener("scroll", function () {
+  const scrollUpBtn = document.querySelector(".scroll-up-btn");
+
+  if (scrollUpBtn && window.scrollY > 100) {
+    scrollUpBtn.style.display = "block";
+  } else if (scrollUpBtn) {
+    scrollUpBtn.style.display = "none";
+  }
+});
+
+const scrollUpBtn = document.querySelector(".scroll-up-btn");
+if (scrollUpBtn) {
+  scrollUpBtn.addEventListener("click", function () {
+    scrollToTop();
+  });
+}
 
 async function fetchRecipeData() {
   try {
@@ -16,8 +45,9 @@ async function fetchRecipeData() {
         <p class='recipe-description'>${recipeData.description}</p>
         <div class='rating'>
           <div class='rating-number'>${recipeData.rating}</div>
-          <div class='rating-stars'></div>
+          <div class='rating-stars' style='--filled-percentage: ${Math.round((recipeData.rating / 5) * 100)}%'></div>
         </div>
+        <div class="see-recipe-btn">See Recipe</div>
       </div>
     `;
 
@@ -42,13 +72,21 @@ async function fetchRecipeData() {
 
 function updateRatingStars(rating) {
   const ratingContainer = document.querySelector(".rating-stars");
-  const filledStars = Math.round(rating);
-  const emptyStars = 5 - filledStars;
+  const filledStars = Math.floor(rating);
+  const fraction = rating - filledStars;
+  const filledPercentage = (Math.round(fraction * 1000) / 10).toFixed(1);
 
   let ratingStarsHTML = "";
   for (let i = 0; i < filledStars; i++) {
     ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
   }
+  if (fraction > 0) {
+    ratingStarsHTML +=
+      '<span class="rating-star filled with-color" style="--filled-percentage: ' +
+      filledPercentage +
+      '%">&#9733;</span>';
+  }
+  const emptyStars = 5 - filledStars - (fraction > 0 ? 1 : 0);
   for (let i = 0; i < emptyStars; i++) {
     ratingStarsHTML += '<span class="rating-star">&#9733;</span>';
   }
@@ -61,10 +99,8 @@ function toggleFavourite(recipeTitle) {
   const isFilled = heartIcon.classList.contains("filled");
 
   if (!isFilled) {
-    console.log("Add to favourites: ", recipeTitle);
     addToFavorites(recipeTitle);
   } else {
-    console.log("Remove from favourites: ", recipeTitle);
     removeFromFavorites(recipeTitle);
   }
 }
