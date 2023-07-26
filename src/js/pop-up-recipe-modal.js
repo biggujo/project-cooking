@@ -66,7 +66,7 @@ export class PopUpRecipeModal extends PopUpModal {
       <h1 class='pop-up-recipe-title'>${this.recipeData.title}</h1>
     </div>
       <div class='media-container'>
-        <div class='rating'>
+        <div class='div-rating'>
           <span class='middle-rate'>${this.recipeData.rating}</span>
           <ul class='stars-list'>
             <li><svg class='star-svg'>

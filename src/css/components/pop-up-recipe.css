@@ -121,7 +121,7 @@
   fill: var(--color-star-marked);
 }
 
-.rating {
+.div-rating {
   display: flex;
   margin-bottom: 33px;
   align-items: flex-end;
@@ -147,7 +147,7 @@
 
 .ingredients {
   width: 100%;
-  height: 224px;
+  /* height: 224px; */
 }
 
 .ingred-list {
@@ -302,7 +302,7 @@
     margin-bottom: 32px;
   }
 
-  .rating {
+  .div-rating {
     order: 2;
     margin-right: 0;
     margin-left: auto;
