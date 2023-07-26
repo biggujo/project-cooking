@@ -1,16 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
-    <link rel="stylesheet" href='./css/main.css' />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <load ="./partials/header.html" />
-    <load="./partials/pop-up-recipe.html" />
+
+    <main>
+      <load ="./partials/hero.html" />
+    </main>
+
+    <load ="./partials/filters.html" />
+    <load ="./partials/pop-up-recipe.html" />
     <load ="./partials/all-categories.html" />
+    <div class="container">
+      <load ="./partials/popular.html" />
+    </div>
 
     <load ="./partials/pop-up-rating.html" />
     <div class="loader"></div>
@@ -23,6 +32,10 @@
 
     <!-- TODO: Add modal -->
     <button class="open-btn" data-pop-up-rating-open>Open form</button>
+
+    <!-- Scroll up -->
+    <load ="./partials/scroll-up.html" />
+
     <script type="module" src="./index.js"></script>
   </body>
 </html>
