@@ -26,10 +26,16 @@ a {
 
 button {
   cursor: pointer;
+  color: inherit;
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+input,
+textarea {
+  background-color: transparent;
 }
