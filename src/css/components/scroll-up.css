@@ -1,0 +1,60 @@
+@import url('../base/variables.css');
+
+*,
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.5s;
+  outline: none !important;
+}
+
+/*ANIMATION*/
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/*ADDITIONAL*/
+#roll_back {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--color-modal-background);
+  /* background-color: black; */
+  border-radius: 100%;
+  border: 3px solid var(--color-accent-primary);
+  padding: 8px 12px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: var(--color-accent-primary);
+  font-weight: 700;
+  font-size: 28px;
+  opacity: 0.8;
+}
+#roll_back:hover {
+  opacity: 1;
+  scale: 1.1;
+}
