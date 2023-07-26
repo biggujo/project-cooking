@@ -32,7 +32,7 @@
 //   body.classList.add('dark-theme');
 // }
 const body = document.querySelector('body');
-const themeToggleBtn = document.querySelector('.switch-input');
+const themeToggleBtns = document.querySelectorAll('.switch-input');
 
 function toggleTheme() {
   body.classList.toggle('dark-theme');
@@ -45,7 +45,9 @@ const isDarkTheme = JSON.parse(localStorage.getItem('darkTheme'));
 
 if (isDarkTheme) {
   body.classList.add('dark-theme');
-  themeToggleBtn.checked = true;
+  themeToggleBtns.forEach(themeToggleBtn => (themeToggleBtn.checked = true));
 }
 
-themeToggleBtn.addEventListener('click', toggleTheme);
+themeToggleBtns.forEach(themeToggleBtn =>
+  themeToggleBtn.addEventListener('click', toggleTheme)
+);
