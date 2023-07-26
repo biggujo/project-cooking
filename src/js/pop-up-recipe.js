@@ -70,15 +70,13 @@ async function getRecipeInfo() {
     //   }
     // });
 
-    console.log(recipeData.ingredients);
+    // console.log(recipeData.ingredients);
     const ingredientsMarkup = recipeData.ingredients
       .map(({ id: originalId, measure }) => {
         const { name: ingredientName } = arrOfIngredients.find(
           ({ _id: ingredientIdToBeFound }) =>
             originalId === ingredientIdToBeFound
         );
-
-        console.log(name);
 
         return `<li class='ingred-li-item'>
                   <p class='ingred-name'>${ingredientName}</p>
@@ -152,23 +150,52 @@ async function getRecipeInfo() {
 
     const favBtn = document.querySelector('.fav');
     favBtn.addEventListener('click', onFavBtnClick);
-    let localStorageData = [];
 
-    function onFavBtnClick(evt) {
-      const localStorCheck = localStorage.getItem('favorites');
-      const parsed = JSON.parse(localStorCheck);
-      console.log(parsed);
+    let dishName = recipeData.title;
+    console.log(dishName);
 
-      if (!parsed) {
-        localStorageData.push(`${recipeData.title}`);
-        localStorage.setItem('favorites', JSON.stringify(localStorageData));
+    let parsed = JSON.parse(localStorage.getItem('favorites')) || [];
+    console.log(parsed);
+
+    function onFavBtnClick() {
+      if (!parsed.includes(dishName)) {
+        console.log('Add to favourites: ', dishName);
+        parsed.push(dishName);
+        saveToFavorites(parsed);
         favBtn.textContent = 'Remove from Favorites';
-      } else if (localStorageData.includes(`${recipeData.title}`)) {
-        favBtn.textContent = 'Remove from Favorites';
-        localStorage.removeItem('favorites');
-        favBtn.textContent = 'Add to Favorites';
+      } else {
+        console.log('Remove from favourites: ', dishName);
+        const index = parsed.indexOf(dishName);
+        if (index !== -1) {
+          parsed.splice(index, 1);
+          saveToFavorites(parsed);
+          favBtn.textContent = 'Add to Favorites';
+        }
       }
     }
+    function saveToFavorites(parsed) {
+      localStorage.setItem('favorites', JSON.stringify(parsed));
+    }
+    //     function onFavBtnClick(evt) {
+    //   let parsed = JSON.parse(localStorage.getItem('favorites')) || [];
+    //   console.log(parsed);
+    //   console.log(recipeData.title);
+
+    //   if (!parsed.includes(recipeData.title)) {
+    //     console.log(parsed);
+    //     localStorageData.push(`${recipeData.title}`);
+    //     localStorage.setItem('favorites', JSON.stringify(localStorageData));
+    //     favBtn.textContent = 'Remove from Favorites';
+
+    //   } else if (localStorageData.includes(`${recipeData.title}`)) {
+    //     console.log(parsed);
+    //     favBtn.textContent = 'Remove from Favorites';
+    //     localStorage.removeItem('favorites');
+
+    //     favBtn.textContent = 'Add to Favorites';
+    //     localStorageData.length = 0;
+    //   }
+    // }
   } catch (error) {
     console.log(error);
   }
@@ -181,36 +208,3 @@ function getYouTubeVideoID(url) {
   return match && match[2].length === 11 ? match[2] : null;
 }
 
-// function toggleFavourite(recipeTitle) {
-//   const heartIcon = document.querySelector(".like-icon");
-//   const isFilled = heartIcon.classList.contains("filled");
-
-//   if (!isFilled) {
-//     console.log("Add to favourites: ", recipeTitle);
-//     addToFavorites(recipeTitle);
-//   } else {
-//     console.log("Remove from favourites: ", recipeTitle);
-//     removeFromFavorites(recipeTitle);
-//   }
-// }
-
-// function addToFavorites(recipeTitle) {
-//   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-//   if (!favorites.includes(recipeTitle)) {
-//     favorites.push(recipeTitle);
-//     saveToFavorites(favorites);
-//   }
-// }
-
-// function removeFromFavorites(recipeTitle) {
-//   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-//   const index = favorites.indexOf(recipeTitle);
-//   if (index !== -1) {
-//     favorites.splice(index, 1);
-//     saveToFavorites(favorites);
-//   }
-// }
-
-// function saveToFavorites(favorites) {
-//   localStorage.setItem("favorites", JSON.stringify(favorites));
-// }
