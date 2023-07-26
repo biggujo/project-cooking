@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { fetchCategories } from './api-categories.js';
-import {filtersResultForQuery, resetAllFilters} from './filters.js';
+
+const loader = document.querySelector('.load-categories');
+function hideLoader() {
+  loader.classList.add('is-hidden');
+}
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
@@ -15,12 +19,7 @@ fetchCategories()
   .then(categories => {
     markupAllCategoriesListItem(categories);
     allCategoriesList.addEventListener('click', handleClickedCategories);
-    allCategoriesButton.addEventListener('click', () => {
-      resetAllFilters();
-      delete filtersResultForQuery.category;
-      handleClickedAllCategories();
-    });
-    fetchRecipes(activeCategory);
+    allCategoriesButton.addEventListener('click', handleClickedAllCategories);
   })
   .catch(error => {
     console.error('ERROR', error);
@@ -30,9 +29,11 @@ function handleClickedCategories(event) {
   const target = event.target;
 
   if (target.classList.contains('all-categories-item-button')) {
-    const activeButton = document.querySelector('.all-categories-item-button.is-active');
+    const activeButton = document.querySelector(
+      '.all-categories-item-button.is-active'
+    );
 
-    if (activeButton && activeButton !== target) {
+    if (activeButton) {
       activeButton.classList.remove('is-active');
     }
 
@@ -40,8 +41,6 @@ function handleClickedCategories(event) {
       activeCategory = null;
     } else {
       target.classList.add('is-active');
-      filtersResultForQuery['category'] = target.textContent.trim();
-      console.log(filtersResultForQuery);
       activeCategory = target.innerText;
       allCategoriesButton.classList.remove('is-active'); // Знімаємо активний клас з кнопки "All categories"
     }
@@ -56,12 +55,10 @@ function handleClickedCategories(event) {
   }
 }
 
-function handleClickedAllCategories() {
-  const activeButton = document.querySelector('.all-categories-item-button.is-active');
-
-  if (activeButton) {
-    activeButton.classList.remove('is-active');
-  }
+function handleClickedAllCategories(event) {
+  allCategoriesButtons.forEach(button => {
+    button.classList.remove('is-active');
+  });
 
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
@@ -80,18 +77,6 @@ function fetchRecipes(category) {
 
   if (category) {
     url += `?category=${category}`;
-  }
-  if (filtersResultForQuery.title) {
-    url += `&title=${filtersResultForQuery.title}`;
-  }
-  if (filtersResultForQuery.time) {
-    url += `&time=${filtersResultForQuery.time}`;
-  }
-  if (filtersResultForQuery.area) {
-    url += `&area=${filtersResultForQuery.area}`;
-  }
-  if (filtersResultForQuery.ingredient) {
-    url += `&ingredient=${filtersResultForQuery.ingredient}`;
   }
 
   return axios
@@ -117,4 +102,5 @@ function markupAllCategoriesListItem(categories) {
     .join('');
 
   allCategoriesList.insertAdjacentHTML('afterbegin', allCategoriesListItem);
+  hideLoader();
 }
