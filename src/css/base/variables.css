@@ -76,7 +76,6 @@
   /*
    * Animation
    */
-
   --primary-animation-duration: 250ms;
   --primary-animation-time-func: ease-in-out;
 }
