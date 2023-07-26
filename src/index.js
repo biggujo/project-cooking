@@ -13,6 +13,7 @@ import './js/all-categories.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import { RecipeCard } from './js/recipe-card.js';
 import './js/filters.js';
+import './js/render-cards.js';
 
 highlightCurrentPage();
 

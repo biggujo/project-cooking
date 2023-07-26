@@ -13,7 +13,7 @@ const searchIconEl = document.querySelector('.search__icon-svg');
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
 
-const renderedCards = document.querySelector('.rendered-cards');
+const renderedCards = document.getElementById('rendered-cards-for-filters');
 
 export let filtersResultForQuery = {};
 
@@ -90,7 +90,7 @@ searchInputEl.addEventListener('input', debounce(() => {
 function fetchRecipeByFilter(filters) {
   const limit = checkMediaQueriesByClick();
   const url = buildRecipeURL(filters, limit);
-  axiosRequest(url);
+  axiosRequestForRenderCards(url);
 }
 
 /* filter change listener */
@@ -186,7 +186,7 @@ export function checkMediaQueriesByClick () {
 }
 
 /* Function for Axios requests. Used also in all-categories.js */
-export function axiosRequest (url) {
+export function axiosRequestForRenderCards (url) {
   return axios.get(url)
   .then(response => {
     const recipes = response.data.results;

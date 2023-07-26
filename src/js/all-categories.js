@@ -1,5 +1,5 @@
 import { fetchCategories } from './api-categories.js';
-import {filtersResultForQuery, resetAllFilters, checkMediaQueriesByClick, axiosRequest, buildRecipeURL} from './filters.js';
+import {filtersResultForQuery, resetAllFilters, checkMediaQueriesByClick, axiosRequestForRenderCards, buildRecipeURL} from './filters.js';
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
@@ -88,7 +88,7 @@ function handleClickedAllCategories() {
 
 function fetchRecipes(category, limit) {
   const url = buildRecipeURL(filtersResultForQuery, limit);
-  axiosRequest(url);
+  axiosRequestForRenderCards(url);
 }
 
 function markupAllCategoriesListItem(categories) {
