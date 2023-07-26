@@ -5,22 +5,15 @@
   border-radius: 8px;
   overflow: hidden;
 
-  cursor: pointer;
-}
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
 
-.recipe-bg-image {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: -1;
+  cursor: pointer;
 }
 
 .recipe-title {
   width: 100%;
-  font-family: Inter;
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
