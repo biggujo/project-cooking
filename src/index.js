@@ -20,13 +20,13 @@ new PopUpModal({
 });
 
 const card1 = new RecipeCard()
-  .init('6462a8f74c3d0ddd28897fb8')
-  .then(recipeCardEl => {
-    document.body.prepend(recipeCardEl);
-  });
+.init('6462a8f74c3d0ddd28897fb8')
+.then(recipeCardEl => {
+  document.body.prepend(recipeCardEl);
+});
 
 const card2 = new RecipeCard()
-  .init('6462a8f74c3d0ddd28897fb9')
-  .then(recipeCardEl => {
-    document.body.prepend(recipeCardEl);
-  });
+.init('6462a8f74c3d0ddd28897fb9')
+.then(recipeCardEl => {
+  document.body.prepend(recipeCardEl);
+});
