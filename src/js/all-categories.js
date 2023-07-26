@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { fetchCategories } from './api-categories.js';
 import {filtersResultForQuery, resetAllFilters} from './filters.js';
+import {RecipeCard} from './recipe-card';
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
 const allCategoriesButton = document.querySelector('.all-categories-button');
-const allCategoriesButtons = document.querySelectorAll(
-  '.all-categories-item-button'
-);
+const renderedCards = document.querySelector('.rendered-cards');
+const filtersBLock = document.querySelector('.filters__block')
 
 let activeCategory = null;
 
@@ -76,10 +76,10 @@ function handleClickedAllCategories() {
 }
 
 function fetchRecipes(category) {
-  let url = `${API_URL}/recipes`;
-
+  let url = `${API_URL}/recipes/?limit=9`;
+  
   if (category) {
-    url += `?category=${category}`;
+    url += `&category=${category}`;
   }
   if (filtersResultForQuery.title) {
     url += `&title=${filtersResultForQuery.title}`;
@@ -93,16 +93,29 @@ function fetchRecipes(category) {
   if (filtersResultForQuery.ingredient) {
     url += `&ingredient=${filtersResultForQuery.ingredient}`;
   }
-
+ 
   return axios
-    .get(url)
-    .then(response => {
-      const recipes = response.data;
-      return recipes;
-    })
-    .catch(error => {
-      throw error;
+  .get(url)
+  .then(response => {
+    const recipes = response.data.results;
+    console.log(recipes);
+    renderedCards.innerHTML = '';
+    return Promise.all(recipes.map(recipe => {
+      return new RecipeCard()
+        .init(recipe._id)
+        .then(recipeCardEl => {
+          return recipeCardEl;
+        });
+    }));
+  })
+  .then(recipeCardEls => {
+    recipeCardEls.forEach(recipeCardEl => {
+      renderedCards.prepend(recipeCardEl);
     });
+  })
+  .catch(error => {
+    throw error;
+  });
 }
 
 function markupAllCategoriesListItem(categories) {

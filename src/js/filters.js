@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {CustomSelect} from './custom-select';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {RecipeCard} from './recipe-card';
 
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
@@ -11,6 +12,8 @@ const searchIconEl = document.querySelector('.search__icon-svg');
 
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
+
+const renderedCards = document.querySelector('.rendered-cards');
 
 export let filtersResultForQuery = {};
 
@@ -85,9 +88,9 @@ searchInputEl.addEventListener('input', debounce(() => {
 
 /* Receiving the results of a filter query */
 function fetchRecipeByFilter(filters) {
-  let url = `${API_URL}/recipes?`;
+  let url = `${API_URL}/recipes/?limit=9`;
   if( filters.category){
-    url += `category=${filters.category}`;
+    url += `&category=${filters.category}`;
   }
   if (filters.title) {
     url += `&title=${filters.title}`;
@@ -102,19 +105,31 @@ function fetchRecipeByFilter(filters) {
     url += `&ingredient=${filters.ingredient}`;
   }
   return axios
-    .get(url)
-    .then(response => {
-      const recipes = response.data;
-      console.log(recipes);
-      if( recipes.results.length === 0){
-        Notify.failure('Sorry, nothing found. Change your filters, or check the entered values.');
-      }
-      return recipes;
-    })
-    .catch(error => {
-      Notify.failure('Sorry, there is something wrong with your request!');
-      throw error;
+  .get(url)
+  .then(response => {
+    const recipes = response.data.results;
+    console.log(recipes);
+    renderedCards.innerHTML = '';
+    if( recipes.length === 0){
+      Notify.failure('Sorry, nothing found. Change your filters, or check the entered values.');
+    }
+    return Promise.all(recipes.map(recipe => {
+      return new RecipeCard()
+        .init(recipe._id)
+        .then(recipeCardEl => {
+          return recipeCardEl;
+        });
+    }));
+  })
+  .then(recipeCardEls => {
+    recipeCardEls.forEach(recipeCardEl => {
+      renderedCards.prepend(recipeCardEl);
     });
+  })
+  .catch(error => {
+    Notify.failure('Sorry, there is something wrong with your request!');
+    throw error;
+  });
 }
 
 /* filter change listener */

@@ -1,73 +1,78 @@
 <div class="container">
     <div class="filters__block">
+       <div class="filters__block-main">
         <form class="search__recipes">
-            <label class="search__recipes-label filters-label" for="search__recipes-input">Search</label>
-            <div class="search__recipes-input__block">
-              <div class="search__icon filters-icon">
-                <svg class="search__icon-svg">
-                  <use href='./img/icons.svg#search-magnifier'></use>
-                </svg>
-              </div>
-              <input type="text" id="search__recipes-input" name="search-input" class="search__recipes-input" placeholder="Enter Text">
-              <div class="search__close-icon filters-icon is-hidden">
-                <svg class="search__close-icon-svg">
-                  <use href='./img/icons.svg#close-search'></use>
-                </svg>
-              </div>
+          <label class="search__recipes-label filters-label" for="search__recipes-input">Search</label>
+          <div class="search__recipes-input__block">
+            <div class="search__icon filters-icon">
+              <svg class="search__icon-svg">
+                <use href='./img/icons.svg#search-magnifier'></use>
+              </svg>
             </div>
-        </form>
-        <div class="filter-select" id="select-time">
-            <label class="filters-label" for="toggle-time">Time</label>
-            <div class="filter-select__button-block" data-select="toggle-block">
-                <button type="button" class="filter-select__toggle" id="toggle-time" name="time" value="0 min" data-select="toggle" data-index="-1" data-start="0 min" disabled>0 min</button>
-                <div class="dropdown-icon filters-icon">
-                    <svg>
-                      <use href='./img/icons.svg#dropdown'></use>
-                    </svg>
-                </div>
+            <input type="text" id="search__recipes-input" name="search-input" class="search__recipes-input" placeholder="Enter Text">
+            <div class="search__close-icon filters-icon is-hidden">
+              <svg class="search__close-icon-svg">
+                <use href='./img/icons.svg#close-search'></use>
+              </svg>
             </div>
-            <div class="filter-select__dropdown" id="dropdown-time">
-              <ul class="filter-select__options" id="options-time"></ul>
-              <input type="text" name="select-time" value="" class="filter-select__input-hidden" >
-            </div>
-        </div>
-        <div class="filter-select" id="select-area">
-            <label class="filters-label" for="toggle-area">Area</label>
-            <div class="filter-select__button-block" data-select="toggle-block">
-                <button type="button" class="filter-select__toggle" id="toggle-area" name="area" value="Region" data-select="toggle" data-index="-1" data-start="Region" disabled>Region</button>
-                <div class="dropdown-icon filters-icon">
-                    <svg>
-                      <use href='./img/icons.svg#dropdown'></use>
-                    </svg>
-                </div>
-            </div>
-            <div div class="filter-select__dropdown" id="dropdown-area">
-                <ul class="filter-select__options" id="options-area"></ul>
-                <input type="text" name="select-area" value="" class="filter-select__input-hidden" >
           </div>
+      </form>
+      <div class="filter-select" id="select-time">
+          <label class="filters-label" for="toggle-time">Time</label>
+          <div class="filter-select__button-block" data-select="toggle-block">
+              <button type="button" class="filter-select__toggle" id="toggle-time" name="time" value="0 min" data-select="toggle" data-index="-1" data-start="0 min" disabled>0 min</button>
+              <div class="dropdown-icon filters-icon">
+                  <svg>
+                    <use href='./img/icons.svg#dropdown'></use>
+                  </svg>
+              </div>
+          </div>
+          <div class="filter-select__dropdown" id="dropdown-time">
+            <ul class="filter-select__options" id="options-time"></ul>
+            <input type="text" name="select-time" value="" class="filter-select__input-hidden" >
+          </div>
+      </div>
+      <div class="filter-select" id="select-area">
+          <label class="filters-label" for="toggle-area">Area</label>
+          <div class="filter-select__button-block" data-select="toggle-block">
+              <button type="button" class="filter-select__toggle" id="toggle-area" name="area" value="Region" data-select="toggle" data-index="-1" data-start="Region" disabled>Region</button>
+              <div class="dropdown-icon filters-icon">
+                  <svg>
+                    <use href='./img/icons.svg#dropdown'></use>
+                  </svg>
+              </div>
+          </div>
+          <div div class="filter-select__dropdown" id="dropdown-area">
+              <ul class="filter-select__options" id="options-area"></ul>
+              <input type="text" name="select-area" value="" class="filter-select__input-hidden" >
         </div>
-        <div class="filter-select" id="select-ingredients">
-            <label class="filters-label" for="toggle-ingredients">Ingredients</label>
-            <div class="filter-select__button-block" data-select="toggle-block">
-                <button type="button" class="filter-select__toggle" id="toggle-ingredients" name="ingredient" value="Product" data-select="toggle" data-index="-1" data-start="Product" disabled>Product</button>
-                <div class="dropdown-icon filters-icon">
-                    <svg>
-                      <use href='./img/icons.svg#dropdown'></use>
-                    </svg>
-                </div>
-            </div>
-            <div class="filter-select__dropdown" id="dropdown-ingredients">
-                <ul class="filter-select__options" id="options-ingredients" ></ul>
-                <input type="text" name="select-ingredients" value="" class="filter-select__input-hidden" >
-            </div>
-        </div>
-        <div class="filters-reset">
-            <div class="filters-reset__icon filters-icon">
-                <svg>
-                  <use href='./img/icons.svg#close-reset-filter'></use>
-                </svg>
-            </div>
-            <span class="filters-label">Reset the filter</span>
+      </div>
+      <div class="filter-select" id="select-ingredients">
+          <label class="filters-label" for="toggle-ingredients">Ingredients</label>
+          <div class="filter-select__button-block" data-select="toggle-block">
+              <button type="button" class="filter-select__toggle" id="toggle-ingredients" name="ingredient" value="Product" data-select="toggle" data-index="-1" data-start="Product" disabled>Product</button>
+              <div class="dropdown-icon filters-icon">
+                  <svg>
+                    <use href='./img/icons.svg#dropdown'></use>
+                  </svg>
+              </div>
+          </div>
+          <div class="filter-select__dropdown" id="dropdown-ingredients">
+              <ul class="filter-select__options" id="options-ingredients" ></ul>
+              <input type="text" name="select-ingredients" value="" class="filter-select__input-hidden" >
+          </div>
+      </div>
+      <div class="filters-reset">
+          <div class="filters-reset__icon filters-icon">
+              <svg>
+                <use href='./img/icons.svg#close-reset-filter'></use>
+              </svg>
+          </div>
+          <span class="filters-label">Reset the filter</span>
+      </div>
+       </div>
+        <div class="rendered-cards">
+    
         </div>
     </div>
 </div>
