@@ -41,7 +41,7 @@
   height: 302px;
   overflow: hidden;
   max-width: 496px;
-  width: calc(100% + (100vw - 100%) / 2);
+  width: calc(100% + (100vw - 100%) / 2 - 10px);
 }
 
 .swiper {

@@ -1,7 +1,10 @@
 import axios from 'axios';
 import {CustomSelect} from './custom-select';
-import './all-categories'
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+
+const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
+const searchFormEl = document.querySelector('.search__recipes');
 const searchInputEl = document.querySelector('.search__recipes-input');
 const closeIconEl = document.querySelector('.search__close-icon');
 const searchIconEl = document.querySelector('.search__icon-svg');
@@ -9,18 +12,19 @@ const searchIconEl = document.querySelector('.search__icon-svg');
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
 
-const allCategories = document.querySelector('.all-categories');
-const categoryEl = allCategories.querySelector('.is-active');
-const allCategoriesButton = document.querySelector('.all-categories-button');
-const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
-
-let filtersResultForQuery = {};
+export let filtersResultForQuery = {};
 
 /* Reset and clear filters/input block */
-function resetAllFilters () {
+export function resetAllFilters () {
   searchInputEl.value = '';
-  filtersResultForQuery = {};
-  clearFiltersInput();
+  const propertiesToDelete = ['title', 'area', 'ingredient', 'time'];
+  propertiesToDelete.forEach(prop => {
+    delete filtersResultForQuery[prop];
+  });
+  changesInInput();
+  document.querySelectorAll('.filter-select__option_selected').forEach(el => {
+    el.classList.remove('filter-select__option_selected')
+  })
   selectsEl.forEach(select => {
      select.textContent = select.dataset.start;
      select.dataset.index = '-1';
@@ -28,7 +32,7 @@ function resetAllFilters () {
  });
 }
 
-function clearFiltersInput (){
+function changesInInput (){
     closeIconEl.classList.add('is-hidden');
     searchIconEl.style.fill = "currentColor";
     if (searchInputEl.value !== '') {
@@ -37,26 +41,32 @@ function clearFiltersInput (){
     }
 }
 
-allCategoriesButton.addEventListener('click', resetAllFilters);
-searchInputEl.addEventListener('input', clearFiltersInput);
+const debouncedFetchRecipe = debounce((filters) => {
+  fetchRecipeByFilter(filters);
+}, 300);
+
+searchFormEl.addEventListener('submit', (e) => {
+  e.preventDefault();
+  debouncedFetchRecipe(filtersResultForQuery);
+})
+
+searchIconEl.addEventListener('click', () => {
+  console.log('hi');
+  fetchRecipeByFilter(filtersResultForQuery);
+});
+
+searchInputEl.addEventListener('input', changesInInput);
 
 closeIconEl.addEventListener('click', () => {
     searchInputEl.value = '';
-    clearFiltersInput();
+    changesInInput();
     delete filtersResultForQuery.title;
+    fetchRecipeByFilter(filtersResultForQuery);
 });
 
 resetFiltersEl.addEventListener('click', () => {
-    document.querySelectorAll('.filter-select__option_selected').forEach(el => {
-    el.classList.remove('filter-select__option_selected')
-    })
     resetAllFilters();
-    console.log(categoryEl);
-    if(categoryEl.textContent.trim() === 'All categories'){
-    return
-    } else {
-      filtersResultForQuery['category'] = categoryEl.textContent.trim();
-    }
+    fetchRecipeByFilter(filtersResultForQuery);
 })
 
 /* Debounce function for input change and added to query */
@@ -68,28 +78,41 @@ function debounce(func, delay) {
   };
 }
 
-function handleInput() {
+searchInputEl.addEventListener('input', debounce(() => {
   filtersResultForQuery['title'] = searchInputEl.value;
-  console.log(filtersResultForQuery);
-  fetchRecipeByFilter(filtersResultForQuery, 'title');
-}
-
-const debouncedHandleInput = debounce(handleInput, 300);
-searchInputEl.addEventListener('input', debouncedHandleInput);
-
+  fetchRecipeByFilter(filtersResultForQuery);
+}, 300));
 
 /* Receiving the results of a filter query */
-function fetchRecipeByFilter(filters, value) {
-  let url = `${API_URL}/recipes`;
-    url += `?${value}=${filters[value]}`;
+function fetchRecipeByFilter(filters) {
+  let url = `${API_URL}/recipes?`;
+  if( filters.category){
+    url += `category=${filters.category}`;
+  }
+  if (filters.title) {
+    url += `&title=${filters.title}`;
+  }
+  if (filters.time) {
+    url += `&time=${filters.time}`;
+  }
+  if (filters.area) {
+    url += `&area=${filters.area}`;
+  }
+  if (filters.ingredient) {
+    url += `&ingredient=${filters.ingredient}`;
+  }
   return axios
     .get(url)
     .then(response => {
       const recipes = response.data;
       console.log(recipes);
+      if( recipes.results.length === 0){
+        Notify.failure('Sorry, nothing found. Change your filters, or check the entered values.');
+      }
       return recipes;
     })
     .catch(error => {
+      Notify.failure('Sorry, there is something wrong with your request!');
       throw error;
     });
 }
@@ -100,7 +123,7 @@ function handleFilterSelectChange(e) {
     let elName = filterBtn.name;
     filtersResultForQuery[elName] = filterBtn.value;
     console.log(filtersResultForQuery); 
-    fetchRecipeByFilter(filtersResultForQuery, elName);
+    fetchRecipeByFilter(filtersResultForQuery);
 }
 
 function addFilterToResultQuery (filterName){
@@ -120,6 +143,7 @@ function fetchDataForFilters(filterName) {
     }
   })
   .catch(error => {
+    Notify.failure('Sorry, there is something wrong with your request!');
     console.error('ERROR', error);
   });
 }
@@ -152,6 +176,7 @@ fetchDataForFilters('ingredients')
   addFilterToResultQuery('#select-ingredients');
 })
 .catch(error => {
+  Notify.failure('Sorry, there is something wrong with your request data fo filter!');
   console.error('ERROR', error);
 });
 
@@ -164,5 +189,6 @@ fetchDataForFilters('areas')
   addFilterToResultQuery('#select-area');
 })
 .catch(error => {
+  Notify.failure('Sorry, there is something wrong with your request data fo filter!!');
   console.error('ERROR', error);
 });
