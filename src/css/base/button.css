@@ -5,69 +5,110 @@
 */
 
 .button {
-    font-size: 14px;
-    background: none;
-    border-radius: 15px;
-    padding: 14px 28px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-
- .button:hover,
- .button:focus{
-  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
-    color var(--primary-animation-duration) var(--primary-animation-time-func),
- }
-
-  .all-categories-button {
-    font-size: 18px;
-    line-height: calc(22 / 18);
-    color: var(--color-gray-pale-alpha050);
-    border-color: var(--color-gray-pale-alpha020);
-    border-radius: 15px;
-    border: 1px solid var(--color-gray-pale-alpha020);
-  
-    
-    
-  }
-  
-  .all-categories-button:hover,
-  .all-categories-button:focus,
-  .all-categories-button .is-active {
-    background-color: var(--color-accent-primary);
-    color: var(--color-gray-accent-primary);
-    border: 1px solid var(--color-accent-primary);
-    
-  
-  }
-
-.button-favorite{
-    font-size: 16px;
-    line-height: calc(20 / 16);
-    padding: 14px 18px;
-    color: var(--color-gray-accent-primary);
-   background-color: var(  --color-accent-primary);
-  }
-
-  .button-favorite:hover
-  .button-favorite:focus{
-  color: var(  --color-text-primary);
-  background-color:var(  --color-accent-primary);
-  }
- 
-.button-order-now{
-  font-size: 16px;
+  font-size: 14px;
   line-height: calc(17 / 14);
+  background: none;
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  transition:
+    background-color var(--primary-animation-duration)
+      var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func),
+    border var(--primary-animation-duration) var(--primary-animation-time-func);
+}
+
+.see-more {
+  font-size: 12px;
+  line-height: calc(14.5 / 12);
+  color: var(--color-gray-accent-primary);
+  padding: 8px 14px;
+  background-color: var(--color-accent-primary);
+  border-radius: 8px;
+}
+.see-more:hover,
+.see-more:focus {
+  border: 1px solid var(--color-gray-pale-alpha030);
+  transition:
+    background-color var(--primary-animation-duration)
+      var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func),
+    border var(--primary-animation-duration) var(--primary-animation-time-func);
+}
+
+.all-categories-button {
+  font-size: 18px;
+  padding: 14px 29px;
+  line-height: calc(22 / 18);
+  border-radius: 15px;
+  color: var(--color-gray-pale-alpha050);
+  border-color: var(--color-gray-pale-alpha020);
+  border: 1px solid var(--color-gray-pale-alpha020);
+}
+
+.all-categories-button:hover,
+.all-categories-button:focus,
+.all-categories-button .is-active {
+  background-color: var(--color-accent-primary);
+  color: var(--color-gray-accent-primary);
+  border: 1px solid var(--color-accent-primary);
+  transition:
+    background-color var(--primary-animation-duration)
+      var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func);
+}
+
+.button-favorite {
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  padding: 12px 24px;
+  border-radius: 15px;
+  color: var(--color-gray-accent-primary);
+  background-color: var(--color-accent-primary);
+}
+
+.button-favorite:hover .button-favorite:focus {
+  color: var(--color-text-primary);
+  background-color: var(--color-accent-primary);
+}
+
+.button-order-now {
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: 12px;
   color: var(--color-text-primary);
   border: 1px solid var(--color-accent-primary);
 }
 
-.button-order-now:hover
-.button-order-now:focus
-{
-  color: var(--color-gray-accent-primary); 
+.button-order-now:hover .button-order-now:focus {
+  color: var(--color-gray-accent-primary);
   background-color: var(--color-accent-primary);
-  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
-    color var(--primary-animation-duration) var(--primary-animation-time-func),
+  transition:
+    background-color var(--primary-animation-duration)
+      var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func);
+}
 
+@media screen and (min-width: 768px) {
+  .button-favorite {
+    padding: 14px 28px;
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  .see-more {
+    padding: 8px 16px;
+  }
+
+  .all-categories-button {
+    padding: 14px 28px;
+  }
+
+  .button-favorite {
+    padding: 12px 28px;
+  }
 }
