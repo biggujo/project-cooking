@@ -1,15 +1,14 @@
-
 async function fetchRecipeData() {
   try {
     const apiUrl =
-      "https://tasty-treats-backend.p.goit.global/api/recipes?category=Beef&page=1&limit=6&time=160&area=Irish&ingredients=640c2dd963a319ea671e3796";
+      'https://tasty-treats-backend.p.goit.global/api/recipes?category=Beef&page=1&limit=6&time=160&area=Irish&ingredients=640c2dd963a319ea671e3796';
     const response = await fetch(apiUrl);
     const data = await response.json();
     const recipeData = data.results[0];
 
     const recipeCardTemplate = `
       <div class='recipe-card' style='background-image: url("https://placeholder.co/400");'>
-        <svg class='like-icon' fill="none">
+        <svg class='like-icon' fill='none'>
           <use href='./img/icons.svg#like' />
         </svg>
         <h2 class='recipe-title'>${recipeData.title}</h2>
@@ -21,31 +20,34 @@ async function fetchRecipeData() {
       </div>
     `;
 
-    const recipeContainer = document.getElementById("recipe-container");
+    const recipeContainer = document.getElementById('recipe-container');
     recipeContainer.innerHTML = recipeCardTemplate;
     updateRatingStars(recipeData.rating);
 
-    const heartIcon = recipeContainer.querySelector(".like-icon");
-    heartIcon.addEventListener("click", function () {
-      toggleFavourite(recipeData.title);
+    const heartIcon = recipeContainer.querySelector('.like-icon');
+    heartIcon.addEventListener('click', function () {
+      toggleFavourite({
+        recipeId: recipeData._id,
+        recipeTitle: recipeData.title,
+      });
       toggleHeartFill();
     });
 
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    if (favorites.includes(recipeData.title)) {
-      heartIcon.classList.add("filled");
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (favorites.includes(recipeData._id)) {
+      heartIcon.classList.add('filled');
     }
   } catch (error) {
-    console.error("Error fetching data from the backend:", error);
+    console.error('Error fetching data from the backend:', error);
   }
 }
 
 function updateRatingStars(rating) {
-  const ratingContainer = document.querySelector(".rating-stars");
+  const ratingContainer = document.querySelector('.rating-stars');
   const filledStars = Math.round(rating);
   const emptyStars = 5 - filledStars;
 
-  let ratingStarsHTML = "";
+  let ratingStarsHTML = '';
   for (let i = 0; i < filledStars; i++) {
     ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
   }
@@ -56,21 +58,21 @@ function updateRatingStars(rating) {
   ratingContainer.innerHTML = ratingStarsHTML;
 }
 
-function toggleFavourite(recipeTitle) {
-  const heartIcon = document.querySelector(".like-icon");
-  const isFilled = heartIcon.classList.contains("filled");
+function toggleFavourite({ recipeId, recipeTitle }) {
+  const heartIcon = document.querySelector('.like-icon');
+  const isFilled = heartIcon.classList.contains('filled');
 
   if (!isFilled) {
-    console.log("Add to favourites: ", recipeTitle);
-    addToFavorites(recipeTitle);
+    console.log('Add to favourites: ', recipeTitle);
+    addToFavorites(recipeId);
   } else {
-    console.log("Remove from favourites: ", recipeTitle);
-    removeFromFavorites(recipeTitle);
+    console.log('Remove from favourites: ', recipeTitle);
+    removeFromFavorites(recipeId);
   }
 }
 
 function addToFavorites(recipeTitle) {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   if (!favorites.includes(recipeTitle)) {
     favorites.push(recipeTitle);
     saveToFavorites(favorites);
@@ -78,7 +80,7 @@ function addToFavorites(recipeTitle) {
 }
 
 function removeFromFavorites(recipeTitle) {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   const index = favorites.indexOf(recipeTitle);
   if (index !== -1) {
     favorites.splice(index, 1);
@@ -87,12 +89,12 @@ function removeFromFavorites(recipeTitle) {
 }
 
 function saveToFavorites(favorites) {
-  localStorage.setItem("favorites", JSON.stringify(favorites));
+  localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
 function toggleHeartFill() {
-  const heartIcon = document.querySelector(".like-icon");
-  heartIcon.classList.toggle("filled");
+  const heartIcon = document.querySelector('.like-icon');
+  heartIcon.classList.toggle('filled');
 }
 
 fetchRecipeData();
