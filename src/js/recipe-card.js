@@ -1,3 +1,5 @@
+const removeFromFavoritesEvent = new Event('remove-from-favorites');
+
 export class RecipeCard {
   static BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 
@@ -39,11 +41,10 @@ export class RecipeCard {
 
     const svg = document.createElement('svg');
     svg.classList.add('like-icon');
-    svg.style.fill = 'none';
     cardEl.appendChild(svg);
 
     const svgUse = document.createElement('use');
-    svgUse.href = './img/icons.svg#like';
+    svgUse.setAttribute('href', './img/icons.svg#like');
     svg.appendChild(svgUse);
 
     const subtitle = document.createElement('h2');
@@ -101,11 +102,11 @@ export class RecipeCard {
     }
   }
 
-  addToFavorites(recipeTitle) {
+  addToFavorites(recipeId) {
     try {
       let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      if (!favorites.includes(recipeTitle)) {
-        favorites.push(recipeTitle);
+      if (!favorites.includes(recipeId)) {
+        favorites.push(recipeId);
         this.saveToFavorites(favorites);
       }
     } catch (error) {
@@ -121,6 +122,8 @@ export class RecipeCard {
         favorites.splice(index, 1);
         this.saveToFavorites(favorites);
       }
+
+      document.dispatchEvent(removeFromFavoritesEvent);
     } catch (error) {
       console.log(error);
     }
@@ -131,7 +134,7 @@ export class RecipeCard {
   }
 
   toggleHeartFill() {
-    const heartIcon = document.querySelector('.like-icon');
+    const heartIcon = this.recipeCardEl.querySelector('.like-icon');
     heartIcon.classList.toggle('filled');
   }
 

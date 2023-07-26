@@ -192,7 +192,7 @@
 }
 
 .like-icon {
-  color: white;
+  color: var(--color-like-disabled);
   fill: none;
   stroke: currentColor;
   position: absolute;
@@ -203,6 +203,6 @@
 }
 
 .like-icon.filled {
-  fill: #F8F8F8;
-
+  color: var(--color-like-enabled);
+  fill: currentColor;
 }
