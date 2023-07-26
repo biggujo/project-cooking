@@ -52,25 +52,6 @@ async function getRecipeInfo() {
     );
     const arrOfIngredients = await res.json();
 
-    // let idName = [];
-    // const {id, measure} = recipeData.ingredients;
-    //   const{_id, name} = arrOfIngredients;
-    //   // console.dir(name);
-    // // console.log(arrOfIngredients);
-    // // const showId = arrOfIngredients.map(ingredient => ingredient.name);
-    // // console.log(showId);
-    // arrOfIngredients.forEach((element) => {
-    //   // console.log(element.name);
-    //   // console.log(id);
-    //   // console.log(element._id);
-    //   if(id === element._id){
-    //     idName = element.name;
-
-    //     return idName;
-    //   }
-    // });
-
-    // console.log(recipeData.ingredients);
     const ingredientsMarkup = recipeData.ingredients
       .map(({ id: originalId, measure }) => {
         const { name: ingredientName } = arrOfIngredients.find(
@@ -207,4 +188,3 @@ function getYouTubeVideoID(url) {
 
   return match && match[2].length === 11 ? match[2] : null;
 }
-
