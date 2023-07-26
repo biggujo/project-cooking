@@ -220,9 +220,9 @@ header {
     width: 32px;
     height: 32px;
     border: none;
-    stroke: #0e0d0d;
+    stroke: var(--color-text-primary);
     padding: 0;
-    background-color: #f5f1f1;
+    background-color: inherit;
   }
 
   .burger-button:hover,
@@ -241,7 +241,6 @@ header {
   .burger-button-svg {
     width: 32px;
     height: 32px;
-    background-color: #ffffff;
   }
 
   .header-modal {
@@ -269,7 +268,7 @@ header {
   }
 
   .modal-button {
-    background-color: #9bb537;
+    background-color: inherit;
     border: #9bb537;
     position: absolute;
     right: 20px;
@@ -283,8 +282,7 @@ header {
   }
 
   .switcher {
-    background-color: #9bb537;
-    border: #9bb537;
+    background-color: inherit;
   }
 
   .modal-list {
