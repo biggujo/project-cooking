@@ -3,15 +3,14 @@ export class PopUpModal {
 
   constructor({ openModalSelector, closeModalSelector, backdropSelector }) {
     this.refs = {
-      openModalBtn: document.querySelector(openModalSelector),
+      openModalBtns: document.querySelectorAll(openModalSelector),
       closeModalBtn: document.querySelector(closeModalSelector),
       backdrop: document.querySelector(backdropSelector),
     };
 
-    this.refs.openModalBtn.addEventListener(
-      'click',
-      this.onOpenModal.bind(this)
-    );
+    this.refs.openModalBtns.forEach(openModalBtn => {
+      openModalBtn.addEventListener('click', this.onOpenModal.bind(this));
+    });
     this.refs.closeModalBtn.addEventListener(
       'click',
       this.onCloseModal.bind(this)
