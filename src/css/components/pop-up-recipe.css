@@ -88,6 +88,8 @@
   flex-shrink: 0;
   border-radius: 8px;
   background: var(--color-gray-pale-alpha050);
+
+  object-fit: cover;
 }
 
 .pop-up-recipe-title {
@@ -206,7 +208,7 @@
   margin-bottom: 40px;
 }
 
-.modal-recipe-content{
+.modal-recipe-content {
   margin-bottom: 40px;
 }
 
@@ -251,7 +253,7 @@
     padding: 32px;
   }
 
-  .modal-recipe-content{
+  .modal-recipe-content {
     margin-bottom: 32px;
   }
 
@@ -296,7 +298,7 @@
     margin-bottom: 32px;
   }
 
-  .ingred-list{
+  .ingred-list {
     margin-bottom: 32px;
   }
 

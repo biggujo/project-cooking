@@ -43,9 +43,12 @@ export class PopUpRecipeModal extends PopUpModal {
       })
       .join('');
 
-    const modalWindowRecipeMarkup = `
-    <div class='switch-places'>
-      <iframe
+    const videoMarkup = () => {
+      if (!this.recipeData.youtube) {
+        return `<img class='video-link' src='${this.recipeData.thumb}'>`;
+      }
+
+      return `<iframe
           class='video-link'
           src='https://www.youtube.com/embed/${PopUpRecipeModal.getYouTubeVideoID(
             this.recipeData.youtube
@@ -54,8 +57,12 @@ export class PopUpRecipeModal extends PopUpModal {
       frameborder='0'
       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
       allowfullscreen
-      ></iframe>
+      ></iframe>`;
+    };
 
+    const modalWindowRecipeMarkup = `
+    <div class='switch-places'>
+      ${videoMarkup()}
       <h1 class='pop-up-recipe-title'>${this.recipeData.title}</h1>
     </div>
       <div class='media-container'>
