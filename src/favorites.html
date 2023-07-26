@@ -8,8 +8,7 @@
     <link rel='stylesheet' href='./css/main.css' />
   </head>
   <body>
-    <header>
-    </header>
+    <load ="./partials/header.html" />
 
     <main>
       <section class='fav-hero'>
@@ -65,5 +64,10 @@
       </section>
     </main>
     <script type='module' src='./index.js'></script>
+
+    <script type='module'>
+      import { highlightCurrentPage } from './js/header-current-page-marker.js';
+      highlightCurrentPage();
+    </script>
   </body>
 </html>
