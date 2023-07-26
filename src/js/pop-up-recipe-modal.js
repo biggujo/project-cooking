@@ -110,7 +110,7 @@ export class PopUpRecipeModal extends PopUpModal {
       const favBtn = document.querySelector('.fav');
       favBtn.addEventListener('click', onFavBtnClick);
 
-      let dishName = this.recipeData.title;
+      let dishName = this.recipeData._id;
       console.log(dishName);
 
       let parsed = JSON.parse(localStorage.getItem('favorites')) || [];
