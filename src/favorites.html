@@ -10,9 +10,13 @@
   <body>
     <load ="./partials/header.html" />
 
-    <script type='module'>
+    <load ="./partials/scroll-up.html" />
+
+    <script type="module">
       import { highlightCurrentPage } from './js/header-current-page-marker.js';
       highlightCurrentPage();
+      import { scrollFunc } from './js/scroll-up.js';
+      scrollFunc();
     </script>
   </body>
 </html>
