@@ -78,13 +78,13 @@ function updateRatingStars(rating) {
 
   let ratingStarsHTML = "";
   for (let i = 0; i < filledStars; i++) {
-    ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
+    ratingStarsHTML += '<span class="rating-star filled with-color">&#9733;</span>'; // Додайте клас .with-color тут
   }
   if (fraction > 0) {
     ratingStarsHTML +=
       '<span class="rating-star filled with-color" style="--filled-percentage: ' +
       filledPercentage +
-      '%">&#9733;</span>';
+      '%">&#9733;</span>'; // Та також додайте клас .with-color тут
   }
   const emptyStars = 5 - filledStars - (fraction > 0 ? 1 : 0);
   for (let i = 0; i < emptyStars; i++) {
