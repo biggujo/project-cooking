@@ -8,9 +8,12 @@ export class PopUpModal {
       backdrop: document.querySelector(backdropSelector),
     };
 
-    this.refs.openModalBtns.forEach(openModalBtn => {
-      openModalBtn.addEventListener('click', this.onOpenModal.bind(this));
-    });
+    if (this.refs.openModalBtns) {
+      this.refs.openModalBtns.forEach(openModalBtn => {
+        openModalBtn.addEventListener('click', this.onOpenModal.bind(this));
+      });
+    }
+
     this.refs.closeModalBtn.addEventListener(
       'click',
       this.onCloseModal.bind(this)
@@ -22,6 +25,7 @@ export class PopUpModal {
   }
 
   onOpenModal = () => {
+    console.log('Open!');
     window.addEventListener('keydown', this.onEscapeKeyPress);
     this.refs.backdrop.classList.remove('is-hidden');
   };
