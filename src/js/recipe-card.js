@@ -47,7 +47,7 @@ export class RecipeCard {
     cardEl.style.background = `url("${data.preview}")`;
 
     const likeWrapperEl = document.createElement('span');
-    likeWrapperEl.innerHTML = `<svg class="like-icon"><use href="./img/icons.svg#like"></use></svg>`;
+    likeWrapperEl.innerHTML = `<svg class='like-icon'><use href='./img/icons.svg#like'></use></svg>`;
     cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
@@ -67,7 +67,7 @@ export class RecipeCard {
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');
 
-    ratingNumber.textContent = recipeData.rating.toFixed(1);
+    ratingNumber.textContent = data.rating.toFixed(1);
     rating.appendChild(ratingNumber);
 
     const ratingStars = document.createElement('div');
