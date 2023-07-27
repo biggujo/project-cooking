@@ -16,14 +16,15 @@
   background-color: #cecdcd;
   border-radius: 60px;
 
-  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 
   cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
   .switch-button {
-    box-shadow: 7px 5px 15px 0px rgba(160, 158, 160, 0.40);
+    box-shadow: 7px 5px 15px 0px rgba(160, 158, 160, 0.4);
   }
 }
 
@@ -43,7 +44,8 @@
   background-color: #ffffff;
   border-radius: 50%;
 
-  transition: transform var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: transform var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .switch-button > input:checked + .switch-button-circle {

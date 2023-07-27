@@ -76,23 +76,55 @@
             <use href='./img/icons.svg#close-pop-up'></use>
           </svg>
         </button>
-        <h2 class='pop-up-recipe-title'>Order now</h2>
-        <form class='email-form' id='order-form'>
-          <div class='email-form-emphasized'>
-            <label class='form-input-label' for='name'>Name
-              <input class='form-input-text' type='text' id='name'
-                     required /></label>
+        <h2 class="pop-up-recipe-title">Order now</h2>
+        <form class="email-form" id="order-form">
+          <div class="email-form-emphasized">
+            <label class="form-input-label" for="name"
+              >Name
+              <input
+                class="form-input-text"
+                type="text"
+                id="name"
+                name="name"
+                required
+                pattern="[A-Za-z]{1,32}"
+                placeholder="Your name"
+            /></label>
 
-            <label class='form-input-label' for='phone'>Phone number
-              <input class='form-input-text' type='tel' id='phone' required />
+            <label class="form-input-label" for="phone"
+              >Phone number
+              <input
+                class="form-input-text"
+                type="tel"
+                id="phone"
+                name="tel"
+                required
+                pattern="[0-9]{10}"
+                placeholder="Your telephone "
+              />
             </label>
 
-            <label class='form-input-label' for='email'>Email
-              <input class='form-input-text' type='email' id='email' required />
+            <label class="form-input-label" for="email"
+              >Email
+              <input
+                class="form-input-text"
+                type="email"
+                id="email"
+                name="email"
+                required
+                pattern="[^@\s]+@[^@\s]+"
+                placeholder="Your email "
+              />
             </label>
 
-            <label class='form-input-label' for='message'>Comment required
-              <textarea class='form-input-textarea' id='message'></textarea>
+            <label class="form-input-label" for="message"
+              >Comment required
+              <textarea
+                class="form-input-textarea"
+                id="message"
+                name="comment"
+                rows="5"
+              ></textarea>
             </label>
           </div>
 

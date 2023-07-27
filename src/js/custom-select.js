@@ -51,7 +51,7 @@ export class CustomSelect {
   _onClick(e) {
     const { target } = e;
     if (!target) {
-      return; // If target is null or undefined, exit the function early
+      return;
     }
     const type = target.closest(this.constructor.DATA)?.dataset.select;
     if (type === 'toggle' || type === 'toggle-block') {

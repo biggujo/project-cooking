@@ -1,0 +1,34 @@
+.dark-theme {
+  --color-text-primary: #ffffff;
+
+  --color-gray-accent-primary: #fff;
+  --color-gray-accent-secondary: #3c3b3b;
+
+  --color-gray-pale-alpha010: rgba(255, 255, 255, 0.1);
+  --color-gray-pale-alpha020: rgba(255, 255, 255, 0.2);
+  --color-gray-pale-alpha030: rgba(255, 255, 255, 0.3);
+  --color-gray-pale-alpha050: rgba(255, 255, 255, 0.5);
+  --color-gray-pale-alpha080: rgba(255, 255, 255, 0.8);
+
+  --color-icon-disabled: var(--color-gray-pale-alpha050);
+
+  /* Header */
+  --color-header-icon-primary: var(--color-text-primary);
+  --color-header-icon-accent: var(--color-accent-primary);
+
+  /* Hero */
+  --color-hero-card-title: rgba(255, 255, 255, 0.6);
+  --color-hero-card-subtitle: var(--color-gray-pale-alpha020);
+
+  /* Modal */
+  --color-modal-background: #161616;
+
+  /* Scrollbar */
+  --color-scrollbar: rgba(255, 255, 255, 0.18);
+
+  /* Theme */
+  --color-theme: #161616;
+
+  color: var(--color-text-primary);
+  background-color: var(--color-modal-background);
+}
