@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/project-cooking/assets/index-c659ceaf.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/switcher-41ac4d77.js">
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-1b890369.js">
-    <link rel="stylesheet" href="/project-cooking/assets/icons-779adb90.css">
+    <script type="module" crossorigin src="/project-cooking/assets/index-f8c2b0f0.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-b9603435.js">
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-12f4b3bf.js">
+    <link rel="stylesheet" href="/project-cooking/assets/icons-8ed02d03.css">
     <link rel="stylesheet" href="/project-cooking/assets/index-5efebb2f.css">
   </head>
   <body>
@@ -171,6 +171,8 @@
       </div>
       <div class="hero-outer-swiper-wrapper">
         <div class="swiper mySwiper" style="overflow: visible; z-index: 0">
+          <span class="loader load-hero"></span>
+
           <div class="swiper-wrapper"></div>
           <div
             class="swiper-pagination"
@@ -384,7 +386,9 @@
   <button type="button" class="all-categories-button button is-active">
     All categories
   </button>
-  <ul class="all-categories-list"></ul>
+  <ul class="all-categories-list">
+    <span class="loader load-categories"></span>
+  </ul>
 </div>
 
     <div class="container">
@@ -397,7 +401,7 @@
       <article class="popular-recipes">
   <h2 class="popular-recipes-title">Popular recipes</h2>
   <ul class="popular-recipes-list"></ul>
-  <span class="loader"></span>
+  <span class="loader load-popular"></span>
 </article>
 
     </div>
