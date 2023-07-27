@@ -15,11 +15,9 @@
 
 .button:hover,
 .button:focus {
-  transition:
-    background-color var(--primary-animation-duration)
-      var(--primary-animation-time-func),
-    color var(--primary-animation-duration) var(--primary-animation-time-func),
-    border var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func),
+  border var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .see-more {
@@ -30,14 +28,13 @@
   background-color: var(--color-accent-primary);
   border-radius: 8px;
 }
+
 .see-more:hover,
 .see-more:focus {
   border: 1px solid var(--color-gray-pale-alpha030);
-  transition:
-    background-color var(--primary-animation-duration)
-      var(--primary-animation-time-func),
-    color var(--primary-animation-duration) var(--primary-animation-time-func),
-    border var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func),
+  border var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .all-categories-button {
@@ -56,10 +53,8 @@
   background-color: var(--color-accent-primary);
   color: var(--color-gray-accent-primary);
   border: 1px solid var(--color-accent-primary);
-  transition:
-    background-color var(--primary-animation-duration)
-      var(--primary-animation-time-func),
-    color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .button-favorite {
@@ -87,10 +82,31 @@
 .button-order-now:hover .button-order-now:focus {
   color: var(--color-gray-accent-primary);
   background-color: var(--color-accent-primary);
-  transition:
-    background-color var(--primary-animation-duration)
-      var(--primary-animation-time-func),
-    color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func);
+}
+
+.button-fav-category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  min-width: 30px;
+  padding: 14px 18px;
+
+  color: var(--color-gray-pale-alpha030);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+
+  border-radius: 15px;
+  border: 1px solid var(--color-gray-pale-alpha020);
+  background-color: transparent;
+}
+
+.button-fav-category-active {
+  border: none;
+  background: var(--color-accent-primary);
 }
 
 @media screen and (min-width: 768px) {
@@ -100,6 +116,11 @@
 }
 
 @media screen and (min-width: 1160px) {
+  .button-fav-category {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
   .see-more {
     padding: 8px 16px;
   }
