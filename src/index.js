@@ -10,11 +10,14 @@ import { highlightCurrentPage } from './js/header-current-page-marker.js';
 
 import './js/heroSection.js';
 import './js/all-categories.js';
+import './js/pagination.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import { PopUpRecipeModal } from './js/pop-up-recipe-modal.js';
 
 import { RecipeCard } from './js/recipe-card.js';
 import './js/filters.js';
+import './js/switcher.js';
+import './js/render-cards.js';
 
 highlightCurrentPage();
 

@@ -48,7 +48,7 @@ a {
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  /* z-index: 3; */
   color: var(--color-accent-primary);
   font-weight: 700;
   font-size: 28px;
