@@ -12,7 +12,10 @@ export class RecipeCard {
     const response = await fetch(`${RecipeCard.BASE_URL}/${recipeId}`);
     this.recipeData = await response.json();
 
-    this.recipeCardEl = RecipeCard.createCardElement(this.recipeData);
+    this.recipeCardEl = RecipeCard.createCardElement({
+      data: this.recipeData,
+      id: recipeId,
+    });
 
     this.updateRatingStars(this.recipeData.rating);
 
@@ -30,14 +33,16 @@ export class RecipeCard {
       heartIcon.classList.add('filled');
     }
 
-    return this.recipeCardEl;
+    return this;
   };
 
-  static createCardElement(recipeData) {
+  static createCardElement({ data, id }) {
     const cardEl = document.createElement('div');
 
+    cardEl.dataset.id = id;
+
     cardEl.classList.add('recipe-card');
-    cardEl.style.background = `url("${recipeData.preview}")`;
+    cardEl.style.background = `url("${data.preview}")`;
 
     const likeWrapperEl = document.createElement('span');
     likeWrapperEl.innerHTML = `<svg class="like-icon"><use href="./img/icons.svg#like"></use></svg>`;
@@ -45,12 +50,12 @@ export class RecipeCard {
 
     const subtitle = document.createElement('h2');
     subtitle.classList.add('recipe-title');
-    subtitle.textContent = recipeData.title;
+    subtitle.textContent = data.title;
     cardEl.appendChild(subtitle);
 
     const description = document.createElement('p');
     description.classList.add('recipe-description');
-    description.textContent = recipeData.description;
+    description.textContent = data.description;
     cardEl.appendChild(description);
 
     const rating = document.createElement('div');
@@ -59,7 +64,7 @@ export class RecipeCard {
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');
-    ratingNumber.textContent = recipeData.rating;
+    ratingNumber.textContent = data.rating;
     rating.appendChild(ratingNumber);
 
     const ratingStars = document.createElement('div');
