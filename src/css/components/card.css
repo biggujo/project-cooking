@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   padding: 0;
@@ -131,33 +130,37 @@ body {
   line-height: 1;
   vertical-align: middle;
   position: relative;
-  color: #e5e5e5; 
+  color: #e5e5e5;
 }
 
 .rating-star {
   display: inline-block;
 }
 
-.rating-stars::before {
-  content: "\2605\2605\2605\2605\2605";
+/* .rating-stars::before {
+  content: '\2605\2605\2605\2605\2605';
   position: absolute;
   top: 0;
   right: 0;
   overflow: hidden;
   width: 100%;
+} */
+
+.filled {
+  color: #ffd700;
 }
 
 .rating-stars.filled::before {
-  content: "\2605\2605\2605\2605\2605";
+  content: '\2605\2605\2605\2605\2605';
   color: #ffd700;
   width: var(--filled-percentage, 100%);
   overflow: hidden;
 }
 
 .rating-stars.filled.with-color::before {
-  content: "\2605\2605\2605\2605\2605";
+  content: '\2605\2605\2605\2605\2605';
   color: transparent;
-  background: #eea10c; 
+  background: #eea10c;
 }
 
 @media (min-width: 768px) {
@@ -242,5 +245,5 @@ body {
 }
 
 .like-icon.filled {
-  fill: #F8F8F8;
+  fill: #f8f8f8;
 }

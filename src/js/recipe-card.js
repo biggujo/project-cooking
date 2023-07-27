@@ -1,3 +1,5 @@
+import { all } from 'axios';
+
 export class RecipeCard {
   static BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 
@@ -69,23 +71,36 @@ export class RecipeCard {
     ratingStars.classList.add('rating-stars');
     rating.appendChild(ratingStars);
 
+    ratingStars.innerHTML = `<span class="rating-star">&#9733;</span><span class="rating-star">&#9733;</span><span class="rating-star">&#9733;</span><span class="rating-star">&#9733;</span><span class="rating-star">&#9733;</span>`;
+
     return cardEl;
   }
 
+  // updateRatingStars(rating) {
+  //   const ratingContainer = this.recipeCardEl.querySelector('.rating-stars');
+  //   const filledStars = Math.round(rating);
+  //   const emptyStars = 5 - filledStars;
+
+  //   let ratingStarsHTML = '';
+  //   for (let i = 0; i < filledStars; i++) {
+  //     ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
+  //   }
+  //   for (let i = 0; i < emptyStars; i++) {
+  //     ratingStarsHTML += '<span class="rating-star">&#9733;</span>';
+  //   }
+
+  //   ratingContainer.innerHTML = ratingStarsHTML;
+  // }
+
   updateRatingStars(rating) {
     const ratingContainer = this.recipeCardEl.querySelector('.rating-stars');
-    const filledStars = Math.round(rating);
-    const emptyStars = 5 - filledStars;
+    const allStart = ratingContainer.querySelectorAll('.rating-star');
 
-    let ratingStarsHTML = '';
+    const filledStars = Math.floor(rating);
+
     for (let i = 0; i < filledStars; i++) {
-      ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
+      allStart[i].classList.add('filled');
     }
-    for (let i = 0; i < emptyStars; i++) {
-      ratingStarsHTML += '<span class="rating-star">&#9733;</span>';
-    }
-
-    ratingContainer.innerHTML = ratingStarsHTML;
   }
 
   toggleFavourite({ recipeId, recipeTitle }) {
