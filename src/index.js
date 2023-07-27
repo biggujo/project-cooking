@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // * An example of import
 import { sayHello } from './js/test.js';
 
@@ -23,6 +25,8 @@ import './js/switcher.js';
 import './js/render-cards.js';
 
 highlightCurrentPage();
+
+const loaderRef = document.querySelector('.card-modal-loader-backdrop');
 
 // Recipe modal
 new PopUpModal({
@@ -71,6 +75,9 @@ async function renderCards() {
 document.body.addEventListener('click', handleRecipeCardClick);
 
 async function handleRecipeCardClick({ target }) {
+  const recipeCardURL =
+    'https://tasty-treats-backend.p.goit.global/api/recipes';
+
   if (hasLikeIconBeenClicked(target)) {
     return;
   }
@@ -88,7 +95,15 @@ async function handleRecipeCardClick({ target }) {
     return;
   }
 
-  await renderModalById();
+  loaderRef.classList.remove('is-hidden');
+
+  try {
+    await renderModalById();
+  } catch (e) {
+    console.log(e);
+  } finally {
+    loaderRef.classList.add('is-hidden');
+  }
 
   function hasLikeIconBeenClicked() {
     return target.nodeName === 'svg' || target.nodeName === 'use';
@@ -97,9 +112,10 @@ async function handleRecipeCardClick({ target }) {
   async function renderModalById() {
     const givenId = clickedCard.dataset.id;
 
-    const { _recipeData: recipeData } = cardArray.find(
-      card => givenId === card.recipeData._id
-    );
+    const response = await axios.get(`${recipeCardURL}/${givenId}`);
+    const recipeData = await response.data;
+
+    console.log(recipeData);
 
     await new PopUpRecipeModal(recipeData).openModal();
   }
