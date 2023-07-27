@@ -34,7 +34,7 @@ function handleCategoryClick({ target }) {
 }
 
 function handleFavoriteLikeClick({ target }) {
-  if (target.nodeName !== 'svg' || target.nodeName !== 'use') {
+  if (target.nodeName !== 'svg' && target.nodeName !== 'use') {
     return;
   }
 
