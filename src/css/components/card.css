@@ -135,32 +135,17 @@ body {
 
 .rating-star {
   display: inline-block;
+  color: var(--color-star-unmarked);
 }
 
-/* .rating-stars::before {
-  content: '\2605\2605\2605\2605\2605';
-  position: absolute;
-  top: 0;
-  right: 0;
-  overflow: hidden;
-  width: 100%;
-} */
+.rating-star-icon {
+  height: 16px;
+  width: 16px;
+  fill: currentColor;
+}
 
 .filled {
-  color: #ffd700;
-}
-
-.rating-stars.filled::before {
-  content: '\2605\2605\2605\2605\2605';
-  color: #ffd700;
-  width: var(--filled-percentage, 100%);
-  overflow: hidden;
-}
-
-.rating-stars.filled.with-color::before {
-  content: '\2605\2605\2605\2605\2605';
-  color: transparent;
-  background: #eea10c;
+  color: var(--color-star-marked);
 }
 
 @media (min-width: 768px) {
