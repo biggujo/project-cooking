@@ -13,7 +13,7 @@ document.addEventListener('remove-from-favorites', () => {
 });
 
 refs.favoritesCategories.addEventListener('click', handleCategoryClick);
-refs.favoritesList.addEventListener('click', handleFavoriteClick);
+refs.favoritesList.addEventListener('click', handleFavoriteLikeClick);
 
 doNewRenderOfCardsAndCategories();
 
@@ -33,17 +33,8 @@ function handleCategoryClick({ target }) {
     .finally(() => releaseHeightOfCardList());
 }
 
-function handleFavoriteClick({ target }) {
-  let clickedCard;
-
-  if (!target.dataset.id) {
-    clickedCard = target.closest('[data-id]');
-  } else {
-    clickedCard = target;
-  }
-
-  if (!clickedCard) {
-    console.log('error');
+function handleFavoriteLikeClick({ target }) {
+  if (target.nodeName !== 'svg' || target.nodeName !== 'use') {
     return;
   }
 
