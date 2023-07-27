@@ -1,10 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -153,7 +146,7 @@ body {
     width: 224px;
     height: 244px;
     border-radius: 15px;
-/*     margin-left: 32px; */
+    /*     margin-left: 32px; */
   }
 
   .recipe-title {
@@ -187,7 +180,7 @@ body {
   .recipe-card {
     width: 258px;
     height: 287px;
-/*     margin-left: 64px; */
+    /*     margin-left: 64px; */
   }
 
   .recipe-title {
