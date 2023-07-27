@@ -41,10 +41,10 @@ a {
   bottom: 2rem;
   right: 2rem;
   background-color: var(--color-modal-background);
-  /* background-color: black; */
+  /* background-color: #161616; */
   border-radius: 100%;
   border: 3px solid var(--color-accent-primary);
-  padding: 8px 12px;
+  padding: 8px 8px;
   display: none;
   align-items: center;
   justify-content: center;
@@ -57,4 +57,13 @@ a {
 #roll_back:hover {
   opacity: 1;
   scale: 1.1;
+}
+.arrow-up {
+  width: 24px;
+  height: 24px;
+  color: var(--color-gray-pale-alpha050);
+  fill: none;
+  stroke: currentColor;
+  transform: rotate(180deg);
+  color: var(--color-accent-primary);
 }
