@@ -80,7 +80,7 @@
 
 .rating {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 4px;
   margin-bottom: 8px;
   position: absolute;
@@ -91,7 +91,9 @@
 
 .rating-number {
   font-family: Inter;
-  font-size: 12px;
+  width: 22px;
+  height: 19px;
+  font-size: 14px;
   font-weight: 600;
   color: #ffffff;
 }
@@ -128,6 +130,8 @@
 
 .rating-star {
   display: inline-block;
+  height: 16px;
+
   color: var(--color-star-unmarked);
 }
 
