@@ -1,9 +1,12 @@
 // * An example of import
 import { sayHello } from './js/test.js';
+
 sayHello();
 import { popular } from './js/popular.js';
+
 popular();
 import { scrollFunc } from './js/scroll-up.js';
+
 scrollFunc();
 
 import { highlightCurrentPage } from './js/header-current-page-marker.js';
@@ -68,33 +71,36 @@ async function renderCards() {
 document.body.addEventListener('click', handleRecipeCardClick);
 
 async function handleRecipeCardClick({ target }) {
-  // if (event.currentTarget.dataset.id != undefined) {
-  //   console.log('No ID!');
-  //   return;
-  // }
+  if (hasLikeIconBeenClicked(target)) {
+    return;
+  }
 
-  console.log(target);
+  let clickedCard;
 
-  if (target.nodeName !== 'DIV' || target.dataset['data-id'] === null) {
+  if (!target.dataset.id) {
+    clickedCard = target.closest('[data-id]');
+  } else {
+    clickedCard = target;
+  }
+
+  if (!clickedCard) {
     console.log('error');
     return;
   }
 
-  console.log(target.nodeName);
+  await renderModalById();
 
-  const givenId = target.dataset.id;
+  function hasLikeIconBeenClicked() {
+    return target.nodeName === 'svg' || target.nodeName === 'use';
+  }
 
-  const { _recipeData: recipeData } = cardArray.find(
-    card => givenId === card.recipeData._id
-  );
+  async function renderModalById() {
+    const givenId = clickedCard.dataset.id;
 
-  await new PopUpRecipeModal(recipeData).openModal();
+    const { _recipeData: recipeData } = cardArray.find(
+      card => givenId === card.recipeData._id
+    );
 
-  // const modal = new PopUpRecipeModal(event.)
+    await new PopUpRecipeModal(recipeData).openModal();
+  }
 }
-
-// const card2 = new RecipeCard()
-// .init('6462a8f74c3d0ddd28897fb9')
-// .then(recipeCardEl => {
-//   document.body.prepend(recipeCardEl);
-// });
