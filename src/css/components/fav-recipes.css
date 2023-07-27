@@ -5,7 +5,8 @@
 .fav-categories {
   position: relative;
 
-  height: 100px;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
 
   white-space: nowrap;
 }
@@ -31,6 +32,10 @@
 @media screen and (min-width: 768px) {
   .fav-categories-list {
     width: calc(100% + var(--breakpoint-tablet-container-padding-inline));
+  }
+
+  .fav-categories {
+    margin-bottom: 32px;
   }
 }
 

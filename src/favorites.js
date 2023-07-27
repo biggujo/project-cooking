@@ -90,7 +90,7 @@ function renderCategoriesByNames(categories) {
       'beforeend',
       `<button data-category='${
         categoryName === ALL_CATEGORIES_NAME ? '' : categoryName
-      }'>${categoryName}</button>`
+      }' class='button-favorite'>${categoryName}</button>`
     );
   }
 }

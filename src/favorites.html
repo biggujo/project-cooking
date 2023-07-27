@@ -9,24 +9,6 @@
   </head>
   <body>
     <load ="./partials/header.html" />
-    <div class="scroll-container">
-      <div class="scroll-content">
-
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-
-
-
-      </div>
-    </div>
-
     <load ="./partials/scroll-up.html" />
 
     <main>
@@ -73,7 +55,8 @@
       </section>
       <section class='fav-recipes'>
         <div class='container'>
-          <div class='fav-categories'></div>
+          <div class='fav-categories scroll-container'>
+          </div>
           <load ="./partials/render-favourites-cards.html" />
         </div>
       </section>
