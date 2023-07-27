@@ -122,10 +122,10 @@
 
 @media (min-width: 768px) {
   .recipe-card {
-    width: 250px;
-    height: 264px;
+    width: 224px;
+    height: 244px;
     border-radius: 15px;
-    margin-left: 32px;
+/*     margin-left: 32px; */
   }
 
   .recipe-title {
@@ -156,11 +156,11 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .recipe-card {
-    width: 250px;
+    width: 258px;
     height: 287px;
-    margin-left: 64px;
+/*     margin-left: 64px; */
   }
 
   .recipe-title {
