@@ -23,6 +23,7 @@
 }
 
 body {
+  background-color: var(--color-gray-accent-primary);
   color: var(--color-text-primary);
 }
 

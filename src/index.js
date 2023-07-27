@@ -1,9 +1,12 @@
 // * An example of import
 import { sayHello } from './js/test.js';
+
 sayHello();
 import { popular } from './js/popular.js';
+
 popular();
 import { scrollFunc } from './js/scroll-up.js';
+
 scrollFunc();
 
 import { highlightCurrentPage } from './js/header-current-page-marker.js';
@@ -12,6 +15,8 @@ import './js/heroSection.js';
 import './js/all-categories.js';
 import './js/pagination.js';
 import { PopUpModal } from './js/pop-up-modal.js';
+import { PopUpRecipeModal } from './js/pop-up-recipe-modal.js';
+
 import { RecipeCard } from './js/recipe-card.js';
 import './js/filters.js';
 import './js/switcher.js';
@@ -47,14 +52,55 @@ new PopUpModal({
   backdropSelector: '[data-pop-up-order-now-modal]',
 });
 
-const card1 = new RecipeCard()
-.init('6462a8f74c3d0ddd28897fb8')
-.then(recipeCardEl => {
-  document.body.prepend(recipeCardEl);
-});
+const cardArray = [];
 
-const card2 = new RecipeCard()
-.init('6462a8f74c3d0ddd28897fb9')
-.then(recipeCardEl => {
-  document.body.prepend(recipeCardEl);
-});
+renderCards();
+
+async function renderCards() {
+  const card = await new RecipeCard().init('6462a8f74c3d0ddd28897fb8');
+  const card1 = await new RecipeCard().init('6462a8f74c3d0ddd28897fb9');
+  cardArray.push(card);
+  cardArray.push(card1);
+
+  document.body.prepend(card.recipeCardEl);
+  document.body.prepend(card1.recipeCardEl);
+
+  console.log(card);
+}
+
+document.body.addEventListener('click', handleRecipeCardClick);
+
+async function handleRecipeCardClick({ target }) {
+  if (hasLikeIconBeenClicked(target)) {
+    return;
+  }
+
+  let clickedCard;
+
+  if (!target.dataset.id) {
+    clickedCard = target.closest('[data-id]');
+  } else {
+    clickedCard = target;
+  }
+
+  if (!clickedCard) {
+    console.log('error');
+    return;
+  }
+
+  await renderModalById();
+
+  function hasLikeIconBeenClicked() {
+    return target.nodeName === 'svg' || target.nodeName === 'use';
+  }
+
+  async function renderModalById() {
+    const givenId = clickedCard.dataset.id;
+
+    const { _recipeData: recipeData } = cardArray.find(
+      card => givenId === card.recipeData._id
+    );
+
+    await new PopUpRecipeModal(recipeData).openModal();
+  }
+}

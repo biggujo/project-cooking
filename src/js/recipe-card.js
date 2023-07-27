@@ -1,3 +1,5 @@
+import { all } from 'axios';
+
 const removeFromFavoritesEvent = new Event('remove-from-favorites');
 
 export class RecipeCard {
@@ -12,7 +14,10 @@ export class RecipeCard {
     const response = await fetch(`${RecipeCard.BASE_URL}/${recipeId}`);
     this.recipeData = await response.json();
 
-    this.recipeCardEl = RecipeCard.createCardElement(this.recipeData);
+    this.recipeCardEl = RecipeCard.createCardElement({
+      data: this.recipeData,
+      id: recipeId,
+    });
 
     this.updateRatingStars(this.recipeData.rating);
 
@@ -30,31 +35,29 @@ export class RecipeCard {
       heartIcon.classList.add('filled');
     }
 
-    return this.recipeCardEl;
+    return this;
   };
 
-  static createCardElement(recipeData) {
+  static createCardElement({ data, id }) {
     const cardEl = document.createElement('div');
 
+    cardEl.dataset.id = id;
+
     cardEl.classList.add('recipe-card');
-    cardEl.style.background = `url("${recipeData.preview}")`;
+    cardEl.style.background = `url("${data.preview}")`;
 
-    const svg = document.createElement('svg');
-    svg.classList.add('like-icon');
-    cardEl.appendChild(svg);
-
-    const svgUse = document.createElement('use');
-    svgUse.setAttribute('href', './img/icons.svg#like');
-    svg.appendChild(svgUse);
+    const likeWrapperEl = document.createElement('span');
+    likeWrapperEl.innerHTML = `<svg class="like-icon"><use href="./img/icons.svg#like"></use></svg>`;
+    cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
     subtitle.classList.add('recipe-title');
-    subtitle.textContent = recipeData.title;
+    subtitle.textContent = data.title;
     cardEl.appendChild(subtitle);
 
     const description = document.createElement('p');
     description.classList.add('recipe-description');
-    description.textContent = recipeData.description;
+    description.textContent = data.description;
     cardEl.appendChild(description);
 
     const rating = document.createElement('div');
@@ -63,30 +66,55 @@ export class RecipeCard {
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');
-    ratingNumber.textContent = recipeData.rating;
+    ratingNumber.textContent = data.rating;
     rating.appendChild(ratingNumber);
 
     const ratingStars = document.createElement('div');
     ratingStars.classList.add('rating-stars');
     rating.appendChild(ratingStars);
 
+    ratingStars.innerHTML = `<span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span>`;
+
     return cardEl;
   }
 
   updateRatingStars(rating) {
     const ratingContainer = this.recipeCardEl.querySelector('.rating-stars');
-    const filledStars = Math.round(rating);
-    const emptyStars = 5 - filledStars;
+    const allStars = ratingContainer.querySelectorAll('.rating-star');
 
-    let ratingStarsHTML = '';
+    const filledStars = Math.floor(rating);
+    const fractionPartOfStar = rating % 1;
+
     for (let i = 0; i < filledStars; i++) {
-      ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
-    }
-    for (let i = 0; i < emptyStars; i++) {
-      ratingStarsHTML += '<span class="rating-star">&#9733;</span>';
+      allStars[i].classList.add('filled');
     }
 
-    ratingContainer.innerHTML = ratingStarsHTML;
+    if (filledStars === 5 || fractionPartOfStar === 0) {
+      return;
+    }
+
+    const filledPercentageOfStar = Math.floor(fractionPartOfStar * 100);
+
+    allStars[filledStars].innerHTML = this.createLastStart(
+      filledPercentageOfStar
+    );
+  }
+
+  createLastStart(filledPart) {
+    return `<svg class="rating-star-icon">
+      <linearGradient id="myGradient" gradientTransform="rotate(0)">
+        <stop offset="0%" stop-color="var(--color-star-marked)" />
+        <stop offset="${filledPart}%" stop-color="var(--color-star-marked)" />
+        <stop offset="${filledPart}%" stop-color="var(--color-star-unmarked)" />
+        <stop offset="100%" stop-color="var(--color-star-unmarked)" />
+      </linearGradient>
+      <use href="./img/icons.svg#star" fill="url(#myGradient)"></use>
+    </svg>`;
   }
 
   toggleFavourite({ recipeId, recipeTitle }) {
@@ -102,11 +130,11 @@ export class RecipeCard {
     }
   }
 
-  addToFavorites(recipeId) {
+  addToFavorites(recipeTitle) {
     try {
       let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      if (!favorites.includes(recipeId)) {
-        favorites.push(recipeId);
+      if (!favorites.includes(recipeTitle)) {
+        favorites.push(recipeTitle);
         this.saveToFavorites(favorites);
       }
     } catch (error) {
@@ -122,8 +150,6 @@ export class RecipeCard {
         favorites.splice(index, 1);
         this.saveToFavorites(favorites);
       }
-
-      document.dispatchEvent(removeFromFavoritesEvent);
     } catch (error) {
       console.log(error);
     }
