@@ -3,7 +3,7 @@ import { RecipeCard } from './js/recipe-card.js';
 console.log('Hello!');
 
 const refs = {
-  favoritesList: document.querySelector('.fav-categories-list'),
+  favoritesList: document.getElementById('rendered-cards-for-favourites'),
 };
 
 renderCardsByIds();
@@ -23,7 +23,7 @@ function renderCardsByIds() {
       new RecipeCard().init(id).then(recipeCardEl => {
         const itemEl = document.createElement('li');
         itemEl.classList.add('fav-categories-item');
-        itemEl.appendChild(recipeCardEl);
+        itemEl.appendChild(recipeCardEl.recipeCardEl);
 
         refs.favoritesList.appendChild(itemEl);
       });
@@ -34,16 +34,16 @@ function renderCardsByIds() {
 }
 
 new RecipeCard().init('6462a8f74c3d0ddd28897fb8').then(recipeCardEl => {
-  document.body.prepend(recipeCardEl);
+  document.body.prepend(recipeCardEl.recipeCardEl);
   console.log(recipeCardEl);
 });
 
 new RecipeCard().init('6462a8f74c3d0ddd28897fb9').then(recipeCardEl => {
-  document.body.prepend(recipeCardEl);
+  document.body.prepend(recipeCardEl.recipeCardEl);
   console.log(recipeCardEl);
 });
 
 new RecipeCard().init('6462a8f74c3d0ddd28897fba').then(recipeCardEl => {
-  document.body.prepend(recipeCardEl);
+  document.body.prepend(recipeCardEl.recipeCardEl);
   console.log(recipeCardEl);
 });
