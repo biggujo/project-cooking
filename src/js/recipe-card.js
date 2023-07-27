@@ -1,3 +1,5 @@
+import { all } from 'axios';
+
 export class RecipeCard {
   static BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 
@@ -69,23 +71,48 @@ export class RecipeCard {
     ratingStars.classList.add('rating-stars');
     rating.appendChild(ratingStars);
 
+    ratingStars.innerHTML = `<span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span>`;
+
     return cardEl;
   }
 
   updateRatingStars(rating) {
     const ratingContainer = this.recipeCardEl.querySelector('.rating-stars');
-    const filledStars = Math.round(rating);
-    const emptyStars = 5 - filledStars;
+    const allStars = ratingContainer.querySelectorAll('.rating-star');
 
-    let ratingStarsHTML = '';
+    const filledStars = Math.floor(rating);
+    const fractionPartOfStar = rating % 1;
+
     for (let i = 0; i < filledStars; i++) {
-      ratingStarsHTML += '<span class="rating-star filled">&#9733;</span>';
-    }
-    for (let i = 0; i < emptyStars; i++) {
-      ratingStarsHTML += '<span class="rating-star">&#9733;</span>';
+      allStars[i].classList.add('filled');
     }
 
-    ratingContainer.innerHTML = ratingStarsHTML;
+    if (filledStars === 5 || fractionPartOfStar === 0) {
+      return;
+    }
+
+    const filledPercentageOfStar = Math.floor(fractionPartOfStar * 100);
+
+    allStars[filledStars].innerHTML = this.createLastStart(
+      filledPercentageOfStar
+    );
+  }
+
+  createLastStart(filledPart) {
+    return `<svg class="rating-star-icon">
+      <linearGradient id="myGradient" gradientTransform="rotate(0)">
+        <stop offset="0%" stop-color="var(--color-star-marked)" />
+        <stop offset="${filledPart}%" stop-color="var(--color-star-marked)" />
+        <stop offset="${filledPart}%" stop-color="var(--color-star-unmarked)" />
+        <stop offset="100%" stop-color="var(--color-star-unmarked)" />
+      </linearGradient>
+      <use href="./img/icons.svg#star" fill="url(#myGradient)"></use>
+    </svg>`;
   }
 
   toggleFavourite({ recipeId, recipeTitle }) {
