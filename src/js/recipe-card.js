@@ -39,14 +39,9 @@ export class RecipeCard {
     cardEl.classList.add('recipe-card');
     cardEl.style.background = `url("${recipeData.preview}")`;
 
-    const svg = document.createElement('svg');
-    svg.classList.add('like-icon');
-    svg.style.fill = 'none';
-    cardEl.appendChild(svg);
-
-    const svgUse = document.createElement('use');
-    svgUse.href = './img/icons.svg#like';
-    svg.appendChild(svgUse);
+    const likeWrapperEl = document.createElement('span');
+    likeWrapperEl.innerHTML = `<svg class="like-icon"><use href="./img/icons.svg#like"></use></svg>`;
+    cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
     subtitle.classList.add('recipe-title');
@@ -158,7 +153,7 @@ export class RecipeCard {
   }
 
   toggleHeartFill() {
-    const heartIcon = document.querySelector('.like-icon');
+    const heartIcon = this.recipeCardEl.querySelector('.like-icon');
     heartIcon.classList.toggle('filled');
   }
 
