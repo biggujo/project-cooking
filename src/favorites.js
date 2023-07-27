@@ -1,31 +1,46 @@
 import { RecipeCard } from './js/recipe-card.js';
 
-console.log('Hello!');
+const ALL_CATEGORIES_NAME = 'All categories';
 
 const refs = {
   favoritesCategories: document.querySelector('.fav-categories'),
   favoritesList: document.getElementById('rendered-cards-for-favourites'),
 };
 
-const categories = new Set();
-
 document.addEventListener('remove-from-favorites', () => {
   console.log('Change!');
   doNewRenderOfCardsAndCategories();
 });
 
+refs.favoritesCategories.addEventListener('click', handleFavoriteClick);
+
 doNewRenderOfCardsAndCategories();
 
+function handleFavoriteClick(event) {
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
+
+  console.log('Click!');
+
+  holdHeightOfCardList();
+  renderCardsFromLocalStorage(event.target.textContent).then(() => {
+    releaseHeightOfCardList();
+  });
+}
+
 function doNewRenderOfCardsAndCategories() {
-  renderCardsByIds()
+  holdHeightOfCardList();
+  renderCardsFromLocalStorage()
     .then(categories => {
       console.log(categories);
       renderCategoriesByNames(categories);
+      releaseHeightOfCardList();
     })
     .catch(console.log);
 }
 
-async function renderCardsByIds() {
+async function renderCardsFromLocalStorage(givenCategory) {
   try {
     const idsArray = JSON.parse(localStorage.getItem('favorites'));
 
@@ -37,16 +52,26 @@ async function renderCardsByIds() {
 
     const recipeCardEls = await Promise.all(cardsPromises);
 
-    const categories = recipeCardEls.map(recipeCardEl => {
-      const itemEl = document.createElement('li');
-      itemEl.classList.add('fav-categories-item');
+    let categories = recipeCardEls;
 
-      itemEl.appendChild(recipeCardEl.recipeCardEl);
+    if (givenCategory && givenCategory !== ALL_CATEGORIES_NAME) {
+      categories = recipeCardEls.filter(
+        recipeCardEl => recipeCardEl.recipeData.category === givenCategory
+      );
+    }
 
-      refs.favoritesList.appendChild(itemEl);
+    categories = new Set(
+      categories.map(recipeCardEl => {
+        const itemEl = document.createElement('li');
+        itemEl.classList.add('fav-categories-item');
 
-      return recipeCardEl.recipeData.category;
-    });
+        itemEl.appendChild(recipeCardEl.recipeCardEl);
+
+        refs.favoritesList.appendChild(itemEl);
+
+        return recipeCardEl.recipeData.category;
+      })
+    );
 
     return categories;
   } catch (error) {
@@ -55,8 +80,6 @@ async function renderCardsByIds() {
 }
 
 function renderCategoriesByNames(categories) {
-  const ALL_CATEGORIES_NAME = 'All categories';
-
   refs.favoritesCategories.innerHTML = '';
 
   renderCategoryByName(ALL_CATEGORIES_NAME);
@@ -72,14 +95,14 @@ function renderCategoriesByNames(categories) {
   }
 }
 
-new RecipeCard().init('6462a8f74c3d0ddd28897fb8').then(recipeCardEl => {
-  document.body.prepend(recipeCardEl.recipeCardEl);
-});
+let currentHeight;
 
-new RecipeCard().init('6462a8f74c3d0ddd28897fb9').then(recipeCardEl => {
-  document.body.prepend(recipeCardEl.recipeCardEl);
-});
+function holdHeightOfCardList() {
+  refs.favoritesList.style.height = String(
+    refs.favoritesList.offsetHeight + 'px'
+  );
+}
 
-new RecipeCard().init('6462a8f74c3d0ddd28897fba').then(recipeCardEl => {
-  document.body.prepend(recipeCardEl.recipeCardEl);
-});
+function releaseHeightOfCardList() {
+  refs.favoritesList.style.height = 'auto';
+}
