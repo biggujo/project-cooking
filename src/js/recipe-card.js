@@ -37,7 +37,7 @@ export class RecipeCard {
     const cardEl = document.createElement('div');
 
     cardEl.classList.add('recipe-card');
-    cardEl.style.background = `url("${recipeData.preview}")`;
+    cardEl.style.background = `linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${recipeData.preview}'), lightgray -36.5px 0px / 129.2% 112.544% no-repeat`;
 
     const svg = document.createElement('svg');
     svg.classList.add('like-icon');
