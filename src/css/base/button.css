@@ -108,8 +108,11 @@
   margin-left: 15px;
 }
 
+.button-fav-category:hover,
+.button-fav-category:focus,
 .button-fav-category-active {
-  border: none;
+  color: var(--color-gray-accent-primary);
+  border-color: var(--color-accent-primary);
   background: var(--color-accent-primary);
 }
 

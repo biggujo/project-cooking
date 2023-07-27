@@ -12,19 +12,44 @@ document.addEventListener('remove-from-favorites', () => {
   doNewRenderOfCardsAndCategories();
 });
 
-refs.favoritesCategories.addEventListener('click', handleFavoriteClick);
+refs.favoritesCategories.addEventListener('click', handleCategoryClick);
+refs.favoritesList.addEventListener('click', handleFavoriteClick);
 
 doNewRenderOfCardsAndCategories();
 
-function handleFavoriteClick(event) {
-  if (event.target.nodeName !== 'BUTTON') {
+function handleCategoryClick({ target }) {
+  if (target.nodeName !== 'BUTTON') {
     return;
   }
 
-  console.log('Click!');
+  const selectedCategory = target.dataset['category'];
+
+  unselectAllCategories();
+  selectCategoryByName(selectedCategory);
 
   holdHeightOfCardList();
-  renderCardsFromLocalStorage(event.target.textContent).then(() => {
+  renderCardsFromLocalStorage(selectedCategory)
+    .catch(console.log)
+    .finally(() => releaseHeightOfCardList());
+}
+
+function handleFavoriteClick({ target }) {
+  let clickedCard;
+
+  if (!target.dataset.id) {
+    clickedCard = target.closest('[data-id]');
+  } else {
+    clickedCard = target;
+  }
+
+  if (!clickedCard) {
+    console.log('error');
+    return;
+  }
+
+  holdHeightOfCardList();
+  renderCardsFromLocalStorage(target.textContent).then(categories => {
+    renderCategoriesByNames(categories);
     releaseHeightOfCardList();
   });
 }
@@ -83,19 +108,35 @@ function renderCategoriesByNames(categories) {
   refs.favoritesCategories.innerHTML = '';
 
   renderCategoryByName(ALL_CATEGORIES_NAME);
-  categories.forEach(renderCategoryByName);
+  [...categories].sort().forEach(renderCategoryByName);
 
-  function renderCategoryByName(categoryName = '') {
+  function renderCategoryByName(categoryName) {
     refs.favoritesCategories.insertAdjacentHTML(
       'beforeend',
-      `<button data-category='${
-        categoryName === ALL_CATEGORIES_NAME ? '' : categoryName
-      }' class='button-favorite'>${categoryName}</button>`
+      `<button data-category='${categoryName}' class='button-fav-category${
+        categoryName === ALL_CATEGORIES_NAME
+          ? ' button-fav-category-active'
+          : ''
+      }'>${categoryName}</button>`
     );
   }
 }
 
-let currentHeight;
+function unselectAllCategories() {
+  const categoriesRefs =
+    refs.favoritesCategories.querySelectorAll('[data-category]');
+
+  categoriesRefs.forEach(categoriesRef =>
+    categoriesRef.classList.remove('button-fav-category-active')
+  );
+}
+
+function selectCategoryByName(name) {
+  const categoryRef = refs.favoritesCategories.querySelector(
+    `[data-category="${name}"]`
+  );
+  categoryRef.classList.add('button-fav-category-active');
+}
 
 function holdHeightOfCardList() {
   refs.favoritesList.style.height = String(
