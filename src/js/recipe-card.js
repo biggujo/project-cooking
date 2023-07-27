@@ -64,7 +64,7 @@ export class RecipeCard {
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');
-    ratingNumber.textContent = recipeData.rating;
+    ratingNumber.textContent = recipeData.rating.toFixed(1);
     rating.appendChild(ratingNumber);
 
     const ratingStars = document.createElement('div');
@@ -105,13 +105,13 @@ export class RecipeCard {
 
   createLastStart(filledPart) {
     return `<svg class="rating-star-icon">
-      <linearGradient id="myGradient" gradientTransform="rotate(0)">
+      <linearGradient id="myGradient${filledPart}" gradientTransform="rotate(0)">
         <stop offset="0%" stop-color="var(--color-star-marked)" />
         <stop offset="${filledPart}%" stop-color="var(--color-star-marked)" />
         <stop offset="${filledPart}%" stop-color="var(--color-star-unmarked)" />
         <stop offset="100%" stop-color="var(--color-star-unmarked)" />
       </linearGradient>
-      <use href="./img/icons.svg#star" fill="url(#myGradient)"></use>
+      <use href="./img/icons.svg#star" fill="url(#myGradient${filledPart})"></use>
     </svg>`;
   }
 
