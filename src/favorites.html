@@ -26,10 +26,15 @@
 
       </div>
     </div>
+
+    <load ="./partials/scroll-up.html" />
+
     <script type='module'>
       import { highlightCurrentPage } from './js/header-current-page-marker.js';
       import './js/switcher.js';
       highlightCurrentPage();
+      import { scrollFunc } from './js/scroll-up.js';
+      scrollFunc();
     </script>
   </body>
 </html>

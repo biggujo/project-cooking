@@ -11,6 +11,7 @@
   /* margin-top: 50px; */
   left: 50%;
   top: 42%;
+  display: block;
 }
 
 @keyframes mulShdSpin {

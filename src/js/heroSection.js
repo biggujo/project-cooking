@@ -8,6 +8,11 @@ import { createHeroSliderMarkup } from './createHeroSliderMarkup.js';
 
 const eventsSwiperRef = document.querySelector('.swiper-wrapper');
 
+const loader = document.querySelector('.load-hero');
+function hideLoader() {
+  loader.classList.add('is-hidden');
+}
+
 fetchEvents().then(async resp => {
   const eventsMarkup = await createHeroSliderMarkup(resp);
 
@@ -27,4 +32,5 @@ fetchEvents().then(async resp => {
       el: '.swiper-pagination',
     },
   });
+  hideLoader();
 });

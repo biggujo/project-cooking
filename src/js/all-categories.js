@@ -1,9 +1,18 @@
+import axios from 'axios';
 import { fetchCategories } from './api-categories.js';
 import {filtersResultForQuery, resetAllFilters, checkMediaQueriesByClick, axiosRequestForRenderCards, buildRecipeURL} from './filters.js';
+
+const loader = document.querySelector('.load-categories');
+function hideLoader() {
+  loader.classList.add('is-hidden');
+}
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
 const allCategoriesButton = document.querySelector('.all-categories-button');
+const allCategoriesButtons = document.querySelectorAll(
+  '.all-categories-item-button'
+);
 
 let activeCategory = null;
 
@@ -25,7 +34,7 @@ function checkMediaQueriesForFirstRendering () {
   const mediaQueryMin1161 = window.matchMedia('(min-width: 1161px)');
 
   handleMediaChange(mediaQuery768);
-  handleMediaChange(mediaQuery769to1160);  
+  handleMediaChange(mediaQuery769to1160);
   handleMediaChange(mediaQueryMin1161);
 
   mediaQuery768.addListener(handleMediaChange);
@@ -67,8 +76,14 @@ function handleClickedCategories(event) {
       activeCategory = target.innerText;
       allCategoriesButton.classList.remove('is-active'); // Знімаємо активний клас з кнопки "All categories"
     }
-    let limit = checkMediaQueriesByClick();
-    fetchRecipes(activeCategory, limit)
+
+    fetchRecipes(activeCategory)
+      .then(recipes => {
+        console.log(recipes);
+      })
+      .catch(error => {
+        console.error('ERROR', error);
+      });
   }
 }
 
@@ -82,8 +97,13 @@ function handleClickedAllCategories() {
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
 
-  let limit = checkMediaQueriesByClick();
-  fetchRecipes(activeCategory, limit)
+  fetchRecipes(activeCategory)
+    .then(recipes => {
+      console.log(recipes);
+    })
+    .catch(error => {
+      console.error('ERROR', error);
+    });
 }
 
 function fetchRecipes(category, limit) {
