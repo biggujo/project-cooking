@@ -3,7 +3,7 @@
 }
 
 .tui-pagination {
-  height: 100%;
+  height: 100% !important;
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -80,12 +80,12 @@
 }
 
 .tui-pagination:not(.tui-initializing)
-  .tui-page-btn:not(.tui-ico-prev):not(.tui-ico-next):not(.tui-is-selected):not(
+.tui-page-btn:not(.tui-ico-prev):not(.tui-ico-next):not(.tui-is-selected):not(
     .tui-is-disabled
   ):hover,
 .tui-pagination:not(.tui-initializing) .tui-next:not(.tui-is-disabled):hover,
 .tui-ico-ellip:hover {
-  background: var(--color-pagination-arrow-background-enabled) !important ;
+  background: var(--color-pagination-arrow-background-enabled) !important;
 }
 
 .pagination .pag__btn-move:first-child,
