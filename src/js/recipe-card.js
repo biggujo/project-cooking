@@ -12,7 +12,10 @@ export class RecipeCard {
     const response = await fetch(`${RecipeCard.BASE_URL}/${recipeId}`);
     this.recipeData = await response.json();
 
-    this.recipeCardEl = RecipeCard.createCardElement(this.recipeData);
+    this.recipeCardEl = RecipeCard.createCardElement({
+      data: this.recipeData,
+      id: recipeId,
+    });
 
     this.updateRatingStars(this.recipeData.rating);
 
@@ -30,32 +33,31 @@ export class RecipeCard {
       heartIcon.classList.add('filled');
     }
 
-    return this.recipeCardEl;
+    return this;
   };
 
-  static createCardElement(recipeData) {
+  static createCardElement({ data, id }) {
     const cardEl = document.createElement('div');
 
     cardEl.classList.add('recipe-card');
     cardEl.style.background = `linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${recipeData.preview}'), lightgray -36.5px 0px / 129.2% 112.544% no-repeat`;
+    cardEl.dataset.id = id;
 
-    const svg = document.createElement('svg');
-    svg.classList.add('like-icon');
-    svg.style.fill = 'none';
-    cardEl.appendChild(svg);
+    cardEl.classList.add('recipe-card');
+    cardEl.style.background = `url("${data.preview}")`;
 
-    const svgUse = document.createElement('use');
-    svgUse.href = './img/icons.svg#like';
-    svg.appendChild(svgUse);
+    const likeWrapperEl = document.createElement('span');
+    likeWrapperEl.innerHTML = `<svg class="like-icon"><use href="./img/icons.svg#like"></use></svg>`;
+    cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
     subtitle.classList.add('recipe-title');
-    subtitle.textContent = recipeData.title;
+    subtitle.textContent = data.title;
     cardEl.appendChild(subtitle);
 
     const description = document.createElement('p');
     description.classList.add('recipe-description');
-    description.textContent = recipeData.description;
+    description.textContent = data.description;
     cardEl.appendChild(description);
 
     const rating = document.createElement('div');
@@ -64,6 +66,7 @@ export class RecipeCard {
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');
+
     ratingNumber.textContent = recipeData.rating.toFixed(1);
     rating.appendChild(ratingNumber);
 
@@ -158,7 +161,7 @@ export class RecipeCard {
   }
 
   toggleHeartFill() {
-    const heartIcon = document.querySelector('.like-icon');
+    const heartIcon = this.recipeCardEl.querySelector('.like-icon');
     heartIcon.classList.toggle('filled');
   }
 
