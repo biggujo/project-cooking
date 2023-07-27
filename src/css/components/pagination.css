@@ -1,0 +1,138 @@
+.pagination {
+  margin-top: 40px;
+}
+
+.tui-pagination {
+  height: 100%;
+  line-height: normal;
+  text-align: center;
+  font-size: 0;
+}
+
+.tui-ico-ellip {
+  background-color: var(--color-modal-background);
+}
+
+.tui-pagination .tui-page-btn {
+  background-color: var(--color-modal-background);
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: calc(22 / 18);
+  position: relative;
+  color: var(--color-text-primary) !important;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-pale-alpha030) !important;
+}
+
+.tui-pagination .tui-prev {
+  margin-right: 14px;
+}
+
+.tui-pagination .tui-next {
+  margin-left: 14px;
+}
+
+.tui-pagination .tui-is-selected {
+  border: 1px solid var(--color-pagination-text-background-selected) !important;
+}
+
+.pagination .pag__current-page {
+  background-color: var(--color-pagination-arrow-background-enabled) !important;
+  margin-right: 8px;
+}
+
+.tui-pagination .tui-last-child.tui-is-selected {
+  margin: 0;
+}
+
+.tui-first-child {
+  margin-right: 8px;
+}
+
+.pagination .pag__page-btn {
+  margin-right: 8px;
+}
+
+.tui-pagination .tui-page-btn:last-child {
+  margin-left: 4px;
+}
+
+.pagination .pag__btn-move {
+  background: var(--color-pagination-arrow-background-enabled);
+}
+
+.pagination .pag__btn-move:first-child {
+  margin-right: 4px;
+}
+
+.pagination .pag__btn-disabled {
+  background: var(--color-pagination-arrow-background-disabled);
+  border: 1px solid var(--color-pagination-arrow-background-disabled);
+}
+
+.tui-pagination .tui-is-disabled:hover {
+  background: var(--color-pagination-arrow-background-disabled) !important;
+}
+
+.tui-pagination:not(.tui-initializing)
+  .tui-page-btn:not(.tui-ico-prev):not(.tui-ico-next):not(.tui-is-selected):not(
+    .tui-is-disabled
+  ):hover,
+.tui-pagination:not(.tui-initializing) .tui-next:not(.tui-is-disabled):hover,
+.tui-ico-ellip:hover {
+  background: var(--color-pagination-arrow-background-enabled) !important ;
+}
+
+.pagination .pag__btn-move:first-child,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next,
+.tui-pagination .tui-page-btn:last-child {
+  border: none !important;
+}
+
+.pagination .pag__btn-move:first-child:hover,
+.tui-pagination .tui-prev:hover,
+.tui-pagination .tui-next:hover,
+.tui-pagination .tui-page-btn:last-child:hover {
+  border: 1px solid var(--color-gray-pale-alpha030) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    margin-top: 64px;
+  }
+
+  .tui-pagination .tui-page-btn {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .pagination .pag__current-page {
+    margin-right: 10px;
+  }
+
+  .pagination .pag__page-btn {
+    margin-right: 10px;
+  }
+
+  .tui-pagination .tui-next {
+    margin-left: 24px;
+  }
+
+  .tui-pagination .tui-prev {
+    margin-right: 24px;
+  }
+
+  .pagination .pag__btn-move:first-child {
+    margin-right: 8px;
+  }
+
+  .tui-pagination .tui-page-btn:last-child {
+    margin-left: 8px;
+  }
+}

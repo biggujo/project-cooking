@@ -8,6 +8,7 @@
 @import url('./header.css');
 @import url('./hero.css');
 @import url('./all-categories.css');
+@import url('./pagination.css');
 @import url('./pop-up-recipe.css');
 @import url('./pop-up-rating.css');
 @import url('./form-ui-kit.css');
@@ -17,3 +18,4 @@
 @import url('./switch.css');
 @import url('./switcher.css');
 @import url('./card.css');
+@import url('./render-cards.css');
