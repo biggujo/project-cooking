@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const listDiv = document.querySelector('.popular-recipes-list');
 const popularRecipesItems = document.querySelectorAll('.popular-recipes-item');
-const loader = document.querySelector('.loader');
+const loader = document.querySelector('.load-popular');
 
 // function showLoader() {
 //   loader.classList.remove('is-hidden');

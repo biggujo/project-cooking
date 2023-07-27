@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { fetchCategories } from './api-categories.js';
-import {filtersResultForQuery, resetAllFilters} from './filters.js';
+import {filtersResultForQuery, resetAllFilters, checkMediaQueriesByClick, axiosRequestForRenderCards, buildRecipeURL} from './filters.js';
+
+const loader = document.querySelector('.load-categories');
+function hideLoader() {
+  loader.classList.add('is-hidden');
+}
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesList = document.querySelector('.all-categories-list');
@@ -11,6 +16,32 @@ const allCategoriesButtons = document.querySelectorAll(
 
 let activeCategory = null;
 
+function checkMediaQueriesForFirstRendering () {
+  const handleMediaChange = (mediaQuery) => {
+    if (mediaQuery.matches) {
+      if (mediaQuery.media === '(max-width: 768px)') {
+        fetchRecipes(activeCategory, 5);
+      } else if (mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)') {
+        fetchRecipes(activeCategory, 8);
+      } else if (mediaQuery.media === '(min-width: 1161px)') {
+        fetchRecipes(activeCategory, 9);
+      }
+    }
+  };
+
+  const mediaQuery768 = window.matchMedia('(max-width: 768px)');
+  const mediaQuery769to1160 = window.matchMedia('(min-width: 769px) and (max-width: 1160px)');
+  const mediaQueryMin1161 = window.matchMedia('(min-width: 1161px)');
+
+  handleMediaChange(mediaQuery768);
+  handleMediaChange(mediaQuery769to1160);
+  handleMediaChange(mediaQueryMin1161);
+
+  mediaQuery768.addListener(handleMediaChange);
+  mediaQuery769to1160.addListener(handleMediaChange);
+  mediaQueryMin1161.addListener(handleMediaChange);
+}
+
 fetchCategories()
   .then(categories => {
     markupAllCategoriesListItem(categories);
@@ -20,7 +51,7 @@ fetchCategories()
       delete filtersResultForQuery.category;
       handleClickedAllCategories();
     });
-    fetchRecipes(activeCategory);
+    checkMediaQueriesForFirstRendering();
   })
   .catch(error => {
     console.error('ERROR', error);
@@ -75,34 +106,9 @@ function handleClickedAllCategories() {
     });
 }
 
-function fetchRecipes(category) {
-  let url = `${API_URL}/recipes`;
-
-  if (category) {
-    url += `?category=${category}`;
-  }
-  if (filtersResultForQuery.title) {
-    url += `&title=${filtersResultForQuery.title}`;
-  }
-  if (filtersResultForQuery.time) {
-    url += `&time=${filtersResultForQuery.time}`;
-  }
-  if (filtersResultForQuery.area) {
-    url += `&area=${filtersResultForQuery.area}`;
-  }
-  if (filtersResultForQuery.ingredient) {
-    url += `&ingredient=${filtersResultForQuery.ingredient}`;
-  }
-
-  return axios
-    .get(url)
-    .then(response => {
-      const recipes = response.data;
-      return recipes;
-    })
-    .catch(error => {
-      throw error;
-    });
+function fetchRecipes(category, limit) {
+  const url = buildRecipeURL(filtersResultForQuery, limit);
+  axiosRequestForRenderCards(url);
 }
 
 function markupAllCategoriesListItem(categories) {
