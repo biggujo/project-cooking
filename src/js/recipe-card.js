@@ -40,11 +40,11 @@ export class RecipeCard {
     const cardEl = document.createElement('div');
 
     cardEl.classList.add('recipe-card');
-    cardEl.style.background = `linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${recipeData.preview}'), lightgray -36.5px 0px / 129.2% 112.544% no-repeat`;
+    cardEl.style.background = `linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${data.preview}'), lightgray -36.5px 0px / 129.2% 112.544% no-repeat`;
     cardEl.dataset.id = id;
 
     cardEl.classList.add('recipe-card');
-    cardEl.style.background = `url("${data.preview}")`;
+    // cardEl.style.background = `url("${data.preview}")`;
 
     const likeWrapperEl = document.createElement('span');
     likeWrapperEl.innerHTML = `<svg class='like-icon'><use href='./img/icons.svg#like'></use></svg>`;
@@ -74,11 +74,11 @@ export class RecipeCard {
     ratingStars.classList.add('rating-stars');
     rating.appendChild(ratingStars);
 
-    ratingStars.innerHTML = `<span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
-    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
-    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
-    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
-    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    ratingStars.innerHTML = `<span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
     </svg></span>`;
 
     return cardEl;
@@ -107,14 +107,14 @@ export class RecipeCard {
   }
 
   createLastStart(filledPart) {
-    return `<svg class="rating-star-icon">
-      <linearGradient id="myGradient${filledPart}" gradientTransform="rotate(0)">
-        <stop offset="0%" stop-color="var(--color-star-marked)" />
-        <stop offset="${filledPart}%" stop-color="var(--color-star-marked)" />
-        <stop offset="${filledPart}%" stop-color="var(--color-star-unmarked)" />
-        <stop offset="100%" stop-color="var(--color-star-unmarked)" />
+    return `<svg class='rating-star-icon'>
+      <linearGradient id='myGradient${filledPart}' gradientTransform='rotate(0)'>
+        <stop offset='0%' stop-color='var(--color-star-marked)' />
+        <stop offset='${filledPart}%' stop-color='var(--color-star-marked)' />
+        <stop offset='${filledPart}%' stop-color='var(--color-star-unmarked)' />
+        <stop offset='100%' stop-color='var(--color-star-unmarked)' />
       </linearGradient>
-      <use href="./img/icons.svg#star" fill="url(#myGradient${filledPart})"></use>
+      <use href='./img/icons.svg#star' fill='url(#myGradient${filledPart})'></use>
     </svg>`;
   }
 
