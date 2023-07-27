@@ -80,7 +80,7 @@
 
 .rating {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 4px;
   margin-bottom: 8px;
   position: absolute;
