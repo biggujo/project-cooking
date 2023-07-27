@@ -104,7 +104,6 @@ export class RecipeCard {
   }
 
   createLastStart(filledPart) {
-    console.log(filledPart);
     return `<svg class="rating-star-icon">
       <linearGradient id="myGradient" gradientTransform="rotate(0)">
         <stop offset="0%" stop-color="var(--color-star-marked)" />
