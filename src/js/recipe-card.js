@@ -73,11 +73,11 @@ export class RecipeCard {
     ratingStars.classList.add('rating-stars');
     rating.appendChild(ratingStars);
 
-    ratingStars.innerHTML = `<span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='./img/icons.svg#star'></use>
+    ratingStars.innerHTML = `<span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
+    </svg></span><span class="rating-star"><svg class="rating-star-icon"><use href="./img/icons.svg#star"></use>
     </svg></span>`;
 
     return cardEl;
@@ -106,14 +106,14 @@ export class RecipeCard {
   }
 
   createLastStart(filledPart) {
-    return `<svg class='rating-star-icon'>
-      <linearGradient id='myGradient${filledPart}' gradientTransform='rotate(0)'>
-        <stop offset='0%' stop-color='var(--color-star-marked)' />
-        <stop offset='${filledPart}%' stop-color='var(--color-star-marked)' />
-        <stop offset='${filledPart}%' stop-color='var(--color-star-unmarked)' />
-        <stop offset='100%' stop-color='var(--color-star-unmarked)' />
+    return `<svg class="rating-star-icon">
+      <linearGradient id="myGradient${filledPart}" gradientTransform="rotate(0)">
+        <stop offset="0%" stop-color="var(--color-star-marked)" />
+        <stop offset="${filledPart}%" stop-color="var(--color-star-marked)" />
+        <stop offset="${filledPart}%" stop-color="var(--color-star-unmarked)" />
+        <stop offset="100%" stop-color="var(--color-star-unmarked)" />
       </linearGradient>
-      <use href='./img/icons.svg#star' fill='url(#myGradient${filledPart})'></use>
+      <use href="./img/icons.svg#star" fill="url(#myGradient${filledPart})"></use>
     </svg>`;
   }
 
