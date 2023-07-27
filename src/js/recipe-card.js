@@ -41,13 +41,14 @@ export class RecipeCard {
   static createCardElement({ data, id }) {
     const cardEl = document.createElement('div');
 
+    cardEl.classList.add('recipe-card');
+    cardEl.style.background = `linear-gradient(1deg, rgba(5, 5, 5, 0.60) 0%, rgba(5, 5, 5, 0.00) 100%), url('${data.preview}'), lightgray -36.5px 0px / 129.2% 112.544% no-repeat`;
     cardEl.dataset.id = id;
 
     cardEl.classList.add('recipe-card');
-    cardEl.style.background = `url("${data.preview}")`;
 
     const likeWrapperEl = document.createElement('span');
-    likeWrapperEl.innerHTML = `<svg class="like-icon"><use href="./img/icons.svg#like"></use></svg>`;
+    likeWrapperEl.innerHTML = `<svg class='like-icon'><use href='./img/icons.svg#like'></use></svg>`;
     cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
@@ -66,7 +67,8 @@ export class RecipeCard {
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');
-    ratingNumber.textContent = data.rating;
+
+    ratingNumber.textContent = data.rating.toFixed(1);
     rating.appendChild(ratingNumber);
 
     const ratingStars = document.createElement('div');
@@ -107,13 +109,13 @@ export class RecipeCard {
 
   createLastStart(filledPart) {
     return `<svg class="rating-star-icon">
-      <linearGradient id="myGradient" gradientTransform="rotate(0)">
+      <linearGradient id="myGradient${filledPart}" gradientTransform="rotate(0)">
         <stop offset="0%" stop-color="var(--color-star-marked)" />
         <stop offset="${filledPart}%" stop-color="var(--color-star-marked)" />
         <stop offset="${filledPart}%" stop-color="var(--color-star-unmarked)" />
         <stop offset="100%" stop-color="var(--color-star-unmarked)" />
       </linearGradient>
-      <use href="./img/icons.svg#star" fill="url(#myGradient)"></use>
+      <use href="./img/icons.svg#star" fill="url(#myGradient${filledPart})"></use>
     </svg>`;
   }
 
