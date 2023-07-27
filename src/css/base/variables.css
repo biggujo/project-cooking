@@ -46,8 +46,14 @@
   --color-hero-card-title: rgba(248, 248, 248, 0.6);
   --color-hero-card-subtitle: rgba(248, 248, 248, 0.2);
 
+  /* Theme */
+  --color-theme: #ffffff;
+
   /* Modal */
   --color-modal-background: #ffffff;
+
+  /* Scrollbar */
+  --color-scrollbar: rgba(5, 5, 5, 0.18);
 
   /* Star */
   --color-star-marked: #eea10c;
@@ -70,8 +76,6 @@
   /*
    * Animation
    */
-
   --primary-animation-duration: 250ms;
   --primary-animation-time-func: ease-in-out;
 }
-
