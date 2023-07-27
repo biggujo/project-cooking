@@ -87,7 +87,7 @@
 }
 
 .button-fav-category {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 18px;
@@ -102,6 +102,10 @@
   border-radius: 15px;
   border: 1px solid var(--color-gray-pale-alpha020);
   background-color: transparent;
+}
+
+.button-fav-category + .button-fav-category {
+  margin-left: 15px;
 }
 
 .button-fav-category-active {

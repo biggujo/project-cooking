@@ -2,25 +2,30 @@
 
 }
 
-.fav-categories {
+.fav-categories-container {
   position: relative;
 
+  display: flex;
+  width: calc(100% + (100vw - 100%) / 2 - 10px);
+  height: 65px;
+
   margin-bottom: 24px;
-  padding-bottom: 10px;
 
   white-space: nowrap;
 }
 
-.fav-categories-list {
+.fav-categories {
   position: absolute;
 
-  width: calc(100% + 10px);
+  height: 65px;
 
   overflow: auto;
 }
 
-.fav-categories-list::-webkit-scrollbar {
-  display: none;
+@media screen and (min-width: 768px) {
+  .fav-categories {
+    gap: 15px;
+  }
 }
 
 @media screen and (min-width: 375px) {
