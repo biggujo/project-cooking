@@ -1,9 +1,3 @@
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 .scroll-up-btn {
   position: fixed;
   bottom: 20px;
@@ -227,5 +221,6 @@
 }
 
 .like-icon.filled {
-  fill: #f8f8f8;
+  color: var(--color-like-enabled);
+  fill: currentColor;
 }

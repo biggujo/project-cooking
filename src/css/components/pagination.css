@@ -33,8 +33,12 @@
   margin-right: 14px;
 }
 
-.tui-pagination .tui-next {
-  margin-left: 14px;
+.pag__btn-move.pag__btn-disabled.tui-page-btn.tui-is-disabled.tui-next {
+  margin-left: 10px !important;
+}
+
+.pag__btn-move.tui-page-btn.tui-next {
+  margin-left: 0px !important;
 }
 
 .tui-pagination .tui-is-selected {

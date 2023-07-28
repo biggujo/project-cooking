@@ -20,7 +20,7 @@ import { PopUpRecipeModal } from './js/pop-up-recipe-modal.js';
 import { RecipeCard } from './js/recipe-card.js';
 import './js/filters.js';
 import './js/switcher.js';
-import './js/render-cards.js';
+// import './js/render-cards.js';
 
 highlightCurrentPage();
 
