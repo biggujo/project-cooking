@@ -2,6 +2,8 @@ import { RecipeCard } from './js/recipe-card.js';
 import './js/pagination-instance.js';
 import './js/card-click.js';
 import { createPagination } from './js/pagination-instance.js';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { PopUpModal } from './js/pop-up-modal.js';
 
 const ALL_CATEGORIES_NAME = 'All categories';
 const ITEMS_PER_PAGE = 12;
@@ -38,7 +40,7 @@ function handleCategoryClick({ target }) {
 
   holdHeightOfCardList();
   renderCardsFromLocalStorage({ givenCategory: selectedCategory })
-    .catch(console.log)
+    .catch(Notify.failure)
     .finally(() => releaseHeightOfCardList());
 }
 
@@ -60,11 +62,10 @@ function doNewRenderOfCardsAndCategories() {
   holdHeightOfCardList();
   renderCardsFromLocalStorage({ page })
     .then(categories => {
-      console.log(categories);
       renderCategoriesByNames(categories);
       releaseHeightOfCardList();
     })
-    .catch(console.log);
+    .catch(Notify.failure);
 }
 
 async function renderCardsFromLocalStorage({ givenCategory, page }) {
@@ -138,7 +139,7 @@ async function renderCardsFromLocalStorage({ givenCategory, page }) {
 
     return categories;
   } catch (error) {
-    console.log(error);
+    Notify.failure(error);
   }
 }
 
@@ -195,7 +196,7 @@ function isFavoritesEmpty() {
     const idsArray = JSON.parse(localStorage.getItem('favorites'));
     return idsArray === null || idsArray.length === 0;
   } catch (error) {
-    console.log(error);
+    Notify.failure(error);
   }
 }
 

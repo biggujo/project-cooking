@@ -1,4 +1,5 @@
 import { PopUpRatingModal } from './pop-up-rating-modal';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export class PopUpRecipeModal {
   _recipeData;
@@ -6,7 +7,6 @@ export class PopUpRecipeModal {
   ratingBtnRef;
 
   constructor(recipeData) {
-    console.log('Dish description');
     this.refs = {
       openModalBtns: document.querySelectorAll(null),
       closeModalBtn: document.querySelector('[data-pop-up-recipe-close]'),
@@ -26,7 +26,6 @@ export class PopUpRecipeModal {
   }
 
   onOpenModal = () => {
-    console.log('Open!');
     window.addEventListener('keydown', this.onEscapeKeyPress);
     this.refs.backdrop.classList.remove('is-hidden');
     this.ratingBtnRef.addEventListener('click', this.onRatingBtnClick);
@@ -52,7 +51,6 @@ export class PopUpRecipeModal {
   };
 
   onEscapeKeyPress = e => {
-    console.log(e);
     if (e.code === 'Escape') {
       this.onCloseModal();
     }
@@ -146,7 +144,7 @@ export class PopUpRecipeModal {
         favBtn.textContent = 'Add to Favorites';
       }
     } catch (error) {
-      console.log(error);
+      Notify.failure(error);
     }
 
     this.onOpenModal();
@@ -171,12 +169,12 @@ export class PopUpRecipeModal {
     toggleFavIconFill(dishId);
 
     if (!favortiesIdsArray.includes(dishId)) {
-      console.log('Add to favourites: ', dishId);
+      Notify.success(`Add to favourites!`);
       favortiesIdsArray.push(dishId);
       saveToFavorites(favortiesIdsArray);
       favBtn.textContent = 'Remove from Favorites';
     } else {
-      console.log('Remove from favourites: ', dishId);
+      Notify.success(`Remove from favourites!`);
       const index = favortiesIdsArray.indexOf(dishId);
       if (index !== -1) {
         favortiesIdsArray.splice(index, 1);

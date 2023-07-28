@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio.js';
 
 const BASE_API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const paginationContainer = document.getElementById('pagination');
@@ -13,11 +14,8 @@ function fetchRecipes(page, limit) {
       }
       return response.json();
     })
-    .then(recipes => {
-      console.log(recipes);
-    })
     .catch(error => {
-      console.error('ERROR', error);
+      Notify.failure(error);
     });
 }
 

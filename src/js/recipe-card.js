@@ -1,4 +1,5 @@
 import { all } from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const removeFromFavoritesEvent = new Event('remove-from-favorites');
 
@@ -137,10 +138,10 @@ export class RecipeCard {
     const isFilled = heartIcon.classList.contains('filled');
 
     if (!isFilled) {
-      console.log('Add to favourites: ', recipeTitle);
+      Notify.success('Add to favourites: ', recipeTitle);
       this.addToFavorites(recipeId);
     } else {
-      console.log('Remove from favourites: ', recipeTitle);
+      Notify.success('Remove from favourites: ', recipeTitle);
       this.removeFromFavorites(recipeId);
     }
   }
@@ -153,7 +154,7 @@ export class RecipeCard {
         this.saveToFavorites(favorites);
       }
     } catch (error) {
-      console.log(error);
+      Notify.failure(error);
     }
   }
 
@@ -166,7 +167,7 @@ export class RecipeCard {
         this.saveToFavorites(favorites);
       }
     } catch (error) {
-      console.log(error);
+      Notify.failure(error);
     }
   }
 
