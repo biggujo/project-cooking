@@ -92,14 +92,10 @@ async function handleRecipeCardClick({ target }) {
     return;
   }
 
-  loaderRef.classList.remove('is-hidden');
-
   try {
     await renderModalById();
   } catch (e) {
     console.log(e);
-  } finally {
-    loaderRef.classList.add('is-hidden');
   }
 
   function hasLikeIconBeenClicked() {
