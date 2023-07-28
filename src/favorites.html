@@ -55,11 +55,21 @@
       </section>
       <section class='fav-recipes'>
         <div class='container'>
+          <div class='fav-no-recipes is-hidden'>
+            <svg class='fav-no-recipes-chef-hat'>
+              <use href='./img/icons.svg#chef-hat'></use>
+            </svg>
+            <p class='fav-no-recipes-message'>It appears that you haven't added
+              any recipes to your favorites yet. To get started, you can add
+              recipes that you like to your favorites for easier access in the
+              future.</p>
+          </div>
           <div class='fav-categories-container'>
             <div class='fav-categories scroll-container'>
             </div>
           </div>
-          <load ="./partials/render-favourites-cards.html" />
+          <load
+          ="./partials/render-favourites-cards.html" />
         </div>
         <load ="./partials/pagination.html" />
       </section>
