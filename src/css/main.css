@@ -23,6 +23,8 @@
 }
 
 body {
+  padding-bottom: 100px;
+
   background-color: var(--color-gray-accent-primary);
   color: var(--color-text-primary);
 }
