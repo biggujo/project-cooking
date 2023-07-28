@@ -144,6 +144,10 @@ async function renderCardsFromLocalStorage({ givenCategory, page }) {
 function renderCategoriesByNames(categories) {
   refs.favoritesCategories.innerHTML = '';
 
+  if (categories === null || categories.size === 0) {
+    showNoFavFound();
+  }
+
   renderCategoryByName(ALL_CATEGORIES_NAME);
   [...categories].sort().forEach(renderCategoryByName);
 
@@ -196,4 +200,5 @@ function isFavoritesEmpty() {
 
 function showNoFavFound() {
   document.querySelector('.fav-no-recipes').classList.remove('is-hidden');
+  document.querySelector('.fav-categories-container').style.display = 'none';
 }
