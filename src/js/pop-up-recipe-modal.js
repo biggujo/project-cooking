@@ -96,6 +96,11 @@ export class PopUpRecipeModal {
       ></iframe>`;
     };
 
+    const cardRef = document.querySelector(
+      `[data-id="${this.recipeData._id}"]`
+    );
+    const ratingContainerRef = cardRef.querySelector('.rating-stars');
+
     const modalWindowRecipeMarkup = `
     <div class='switch-places'>
       ${videoMarkup()}
@@ -104,23 +109,7 @@ export class PopUpRecipeModal {
       <div class='media-container'>
         <div class='div-rating'>
           <span class='middle-rate'>${this.recipeData.rating}</span>
-          <ul class='stars-list'>
-            <li><svg class='star-svg'>
-              <use href='./img/icons.svg#star'></use>
-            </svg></li>
-            <li><svg class='star-svg'>
-              <use href='./img/icons.svg#star'></use>
-            </svg></li>
-            <li><svg class='star-svg'>
-              <use href='./img/icons.svg#star'></use>
-            </svg></li>
-            <li><svg class='star-svg'>
-              <use href='./img/icons.svg#star'></use>
-            </svg></li>
-            <li><svg class='star-svg'>
-              <use href='./img/icons.svg#star'></use>
-            </svg></li>
-          </ul>
+          ${ratingContainerRef.outerHTML}
           <span class='middle-time'>${this.recipeData.time}</span>
         </div>
         <div class='ingredients'>
