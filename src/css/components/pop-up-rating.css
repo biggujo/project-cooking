@@ -121,6 +121,7 @@
 }
 
 .pop-up-rating-number {
+  width: 23px;
   line-height: 1.5;
 }
 
@@ -130,10 +131,11 @@
 }
 
 .pop-up-rating-item-icon {
-  fill: var(--color-star-marked);
+  color: var(--color-star-unmarked);
+  fill: currentColor;
 }
 
-.email-form {
+.rating-form {
   display: flex;
   gap: 14px;
   flex-direction: column;

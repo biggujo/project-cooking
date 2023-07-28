@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // * An example of import
 import { sayHello } from './js/test.js';
 
@@ -16,6 +18,7 @@ import './js/all-categories.js';
 import './js/pagination.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import { PopUpRecipeModal } from './js/pop-up-recipe-modal.js';
+import { PopUpRatingModal } from './js/pop-up-rating-modal.js';
 
 import { RecipeCard } from './js/recipe-card.js';
 import './js/filters.js';
@@ -24,12 +27,10 @@ import './js/switcher.js';
 
 highlightCurrentPage();
 
+const loaderRef = document.querySelector('.card-modal-loader-backdrop');
+
 // Recipe modal
-new PopUpModal({
-  openModalSelector: '[data-pop-up-rating-open]',
-  closeModalSelector: '[data-pop-up-rating-close]',
-  backdropSelector: '[data-pop-up-rating-modal]',
-});
+// new PopUpRatingModal();
 
 // Rating modal
 new PopUpModal({
@@ -71,6 +72,9 @@ async function renderCards() {
 document.body.addEventListener('click', handleRecipeCardClick);
 
 async function handleRecipeCardClick({ target }) {
+  const recipeCardURL =
+    'https://tasty-treats-backend.p.goit.global/api/recipes';
+
   if (hasLikeIconBeenClicked(target)) {
     return;
   }
@@ -88,18 +92,26 @@ async function handleRecipeCardClick({ target }) {
     return;
   }
 
-  await renderModalById();
+  loaderRef.classList.remove('is-hidden');
+
+  try {
+    await renderModalById();
+  } catch (e) {
+    console.log(e);
+  } finally {
+    loaderRef.classList.add('is-hidden');
+  }
 
   function hasLikeIconBeenClicked() {
-    return target.nodeName === 'svg' || target.nodeName === 'use';
+    console.log('target.dataset.like !== null: ', target.dataset.like !== null);
+    return target.dataset.like !== undefined;
   }
 
   async function renderModalById() {
     const givenId = clickedCard.dataset.id;
 
-    const { _recipeData: recipeData } = cardArray.find(
-      card => givenId === card.recipeData._id
-    );
+    const response = await axios.get(`${recipeCardURL}/${givenId}`);
+    const recipeData = await response.data;
 
     await new PopUpRecipeModal(recipeData).openModal();
   }

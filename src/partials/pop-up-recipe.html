@@ -1,17 +1,19 @@
-<div class='backdrop is-hidden' data-pop-up-recipe-modal>
-  <div class='modal'>
-    <button class='close-btn' data-pop-up-recipe-close>
-      <svg class='close-svg'>
-        <use href='./img/icons.svg#close-pop-up'></use>
+<div class="backdrop is-hidden" data-pop-up-recipe-modal>
+  <div class="modal">
+    <button class="close-btn" data-pop-up-recipe-close>
+      <svg class="close-svg">
+        <use href="./img/icons.svg#close-pop-up"></use>
       </svg>
     </button>
-    <div class='modal-recipe-content'></div>
-    <ul class='recipe-btn-list'>
+    <div class="modal-recipe-content"></div>
+    <ul class="recipe-btn-list">
       <li>
-        <button class='btn fav'>Add to favorite</button>
+        <button class="btn fav">Add to favorite</button>
       </li>
       <li>
-        <button class='btn'>Give a rating</button>
+        <button data-pop-up-rating-open class="rating-btn btn">
+          Give a rating
+        </button>
       </li>
     </ul>
   </div>
