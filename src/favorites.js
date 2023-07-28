@@ -1,7 +1,11 @@
 import { RecipeCard } from './js/recipe-card.js';
 import './js/pagination-favorites.js';
+import { createPagination } from './js/pagination-favorites.js';
 
 const ALL_CATEGORIES_NAME = 'All categories';
+const ITEMS_PER_PAGE = 12;
+
+let page = 1;
 
 const refs = {
   favoritesCategories: document.querySelector('.fav-categories'),
@@ -29,7 +33,7 @@ function handleCategoryClick({ target }) {
   selectCategoryByName(selectedCategory);
 
   holdHeightOfCardList();
-  renderCardsFromLocalStorage(selectedCategory)
+  renderCardsFromLocalStorage({ givenCategory: selectedCategory })
     .catch(console.log)
     .finally(() => releaseHeightOfCardList());
 }
@@ -40,7 +44,9 @@ function handleFavoriteLikeClick({ target }) {
   }
 
   holdHeightOfCardList();
-  renderCardsFromLocalStorage(target.textContent).then(categories => {
+  renderCardsFromLocalStorage({
+    givenCategory: target.textContent,
+  }).then(categories => {
     renderCategoriesByNames(categories);
     releaseHeightOfCardList();
   });
@@ -48,7 +54,7 @@ function handleFavoriteLikeClick({ target }) {
 
 function doNewRenderOfCardsAndCategories() {
   holdHeightOfCardList();
-  renderCardsFromLocalStorage()
+  renderCardsFromLocalStorage({ page })
     .then(categories => {
       console.log(categories);
       renderCategoriesByNames(categories);
@@ -57,7 +63,7 @@ function doNewRenderOfCardsAndCategories() {
     .catch(console.log);
 }
 
-async function renderCardsFromLocalStorage(givenCategory) {
+async function renderCardsFromLocalStorage({ givenCategory, page }) {
   try {
     const idsArray = JSON.parse(localStorage.getItem('favorites'));
 
@@ -67,11 +73,18 @@ async function renderCardsFromLocalStorage(givenCategory) {
       return new RecipeCard().init(id);
     });
 
-    const recipeCardEls = await Promise.all(cardsPromises);
+    let recipeCardEls = await Promise.all(cardsPromises);
 
     let categories = recipeCardEls;
 
     if (givenCategory && givenCategory !== ALL_CATEGORIES_NAME) {
+      if (page) {
+        recipeCardEls = recipeCardEls.slice(
+          page * ITEMS_PER_PAGE,
+          (page + 1) * ITEMS_PER_PAGE
+        );
+      }
+
       categories = recipeCardEls.filter(
         recipeCardEl => recipeCardEl.recipeData.category === givenCategory
       );
