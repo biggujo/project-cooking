@@ -35,6 +35,15 @@
   background-color: transparent;
   font-size: 14px;
   font-weight: 500;
+
+  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
+  color var(--primary-animation-duration) var(--primary-animation-time-func);
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+  color: var(--color-modal-background);
+  background-color: var(--color-accent-primary);
 }
 
 .hero-outer-swiper-wrapper {
