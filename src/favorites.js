@@ -12,18 +12,17 @@ const refs = {
   favoritesList: document.getElementById('rendered-cards-for-favourites'),
 };
 
-document.addEventListener('remove-from-favorites', () => {
-  console.log('Change!');
-  doNewRenderOfCardsAndCategories();
-});
-
 refs.favoritesCategories.addEventListener('click', handleCategoryClick);
 refs.favoritesList.addEventListener('click', handleFavoriteLikeClick);
 
-if (isFavoritesEmpty()) {
-  showNoFavFound();
-} else {
-  doNewRenderOfCardsAndCategories();
+initRender();
+
+function initRender() {
+  if (isFavoritesEmpty()) {
+    showNoFavFound();
+  } else {
+    doNewRenderOfCardsAndCategories();
+  }
 }
 
 function handleCategoryClick({ target }) {
@@ -69,8 +68,6 @@ function doNewRenderOfCardsAndCategories() {
 
 async function renderCardsFromLocalStorage({ givenCategory, page }) {
   try {
-    if (!page) page = 1;
-
     const idsArray = JSON.parse(localStorage.getItem('favorites'));
 
     refs.favoritesList.innerHTML = '';
@@ -99,17 +96,23 @@ async function renderCardsFromLocalStorage({ givenCategory, page }) {
     document.getElementById('pagination').style.display =
       categories.length > ITEMS_PER_PAGE ? 'block' : 'none';
 
-    if (page === 1) {
-      createPagination({
-        totalItems: categories.length,
-        itemsPerPage: ITEMS_PER_PAGE,
-        afterMove: eventData => {
-          renderCardsFromLocalStorage({
-            givenCategory,
-            page: eventData.page,
-          });
-        },
-      });
+    if (categories.length > ITEMS_PER_PAGE) {
+      document.getElementById('pagination').style.display = 'block';
+
+      if (!page) page = 1;
+
+      if (page === 1) {
+        createPagination({
+          totalItems: categories.length,
+          itemsPerPage: ITEMS_PER_PAGE,
+          afterMove: eventData => {
+            renderCardsFromLocalStorage({
+              givenCategory,
+              page: eventData.page,
+            });
+          },
+        });
+      }
     }
 
     if (page) {
