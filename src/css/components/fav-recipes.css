@@ -1,0 +1,55 @@
+.fav-recipes {
+
+}
+
+.fav-categories-container {
+  position: relative;
+
+  display: flex;
+  width: calc(100% + (100vw - 100%) / 2 - 10px);
+  height: 65px;
+
+  margin-bottom: 24px;
+
+  white-space: nowrap;
+}
+
+.fav-categories {
+  position: absolute;
+
+  height: 65px;
+
+  overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .fav-categories {
+    gap: 15px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .fav-categories-list {
+    width: calc(100% + var(--breakpoint-mobile-container-padding-inline));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fav-categories-list {
+    width: calc(100% + var(--breakpoint-tablet-container-padding-inline));
+  }
+
+  .fav-categories {
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  .fav-categories-list {
+    width: calc(100% + var(--breakpoint-computer-container-padding-inline));
+  }
+}
+
+.fav-categories-item {
+  display: inline-block;
+}

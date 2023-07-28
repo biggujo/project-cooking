@@ -1,0 +1,17 @@
+.fav-hero {
+  width: 100%;
+
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .fav-hero {
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .fav-hero {
+    display: none;
+  }
+}
