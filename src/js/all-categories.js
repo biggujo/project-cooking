@@ -26,7 +26,7 @@ let activeCategory = null;
 const callWithLimitAccordingToScreenSize = mediaQuery => {
   console.log(mediaQuery);
   if (mediaQuery.media === '(max-width: 768px)') {
-    fetchRecipes(activeCategory, 5);
+    fetchRecipes(activeCategory, 6);
   } else if (
     mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)'
   ) {
@@ -43,13 +43,17 @@ function renderAccordingToMediaQueryScreenSize() {
   );
   const mediaQueryMin1161 = window.matchMedia('(min-width: 1161px)');
 
-  callWithLimitAccordingToScreenSize(mediaQuery768);
-  callWithLimitAccordingToScreenSize(mediaQuery769to1160);
-  callWithLimitAccordingToScreenSize(mediaQueryMin1161);
+  if (mediaQuery768.matches) {
+    callWithLimitAccordingToScreenSize(mediaQuery768);
+  } else if (mediaQuery769to1160.matches) {
+    callWithLimitAccordingToScreenSize(mediaQuery769to1160);
+  } else {
+    callWithLimitAccordingToScreenSize(mediaQueryMin1161);
+  }
 
-  mediaQuery768.addListener(callWithLimitAccordingToScreenSize);
-  mediaQuery769to1160.addListener(callWithLimitAccordingToScreenSize);
-  mediaQueryMin1161.addListener(callWithLimitAccordingToScreenSize);
+  // mediaQuery768.addListener(callWithLimitAccordingToScreenSize);
+  // mediaQuery769to1160.addListener(callWithLimitAccordingToScreenSize);
+  // mediaQueryMin1161.addListener(callWithLimitAccordingToScreenSize);
 }
 
 fetchCategories()
