@@ -63,9 +63,20 @@ export class RecipeCard {
     description.textContent = data.description;
     cardEl.appendChild(description);
 
+    const info = document.createElement('div');
+    info.classList.add('card-information');
+
     const rating = document.createElement('div');
     rating.classList.add('rating');
-    cardEl.appendChild(rating);
+
+    info.appendChild(rating);
+
+    const recipeBtn = document.createElement('button');
+    recipeBtn.textContent = 'See recipe';
+    recipeBtn.classList.add('recipe-button');
+    info.appendChild(recipeBtn);
+
+    cardEl.appendChild(info);
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');

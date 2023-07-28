@@ -65,7 +65,9 @@
 }
 
 @media screen and (min-width: 768px) {
-
+  .all-categories-button {
+    margin-top: 26px;
+  }
 
   .all-categories-list {
     height: 416px;
