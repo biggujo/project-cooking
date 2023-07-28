@@ -194,6 +194,8 @@ export function checkMediaQueriesByClick() {
   } else if (mediaQueryMin1161.matches) {
     limit = 9;
   }
+
+  console.log('Limit:', limit);
   return limit;
 }
 
@@ -222,7 +224,8 @@ export function axiosRequestForRenderCards(url) {
       });
     })
     .catch(error => {
-      Notify.failure('Sorry, there is something wrong with your request!');
+      console.log(error);
+      // Notify.failure('Sorry, there is something wrong with your request!');
       throw error;
     });
 }
