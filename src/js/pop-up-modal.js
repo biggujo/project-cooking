@@ -8,6 +8,11 @@ export class PopUpModal {
       backdrop: document.querySelector(backdropSelector),
     };
 
+    if (backdropSelector === '[data-header-menu-modal]') {
+      const modal = document.querySelector('[data-header-menu-modal] > .modal');
+      modal.style.backgroundColor = 'var(--color-accent-primary)';
+    }
+
     if (this.refs.openModalBtns) {
       this.refs.openModalBtns.forEach(openModalBtn => {
         openModalBtn.addEventListener('click', this.onOpenModal.bind(this));
@@ -27,11 +32,13 @@ export class PopUpModal {
   onOpenModal = () => {
     window.addEventListener('keydown', this.onEscapeKeyPress);
     this.refs.backdrop.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
   };
 
   onCloseModal = () => {
     window.removeEventListener('keydown', this.onEscapeKeyPress);
     this.refs.backdrop.classList.add('is-hidden');
+    document.body.style.overflow = 'unset';
   };
 
   onBackdropClick = e => {
