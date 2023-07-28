@@ -13,8 +13,8 @@ a {
 
 /*ANIMATION*/
 .animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s;
+  -webkit-animation: animatezoom var(--primary-animation-duration) forwards;
+  animation: animatezoom var(--primary-animation-duration) forwards;
 }
 
 @-webkit-keyframes animatezoom {
@@ -35,6 +35,29 @@ a {
   }
 }
 
+.animate-reverse {
+  -webkit-animation: animatezoom-reverse var(--primary-animation-duration) forwards;
+  animation: animatezoom-reverse var(--primary-animation-duration) forwards;
+}
+
+@-webkit-keyframes animatezoom-reverse {
+  from {
+    -webkit-transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(0);
+  }
+}
+
+@keyframes animatezoom-reverse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
 /*ADDITIONAL*/
 #roll_back {
   position: fixed;
@@ -45,7 +68,7 @@ a {
   border-radius: 100%;
   border: 3px solid var(--color-accent-primary);
   padding: 8px 8px;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   /* z-index: 3; */
@@ -54,10 +77,12 @@ a {
   font-size: 28px;
   opacity: 0.8;
 }
+
 #roll_back:hover {
   opacity: 1;
   scale: 1.1;
 }
+
 .arrow-up {
   width: 24px;
   height: 24px;
