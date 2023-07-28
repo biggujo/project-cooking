@@ -2,6 +2,12 @@ import axios from 'axios';
 import { CustomSelect } from './custom-select';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { RecipeCard } from './recipe-card';
+import { fetchCategories } from './api-categories.js';
+import { createPagination } from './pagination-instance.js';
+
+const ITEMS_PER_PAGE = getAmountOfCardsPerPage();
+
+export let page = 1;
 
 const API_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const searchFormEl = document.querySelector('.search__recipes');
@@ -12,7 +18,12 @@ const searchIconEl = document.querySelector('.search__icon-svg');
 const resetFiltersEl = document.querySelector('.filters-reset');
 const selectsEl = document.querySelectorAll('.filter-select__toggle');
 
+const allCategoriesList = document.querySelector('.all-categories-list');
+const allCategoriesButton = document.querySelector('.all-categories-button');
+
 const renderedCards = document.getElementById('rendered-cards-for-filters');
+
+let activeCategory = null;
 
 export let filtersResultForQuery = {};
 
@@ -32,6 +43,21 @@ export function resetAllFilters() {
     select.dataset.index = '-1';
     select.style.color = 'inherit';
   });
+}
+
+function getAmountOfCardsPerPage() {
+  const currentWindowWidth = document.documentElement.clientWidth;
+  let limitCount = 0;
+
+  if (currentWindowWidth < 768) {
+    return (limitCount = 6);
+  }
+
+  if (currentWindowWidth >= 768 && currentWindowWidth < 1160) {
+    return (limitCount = 8);
+  }
+
+  return (limitCount = 9);
 }
 
 function changesInInput() {
@@ -92,7 +118,7 @@ searchInputEl.addEventListener(
 function fetchRecipeByFilter(filters) {
   const limit = checkMediaQueriesByClick();
   const url = buildRecipeURL(filters, limit);
-  axiosRequestForRenderCards(url);
+  axiosRequestForRenderCards({ url });
 }
 
 /* filter change listener */
@@ -183,15 +209,15 @@ fetchDataForFilters('areas')
 export function checkMediaQueriesByClick() {
   let limit = null;
   const mediaQuery768 = window.matchMedia('(max-width: 768px)');
-  const mediaQuery769to1160 = window.matchMedia(
-    '(min-width: 769px) and (max-width: 1160px)'
+  const mediaQuery769to1159 = window.matchMedia(
+    '(min-width: 769px) and (max-width: 1159px)'
   );
-  const mediaQueryMin1161 = window.matchMedia('(min-width: 1161px)');
+  const mediaQueryMin1160 = window.matchMedia('(min-width: 1160px)');
   if (mediaQuery768.matches) {
     limit = 5;
-  } else if (mediaQuery769to1160.matches) {
+  } else if (mediaQuery769to1159.matches) {
     limit = 8;
-  } else if (mediaQueryMin1161.matches) {
+  } else if (mediaQueryMin1160.matches) {
     limit = 9;
   }
 
@@ -200,9 +226,9 @@ export function checkMediaQueriesByClick() {
 }
 
 /* Function for Axios requests. Used also in all-categories.js */
-export function axiosRequestForRenderCards(url) {
+export function axiosRequestForRenderCards({ url }) {
   return axios
-    .get(url)
+    .get(`${url}&page=${page}`)
     .then(response => {
       const recipes = response.data.results;
       console.log(recipes);
@@ -212,6 +238,28 @@ export function axiosRequestForRenderCards(url) {
           'Sorry, nothing found. Change your filters, or check the entered values.'
         );
       }
+
+      if (!response.data.totalPages || response.data.totalPages < 2) {
+        document.getElementById('pagination').style.display = 'none';
+      } else {
+        document.getElementById('pagination').style.display = 'block';
+      }
+
+      if (page === 1) {
+        createPagination({
+          totalItems: response.data.perPage * response.data.totalPages,
+          itemsPerPage: ITEMS_PER_PAGE,
+          afterMove: eventData => {
+            axiosRequestForRenderCards({
+              url,
+              page: eventData.page,
+            });
+
+            page = eventData.page;
+          },
+        });
+      }
+
       const recipeCardPromises = recipes.map(recipe => {
         return new RecipeCard().init(recipe._id);
       });
@@ -228,6 +276,121 @@ export function axiosRequestForRenderCards(url) {
       // Notify.failure('Sorry, there is something wrong with your request!');
       throw error;
     });
+}
+
+const callWithLimitAccordingToScreenSize = mediaQuery => {
+  console.log(mediaQuery);
+  if (mediaQuery.media === '(max-width: 768px)') {
+    fetchRecipes(activeCategory, 6);
+  } else if (
+    mediaQuery.media === '(min-width: 769px) and (max-width: 1159px)'
+  ) {
+    fetchRecipes(activeCategory, 8);
+  } else if (mediaQuery.media === '(min-width: 1160px)') {
+    fetchRecipes(activeCategory, 9);
+  }
+};
+
+function renderAccordingToMediaQueryScreenSize() {
+  const mediaQuery768 = window.matchMedia('(max-width: 768px)');
+  const mediaQuery769to1159 = window.matchMedia(
+    '(min-width: 769px) and (max-width: 1159px)'
+  );
+  const mediaQueryMin1160 = window.matchMedia('(min-width: 1160px)');
+
+  if (mediaQuery768.matches) {
+    callWithLimitAccordingToScreenSize(mediaQuery768);
+  } else if (mediaQuery769to1159.matches) {
+    callWithLimitAccordingToScreenSize(mediaQuery769to1159);
+  } else {
+    callWithLimitAccordingToScreenSize(mediaQueryMin1160);
+  }
+
+  // mediaQuery768.addListener(callWithLimitAccordingToScreenSize);
+  // mediaQuery769to1160.addListener(callWithLimitAccordingToScreenSize);
+  // mediaQueryMin1161.addListener(callWithLimitAccordingToScreenSize);
+}
+
+fetchCategories()
+  .then(categories => {
+    markupAllCategoriesListItem(categories);
+    allCategoriesList.addEventListener('click', handleClickedCategories);
+    allCategoriesButton.addEventListener('click', () => {
+      resetAllFilters();
+      delete filtersResultForQuery.category;
+      handleClickedAllCategories();
+    });
+    renderAccordingToMediaQueryScreenSize();
+  })
+  .catch(error => {
+    console.error('ERROR', error);
+  });
+
+function handleClickedCategories(event) {
+  const target = event.target;
+
+  if (target.classList.contains('all-categories-item-button')) {
+    const activeButton = document.querySelector(
+      '.all-categories-item-button.is-active'
+    );
+
+    if (activeButton && activeButton !== target) {
+      activeButton.classList.remove('is-active');
+    }
+
+    if (activeCategory === target.innerText) {
+      activeCategory = null;
+    } else {
+      target.classList.add('is-active');
+      filtersResultForQuery['category'] = target.textContent.trim();
+      console.log(filtersResultForQuery);
+      activeCategory = target.innerText;
+      allCategoriesButton.classList.remove('is-active'); // Знімаємо активний клас з кнопки "All categories"
+    }
+
+    renderAccordingToMediaQueryScreenSize();
+  }
+}
+
+function handleClickedAllCategories() {
+  const activeButton = document.querySelector(
+    '.all-categories-item-button.is-active'
+  );
+
+  if (activeButton) {
+    activeButton.classList.remove('is-active');
+  }
+
+  activeCategory = null;
+  allCategoriesButton.classList.add('is-active');
+
+  fetchRecipes(activeCategory)
+    .then(recipes => {
+      console.log(recipes);
+    })
+    .catch(error => {
+      console.error('ERROR', error);
+    });
+}
+
+function fetchRecipes(category, limit) {
+  const url = buildRecipeURL(filtersResultForQuery, limit);
+  page = 1;
+  axiosRequestForRenderCards({ url });
+}
+
+function markupAllCategoriesListItem(categories) {
+  const allCategoriesListItem = categories
+    .map(category => {
+      return `<li class='all-categories-item'>
+                <button class='all-categories-item-button'
+                  type='button'>${category}
+                </button>
+              </li>`;
+    })
+    .join('');
+
+  allCategoriesList.insertAdjacentHTML('afterbegin', allCategoriesListItem);
 }
 
 /* Function for build URL for Axios requests. Used also in all-categories.js */

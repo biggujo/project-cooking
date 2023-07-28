@@ -14,7 +14,6 @@ scrollFunc();
 import { highlightCurrentPage } from './js/header-current-page-marker.js';
 
 import './js/heroSection.js';
-import './js/all-categories.js';
 import './js/pagination.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import './js/card-click.js';

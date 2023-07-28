@@ -1,7 +1,7 @@
 import { RecipeCard } from './js/recipe-card.js';
-import './js/pagination-favorites.js';
+import './js/pagination-instance.js';
 import './js/card-click.js';
-import { createPagination } from './js/pagination-favorites.js';
+import { createPagination } from './js/pagination-instance.js';
 
 const ALL_CATEGORIES_NAME = 'All categories';
 const ITEMS_PER_PAGE = 12;
