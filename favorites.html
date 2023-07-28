@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/project-cooking/assets/favicon-4a748afd.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset='UTF-8' />
+    <link rel='icon' type='image/svg+xml' href='/project-cooking/assets/favicon-4a748afd.svg' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/project-cooking/assets/favorites-4764e961.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-b9603435.js">
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-ece7dbcb.js">
-    <link rel="stylesheet" href="/project-cooking/assets/icons-92e7d1aa.css">
+    <script type="module" crossorigin src="/project-cooking/assets/favorites-31810fbe.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-5e887f43.js">
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-30d960b9.js">
+    <link rel="stylesheet" href="/project-cooking/assets/scroll-up-88da730b.css">
+    <link rel="stylesheet" href="/project-cooking/assets/icons-ef6bc7a2.css">
   </head>
   <body>
     <header>
@@ -154,29 +155,64 @@
   </section>
 </header>
 
-    <div class="scroll-container">
-      <div class="scroll-content">
-
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-        <button class="scroll-by-items">Element 1</button>
-
-
-
-      </div>
-    </div>
-
     <a href="#" id="roll_back" class="animate">
   <svg class="arrow-up">
     <use href="/project-cooking/assets/icons-bb57ee8a.svg#dropdown"></use></svg
 ></a>
 
+
+    <main>
+      <section class='fav-hero'>
+        <div class='container'>
+          <picture>
+            <source srcset='/project-cooking/assets/fav-hero-computer-42d0e7b2.webp 1x, /project-cooking/assets/fav-hero-computer@2x-05ae1080.webp 2x, /project-cooking/assets/fav-hero-computer@3x-79f5ee5f.webp 3x'
+                    media='(min-width: 1160px)'
+                    type='image/webp'
+            >
+            <source srcset='/project-cooking/assets/fav-hero-computer-223d4627.jpg 1x, /project-cooking/assets/fav-hero-computer@2x-3a0da0ce.jpg 2x, /project-cooking/assets/fav-hero-computer@3x-5c9749fc.jpg 3x'
+                    media='(min-width: 1160px)'
+                    type='image/jpg'
+            >
+            <source srcset='/project-cooking/assets/fav-hero-tablet-d3335cd6.webp 1x, /project-cooking/assets/fav-hero-tablet@2x-08bb45ab.webp 2x, /project-cooking/assets/fav-hero-tablet@3x-54902b73.webp 3x'
+                    media='(min-width: 768px)'
+                    type='image/webp'
+            >
+            <source srcset='/project-cooking/assets/fav-hero-tablet-9154e534.jpg 1x, /project-cooking/assets/fav-hero-tablet@2x-0fed0de2.jpg 2x, /project-cooking/assets/fav-hero-tablet@3x-093ea088.jpg 3x'
+                    media='(min-width: 768px)'
+                    type='image/jpg'
+            >
+            <source srcset='/project-cooking/assets/fav-hero-mobile-41416ed0.webp 1x, /project-cooking/assets/fav-hero-mobile@2x-0f282a37.webp 2x, /project-cooking/assets/fav-hero-mobile@3x-8b218333.webp 3x'
+                    type='image/webp'
+            >
+            <source srcset='/project-cooking/assets/fav-hero-mobile-9b545f45.jpg 1x, /project-cooking/assets/fav-hero-mobile@2x-8b241bb9.jpg 2x, /project-cooking/assets/fav-hero-mobile@3x-dd6304e3.jpg 3x'
+                    type='image/jpg'
+            >
+            <img src='/project-cooking/assets/fav-hero-computer-223d4627.jpg' alt='Some meal'>
+          </picture>
+        </div>
+      </section>
+      <section class='fav-recipes'>
+        <div class='container'>
+          <div class='fav-no-recipes is-hidden'>
+            <svg class='fav-no-recipes-chef-hat'>
+              <use href='/project-cooking/assets/icons-bb57ee8a.svg#chef-hat'></use>
+            </svg>
+            <p class='fav-no-recipes-message'>It appears that you haven't added
+              any recipes to your favorites yet. To get started, you can add
+              recipes that you like to your favorites for easier access in the
+              future.</p>
+          </div>
+          <div class='fav-categories-container'>
+            <div class='fav-categories scroll-container'>
+            </div>
+          </div>
+          <div class='rendered-cards' id='rendered-cards-for-favourites'></div>
+
+        </div>
+        <div id="pagination" class="pagination tui-pagination"></div>
+      </section>
+    </main>
+    
 
     
   </body>
