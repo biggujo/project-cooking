@@ -26,7 +26,7 @@ let activeCategory = null;
 const callWithLimitAccordingToScreenSize = mediaQuery => {
   console.log(mediaQuery);
   if (mediaQuery.media === '(max-width: 768px)') {
-    fetchRecipes(activeCategory, 5);
+    fetchRecipes(activeCategory, 6);
   } else if (
     mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)'
   ) {
