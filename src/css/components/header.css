@@ -1,12 +1,12 @@
 header {
   padding-top: 20px;
-  padding-bottom: 45px;
-  height: 200px;
 }
 
-.modal-nav {
-  height: 500px;
-  justify-content: flex-end;
+@media screen and (max-width: 767px) {
+  .modal-nav {
+    height: 500px;
+    justify-content: flex-end;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -18,14 +18,12 @@ header {
 @media screen and (min-width: 768px) {
   header {
     padding-top: 30px;
-    padding-bottom: 45px;
   }
 }
 
 @media screen and (min-width: 1160px) {
   header {
     padding-top: 42px;
-    padding-bottom: 35px;
   }
 }
 
