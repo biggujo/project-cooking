@@ -23,34 +23,33 @@ const allCategoriesButtons = document.querySelectorAll(
 
 let activeCategory = null;
 
-function checkMediaQueriesForFirstRendering() {
-  const handleMediaChange = mediaQuery => {
-    if (mediaQuery.matches) {
-      if (mediaQuery.media === '(max-width: 768px)') {
-        fetchRecipes(activeCategory, 5);
-      } else if (
-        mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)'
-      ) {
-        fetchRecipes(activeCategory, 8);
-      } else if (mediaQuery.media === '(min-width: 1161px)') {
-        fetchRecipes(activeCategory, 9);
-      }
-    }
-  };
+const callWithLimitAccordingToScreenSize = mediaQuery => {
+  console.log(mediaQuery);
+  if (mediaQuery.media === '(max-width: 768px)') {
+    fetchRecipes(activeCategory, 5);
+  } else if (
+    mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)'
+  ) {
+    fetchRecipes(activeCategory, 8);
+  } else if (mediaQuery.media === '(min-width: 1161px)') {
+    fetchRecipes(activeCategory, 9);
+  }
+};
 
+function renderAccordingToMediaQueryScreenSize() {
   const mediaQuery768 = window.matchMedia('(max-width: 768px)');
   const mediaQuery769to1160 = window.matchMedia(
     '(min-width: 769px) and (max-width: 1160px)'
   );
   const mediaQueryMin1161 = window.matchMedia('(min-width: 1161px)');
 
-  handleMediaChange(mediaQuery768);
-  handleMediaChange(mediaQuery769to1160);
-  handleMediaChange(mediaQueryMin1161);
+  callWithLimitAccordingToScreenSize(mediaQuery768);
+  callWithLimitAccordingToScreenSize(mediaQuery769to1160);
+  callWithLimitAccordingToScreenSize(mediaQueryMin1161);
 
-  mediaQuery768.addListener(handleMediaChange);
-  mediaQuery769to1160.addListener(handleMediaChange);
-  mediaQueryMin1161.addListener(handleMediaChange);
+  mediaQuery768.addListener(callWithLimitAccordingToScreenSize);
+  mediaQuery769to1160.addListener(callWithLimitAccordingToScreenSize);
+  mediaQueryMin1161.addListener(callWithLimitAccordingToScreenSize);
 }
 
 fetchCategories()
@@ -62,7 +61,7 @@ fetchCategories()
       delete filtersResultForQuery.category;
       handleClickedAllCategories();
     });
-    checkMediaQueriesForFirstRendering();
+    renderAccordingToMediaQueryScreenSize();
   })
   .catch(error => {
     console.error('ERROR', error);
@@ -90,13 +89,7 @@ function handleClickedCategories(event) {
       allCategoriesButton.classList.remove('is-active'); // Знімаємо активний клас з кнопки "All categories"
     }
 
-    fetchRecipes(activeCategory)
-      .then(recipes => {
-        console.log(recipes);
-      })
-      .catch(error => {
-        console.error('ERROR', error);
-      });
+    renderAccordingToMediaQueryScreenSize();
   }
 }
 
