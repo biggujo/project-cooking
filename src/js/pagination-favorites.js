@@ -42,9 +42,7 @@ export function createPagination({ totalItems, itemsPerPage, afterMove }) {
     },
   });
 
-  pagination.on('afterMove', function (eventData) {
-    alert('The current page is ' + eventData.page);
-  });
+  pagination.on('afterMove', afterMove);
 
   return pagination;
 }

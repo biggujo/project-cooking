@@ -65,6 +65,8 @@ function doNewRenderOfCardsAndCategories() {
 
 async function renderCardsFromLocalStorage({ givenCategory, page }) {
   try {
+    if (!page) page = 1;
+
     const idsArray = JSON.parse(localStorage.getItem('favorites'));
 
     refs.favoritesList.innerHTML = '';
@@ -87,6 +89,29 @@ async function renderCardsFromLocalStorage({ givenCategory, page }) {
 
       categories = recipeCardEls.filter(
         recipeCardEl => recipeCardEl.recipeData.category === givenCategory
+      );
+    }
+
+    document.getElementById('pagination').style.display =
+      categories.length > ITEMS_PER_PAGE ? 'block' : 'none';
+
+    if (page === 1) {
+      createPagination({
+        totalItems: categories.length,
+        itemsPerPage: ITEMS_PER_PAGE,
+        afterMove: eventData => {
+          renderCardsFromLocalStorage({
+            givenCategory,
+            page: eventData.page,
+          });
+        },
+      });
+    }
+
+    if (page) {
+      categories = categories.slice(
+        (page - 1) * ITEMS_PER_PAGE,
+        page * ITEMS_PER_PAGE
       );
     }
 
