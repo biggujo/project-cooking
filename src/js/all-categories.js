@@ -1,8 +1,15 @@
 import axios from 'axios';
 import { fetchCategories } from './api-categories.js';
-import {filtersResultForQuery, resetAllFilters, checkMediaQueriesByClick, axiosRequestForRenderCards, buildRecipeURL} from './filters.js';
+import {
+  filtersResultForQuery,
+  resetAllFilters,
+  checkMediaQueriesByClick,
+  axiosRequestForRenderCards,
+  buildRecipeURL,
+} from './filters.js';
 
 const loader = document.querySelector('.load-categories');
+
 function hideLoader() {
   loader.classList.add('is-hidden');
 }
@@ -16,12 +23,14 @@ const allCategoriesButtons = document.querySelectorAll(
 
 let activeCategory = null;
 
-function checkMediaQueriesForFirstRendering () {
-  const handleMediaChange = (mediaQuery) => {
+function checkMediaQueriesForFirstRendering() {
+  const handleMediaChange = mediaQuery => {
     if (mediaQuery.matches) {
       if (mediaQuery.media === '(max-width: 768px)') {
         fetchRecipes(activeCategory, 5);
-      } else if (mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)') {
+      } else if (
+        mediaQuery.media === '(min-width: 769px) and (max-width: 1160px)'
+      ) {
         fetchRecipes(activeCategory, 8);
       } else if (mediaQuery.media === '(min-width: 1161px)') {
         fetchRecipes(activeCategory, 9);
@@ -30,7 +39,9 @@ function checkMediaQueriesForFirstRendering () {
   };
 
   const mediaQuery768 = window.matchMedia('(max-width: 768px)');
-  const mediaQuery769to1160 = window.matchMedia('(min-width: 769px) and (max-width: 1160px)');
+  const mediaQuery769to1160 = window.matchMedia(
+    '(min-width: 769px) and (max-width: 1160px)'
+  );
   const mediaQueryMin1161 = window.matchMedia('(min-width: 1161px)');
 
   handleMediaChange(mediaQuery768);
@@ -61,7 +72,9 @@ function handleClickedCategories(event) {
   const target = event.target;
 
   if (target.classList.contains('all-categories-item-button')) {
-    const activeButton = document.querySelector('.all-categories-item-button.is-active');
+    const activeButton = document.querySelector(
+      '.all-categories-item-button.is-active'
+    );
 
     if (activeButton && activeButton !== target) {
       activeButton.classList.remove('is-active');
@@ -88,7 +101,9 @@ function handleClickedCategories(event) {
 }
 
 function handleClickedAllCategories() {
-  const activeButton = document.querySelector('.all-categories-item-button.is-active');
+  const activeButton = document.querySelector(
+    '.all-categories-item-button.is-active'
+  );
 
   if (activeButton) {
     activeButton.classList.remove('is-active');

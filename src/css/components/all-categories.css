@@ -4,8 +4,10 @@
   |============================
 */
 
-
 .all-categories-button {
+  width: 176px;
+  padding: 14px 20px;
+
   font-size: 18px;
   line-height: calc(22 / 18);
   color: var(--color-gray-pale-alpha050);
@@ -66,7 +68,6 @@
 
 
   .all-categories-list {
-    width: 176px;
     height: 416px;
     gap: 24px;
   }
