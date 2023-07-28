@@ -138,7 +138,7 @@
 }
 
 .middle-time {
-  margin-right: 6px;
+  margin-left: 16px;
   color: var(--color-gray-pale-alpha050);
   font-size: 14px;
   font-style: normal;
@@ -282,6 +282,7 @@
   }
 
   .video-link {
+    margin-bottom: 16px;
     width: 467px;
     height: 250px;
   }
@@ -309,6 +310,7 @@
     margin-right: 0;
     margin-left: auto;
     margin-bottom: 38px;
+    margin-top: 6px;
   }
 
   .middle-rate {
@@ -316,7 +318,7 @@
   }
 
   .middle-time {
-    margin-right: 0;
+    margin-left: 8px;
   }
 
   .stars-list {

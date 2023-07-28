@@ -110,7 +110,7 @@ export class PopUpRecipeModal {
         <div class='div-rating'>
           <span class='middle-rate'>${this.recipeData.rating}</span>
           ${ratingContainerRef.outerHTML}
-          <span class='middle-time'>${this.recipeData.time}</span>
+          <span class='middle-time'>${this.recipeData.time} min</span>
         </div>
         <div class='ingredients'>
           <ul class='ingred-list'>
