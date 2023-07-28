@@ -18,6 +18,7 @@ import './js/all-categories.js';
 import './js/pagination.js';
 import { PopUpModal } from './js/pop-up-modal.js';
 import { PopUpRecipeModal } from './js/pop-up-recipe-modal.js';
+import { PopUpRatingModal } from './js/pop-up-rating-modal.js';
 
 import { RecipeCard } from './js/recipe-card.js';
 import './js/filters.js';
@@ -29,11 +30,7 @@ highlightCurrentPage();
 const loaderRef = document.querySelector('.card-modal-loader-backdrop');
 
 // Recipe modal
-new PopUpModal({
-  openModalSelector: '[data-pop-up-rating-open]',
-  closeModalSelector: '[data-pop-up-rating-close]',
-  backdropSelector: '[data-pop-up-rating-modal]',
-});
+// new PopUpRatingModal();
 
 // Rating modal
 new PopUpModal({
@@ -114,8 +111,6 @@ async function handleRecipeCardClick({ target }) {
 
     const response = await axios.get(`${recipeCardURL}/${givenId}`);
     const recipeData = await response.data;
-
-    console.log(recipeData);
 
     await new PopUpRecipeModal(recipeData).openModal();
   }
