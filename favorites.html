@@ -6,11 +6,11 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/project-cooking/assets/favorites-4703e5d5.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-de7bcdb6.js">
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-3368ad33.js">
+    <script type="module" crossorigin src="/project-cooking/assets/favorites-4e2d7043.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-9d9a1817.js">
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-a7facc4b.js">
     <link rel="stylesheet" href="/project-cooking/assets/scroll-up-88da730b.css">
-    <link rel="stylesheet" href="/project-cooking/assets/icons-2bc6093c.css">
+    <link rel="stylesheet" href="/project-cooking/assets/icons-6b0e33e8.css">
   </head>
   <body>
     <header>
@@ -213,6 +213,108 @@
       </section>
     </main>
     
+
+    <div class="backdrop is-hidden" data-pop-up-recipe-modal>
+  <div class="modal">
+    <button class="close-btn" data-pop-up-recipe-close>
+      <svg class="close-svg">
+        <use href="/project-cooking/assets/icons-bb57ee8a.svg#close-pop-up"></use>
+      </svg>
+    </button>
+    <div class="modal-recipe-content"></div>
+    <ul class="recipe-btn-list">
+      <li>
+        <button class="btn fav">Add to favorite</button>
+      </li>
+      <li>
+        <button data-pop-up-rating-open class="rating-btn btn">
+          Give a rating
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <div class="backdrop is-hidden" data-pop-up-rating-modal>
+  <div class="pop-up-rating-modal">
+    <button class="close-btn" data-pop-up-rating-close>
+      <svg class="close-svg">
+        <use href="/project-cooking/assets/icons-bb57ee8a.svg#close-pop-up"></use>
+      </svg>
+    </button>
+    <div class="pop-up-rating">
+      <p class="pop-up-rating-subtitle pop-up-rating-text">Rating</p>
+      <div class="pop-up-rating-section">
+        <p class="pop-up-rating-text pop-up-rating-number">0.0</p>
+        <ul class="pop-up-rating-list">
+          <li class="pop-up-rating-item">
+            <svg
+              class="pop-up-rating-item-icon"
+              data-rating="1"
+              width="24"
+              height="24"
+            >
+              <use href="/project-cooking/assets/icons-bb57ee8a.svg#star"></use>
+            </svg>
+          </li>
+          <li class="rating-item">
+            <svg
+              class="pop-up-rating-item-icon"
+              data-rating="2"
+              width="24"
+              height="24"
+            >
+              <use href="/project-cooking/assets/icons-bb57ee8a.svg#star"></use>
+            </svg>
+          </li>
+          <li class="rating-item">
+            <svg
+              class="pop-up-rating-item-icon"
+              data-rating="3"
+              width="24"
+              height="24"
+            >
+              <use href="/project-cooking/assets/icons-bb57ee8a.svg#star"></use>
+            </svg>
+          </li>
+          <li class="rating-item">
+            <svg
+              class="pop-up-rating-item-icon"
+              data-rating="4"
+              width="24"
+              height="24"
+            >
+              <use href="/project-cooking/assets/icons-bb57ee8a.svg#star"></use>
+            </svg>
+          </li>
+          <li class="rating-item">
+            <svg
+              class="pop-up-rating-item-icon"
+              data-rating="5"
+              width="24"
+              height="24"
+            >
+              <use href="/project-cooking/assets/icons-bb57ee8a.svg#star"></use>
+            </svg>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form name="rating-form" class="rating-form">
+      <input
+        name="email"
+        class="form-input-text"
+        type="email"
+        placeholder="Enter email"
+        required
+      />
+      <button type="submit" class="form-input-button-submit btn-send">
+        Send
+      </button>
+    </form>
+  </div>
+</div>
+
 
     
   </body>

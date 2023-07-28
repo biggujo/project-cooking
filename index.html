@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/project-cooking/assets/index-2e9e691f.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-de7bcdb6.js">
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-3368ad33.js">
+    <script type="module" crossorigin src="/project-cooking/assets/index-012810fb.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-9d9a1817.js">
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-a7facc4b.js">
     <link rel="stylesheet" href="/project-cooking/assets/scroll-up-88da730b.css">
-    <link rel="stylesheet" href="/project-cooking/assets/icons-2bc6093c.css">
+    <link rel="stylesheet" href="/project-cooking/assets/icons-6b0e33e8.css">
     <link rel="stylesheet" href="/project-cooking/assets/index-c542050c.css">
   </head>
   <body>
@@ -158,36 +158,37 @@
 
 
     <main>
-      <section class="hero">
-  <div class="container">
-    <div class="hero-wrapper">
-      <div class="hero-info">
-        <h1 class="hero-title">
+      <section class='hero'>
+  <div class='container'>
+    <div class='hero-wrapper'>
+      <div class='hero-info'>
+        <h1 class='hero-title'>
           Learn to Cook
-          <span class="decor-green-text">Tasty Treats'</span> Customizable
+          <span class='decor-green-text'>Tasty Treats'</span> Customizable
           Masterclass
         </h1>
-        <p class="hero-text">
+        <p class='hero-text'>
           TastyTreats - Customize Your Meal with Ingredient Options and
           Step-by-Step Video Guides.
         </p>
-        <button type="button" class="hero-btn" data-pop-up-order-now-open>
+        <button type='button' class='button-order-now hero-btn '
+                data-pop-up-order-now-open>
           Order now
         </button>
       </div>
-      <div class="hero-outer-swiper-wrapper">
-        <div class="swiper mySwiper" style="overflow: visible; z-index: 0">
-          <span class="loader load-hero"></span>
+      <div class='hero-outer-swiper-wrapper'>
+        <div class='swiper mySwiper' style='overflow: visible; z-index: 0'>
+          <span class='loader load-hero'></span>
 
-          <div class="swiper-wrapper"></div>
+          <div class='swiper-wrapper'></div>
           <div
-            class="swiper-pagination"
-            style="
+            class='swiper-pagination'
+            style='
               width: auto;
               left: 50%;
               transform: translateX(var(--swiper-pagination-left-translate-x));
               bottom: var(--swiper-pagination-bottom-margin);
-            "
+            '
           ></div>
         </div>
       </div>
@@ -294,9 +295,12 @@
 
       </div>
     </div>
+    <div id="pagination" class="pagination tui-pagination"></div>
   </div>
 </section>
 
+
+    <!-- Pop-ups -->
     <div class="backdrop is-hidden" data-pop-up-recipe-modal>
   <div class="modal">
     <button class="close-btn" data-pop-up-recipe-close>
@@ -317,8 +321,6 @@
     </ul>
   </div>
 </div>
-
-    <div id="pagination" class="pagination tui-pagination"></div>
 
     <div class="backdrop is-hidden" data-pop-up-rating-modal>
   <div class="pop-up-rating-modal">
@@ -400,20 +402,6 @@
   </div>
 </div>
 
-    <div class="loader"></div>
-
-    <!-- TODO: Remove -->
-    <h2>Modals</h2>
-    <button class="open-btn" data-pop-up-recipe-open>Open recipe</button>
-    <button class="open-btn" data-pop-up-rating-open>Open rating</button>
-
-    <!-- TODO: Add modal -->
-    <button class="open-btn" data-pop-up-rating-open>Open form</button>
-
-    <!-- Card loader -->
-    <div class="backdrop card-modal-loader-backdrop is-hidden">
-      <div class="loader card-modal-loader"></div>
-    </div>
 
     <!-- Scroll up -->
     <a href="#" id="roll_back" class="animate">
