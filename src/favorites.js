@@ -20,7 +20,11 @@ document.addEventListener('remove-from-favorites', () => {
 refs.favoritesCategories.addEventListener('click', handleCategoryClick);
 refs.favoritesList.addEventListener('click', handleFavoriteLikeClick);
 
-doNewRenderOfCardsAndCategories();
+if (isFavoritesEmpty()) {
+  showNoFavFound();
+} else {
+  doNewRenderOfCardsAndCategories();
+}
 
 function handleCategoryClick({ target }) {
   if (target.nodeName !== 'BUTTON') {
@@ -176,4 +180,17 @@ function holdHeightOfCardList() {
 
 function releaseHeightOfCardList() {
   refs.favoritesList.style.height = 'auto';
+}
+
+function isFavoritesEmpty() {
+  try {
+    const idsArray = JSON.parse(localStorage.getItem('favorites'));
+    return idsArray === null;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function showNoFavFound() {
+  document.querySelector('.fav-no-recipes').classList.remove('is-hidden');
 }
