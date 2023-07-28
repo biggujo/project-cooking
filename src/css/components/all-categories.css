@@ -16,9 +16,11 @@
   border: 1px solid var(--color-gray-pale-alpha020);
 
   margin-bottom: 30px;
-  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
-  color var(--primary-animation-duration) var(--primary-animation-time-func),
-  border var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition:
+    background-color var(--primary-animation-duration)
+      var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func),
+    border var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .all-categories-button:hover,
@@ -27,10 +29,11 @@
   background-color: var(--color-accent-primary);
   color: var(--color-gray-accent-primary);
   border: 1px solid var(--color-accent-primary);
-  transition: background-color var(--primary-animation-duration) var(--primary-animation-time-func),
-  color var(--primary-animation-duration) var(--primary-animation-time-func),
-  border var(--primary-animation-duration) var(--primary-animation-time-func);
-
+  transition:
+    background-color var(--primary-animation-duration)
+      var(--primary-animation-time-func),
+    color var(--primary-animation-duration) var(--primary-animation-time-func),
+    border var(--primary-animation-duration) var(--primary-animation-time-func);
 }
 
 .all-categories-list {
@@ -53,20 +56,22 @@
   border: none;
   background: none;
   color: var(--color-gray-pale-alpha030);
-  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: color var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .all-categories-item-button:hover,
 .all-categories-item-button:focus,
 .all-categories-item-button.is-active {
   color: var(--color-accent-primary);
-  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
-
+  transition: color var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 @media screen and (min-width: 768px) {
-
-
+  .all-categories-button {
+    margin-top: 26px;
+  }
   .all-categories-list {
     height: 416px;
     gap: 24px;
@@ -74,11 +79,7 @@
 }
 
 @media screen and (min-width: 1160px) {
-
-
   .all-categories-button {
     margin-bottom: 42px;
   }
 }
-
-

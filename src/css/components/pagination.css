@@ -1,5 +1,15 @@
-.pagination.tui-pagination {
+.pagination-wrapper {
+  height: 44px;
   margin-top: 40px;
+  position: relative;
+}
+
+.hero-pagination {
+  width: 446px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  position: absolute;
 }
 
 .tui-pagination {
@@ -7,6 +17,10 @@
   line-height: normal;
   text-align: center;
   font-size: 0;
+}
+
+.fav-pagination.tui-pagination {
+  margin-top: 40px;
 }
 
 .tui-ico-ellip {
@@ -88,7 +102,7 @@
 }
 
 .tui-pagination:not(.tui-initializing)
-.tui-page-btn:not(.tui-ico-prev):not(.tui-ico-next):not(.tui-is-selected):not(
+  .tui-page-btn:not(.tui-ico-prev):not(.tui-ico-next):not(.tui-is-selected):not(
     .tui-is-disabled
   ):hover,
 .tui-pagination:not(.tui-initializing) .tui-next:not(.tui-is-disabled):hover,
@@ -111,7 +125,15 @@
 }
 
 @media screen and (min-width: 768px) {
-  .pagination.tui-pagination {
+  .fav-pagination.tui-pagination {
+    margin-top: 64px;
+  }
+
+  .hero-pagination {
+    transform: translateX(-206px);
+  }
+
+  .pagination-wrapper {
     margin-top: 64px;
   }
 
@@ -142,5 +164,11 @@
 
   .tui-pagination .tui-page-btn:last-child {
     margin-left: 8px;
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  .hero-pagination {
+    transform: translateX(-61px);
   }
 }

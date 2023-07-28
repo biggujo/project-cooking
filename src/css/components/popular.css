@@ -1,5 +1,12 @@
 @import url('../base/variables.css');
 
+@media screen and (max-width: 767px) {
+  .popular-recipes-list li:nth-child(3),
+  .popular-recipes-list li:nth-child(4) {
+    display: none;
+  }
+}
+
 .popular-recipes {
   display: flex;
   flex-direction: column;
@@ -22,7 +29,7 @@
 .popular-recipes-list {
   display: flex;
   flex-direction: column;
-  gap: 27px;
+  gap: 24px;
   /* height: 200px; */
 }
 
@@ -83,6 +90,10 @@
     width: 185px;
   }
 
+  .popular-recipes-list {
+    gap: 16px;
+  }
+
   .popular-recipes-image {
     width: 48px;
     height: 48px;
@@ -129,5 +140,9 @@
   .popular-recipes-text-description {
     width: 155px;
     height: 41px;
+  }
+
+  .popular-recipes-list {
+    gap: 32px;
   }
 }

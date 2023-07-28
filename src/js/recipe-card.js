@@ -49,23 +49,37 @@ export class RecipeCard {
 
     cardEl.classList.add('recipe-card');
 
+    const recipeInner = document.createElement('div');
+    recipeInner.classList.add('recipe-card-inner');
+    cardEl.appendChild(recipeInner);
+
     const likeWrapperEl = document.createElement('span');
     likeWrapperEl.innerHTML = `<svg class='like-icon' data-like><use href='./img/icons.svg#like' data-like></use></svg>`;
-    cardEl.appendChild(likeWrapperEl);
+    recipeInner.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
     subtitle.classList.add('recipe-title');
     subtitle.textContent = data.title;
-    cardEl.appendChild(subtitle);
+    recipeInner.appendChild(subtitle);
 
     const description = document.createElement('p');
     description.classList.add('recipe-description');
     description.textContent = data.description;
-    cardEl.appendChild(description);
+    recipeInner.appendChild(description);
+
+    const info = document.createElement('div');
+    info.classList.add('card-information');
 
     const rating = document.createElement('div');
     rating.classList.add('rating');
-    cardEl.appendChild(rating);
+    info.appendChild(rating);
+
+    const recipeBtn = document.createElement('button');
+    recipeBtn.textContent = 'See recipe';
+    recipeBtn.classList.add('recipe-button');
+    info.appendChild(recipeBtn);
+
+    recipeInner.appendChild(info);
 
     const ratingNumber = document.createElement('div');
     ratingNumber.classList.add('rating-number');

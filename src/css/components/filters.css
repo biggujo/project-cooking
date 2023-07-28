@@ -126,12 +126,14 @@
   border: 1px solid var(--color-gray-pale-alpha020);
   background-color: transparent;
   padding: 13px 17px;
-  transition: box-shadow var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: box-shadow var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .search__recipes-input__block:hover {
   box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.08);
-  transition: box-shadow var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: box-shadow var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .search__recipes-input {
@@ -171,12 +173,14 @@
   user-select: none;
   background-color: transparent;
   margin: 0;
-  transition: box-shadow var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: box-shadow var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .filter-select__button-block:hover {
   box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.08);
-  transition: box-shadow var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: box-shadow var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .filter-select__toggle {
@@ -238,13 +242,15 @@
 .filter-select__option {
   color: var(--color-gray-pale-alpha030);
   font-weight: 500;
-  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: color var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .filter-select__option:hover {
   color: var(--color-gray-pale-alpha080);
   cursor: pointer;
-  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: color var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .filter-select__option_selected {
@@ -260,7 +266,8 @@
   background: var(--color-gray-pale-alpha010);
 }
 
-#select-time, #select-area {
+#select-time,
+#select-area {
   flex: 0 1 47.76%;
 }
 
@@ -288,7 +295,8 @@
 .filters-reset:hover {
   color: var(--color-gray-pale-alpha080);
   cursor: pointer;
-  transition: color var(--primary-animation-duration) var(--primary-animation-time-func);
+  transition: color var(--primary-animation-duration)
+    var(--primary-animation-time-func);
 }
 
 .filters-reset span {
@@ -365,14 +373,9 @@
   .filters-reset {
     bottom: 14px;
   }
-
-  .filters__block .rendered-cards .recipe-card {
-    width: 240px;
-    height: 264px;
-  }
 }
 
-@media screen and ( min-width: 1160px ) {
+@media screen and (min-width: 1160px) {
   .filters__block {
     max-width: 780px;
     width: 100%;
