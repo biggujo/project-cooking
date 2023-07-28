@@ -54,6 +54,10 @@
   margin: 0;
 }
 
+.tui-page-btn.tui-next-is-ellip.tui-last-child {
+  margin-right: 10px;
+}
+
 .tui-first-child {
   margin-right: 8px;
 }
