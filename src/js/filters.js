@@ -364,7 +364,7 @@ function handleClickedAllCategories() {
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
 
-  fetchRecipes(activeCategory)
+  fetchRecipes(activeCategory, ITEMS_PER_PAGE)
     .then(recipes => {
       console.log(recipes);
     })
