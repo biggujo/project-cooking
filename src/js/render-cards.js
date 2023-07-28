@@ -15,7 +15,6 @@ function axiosRequestForRenderCards(url) {
     .get(url)
     .then(response => {
       const recipes = response.data.results;
-      console.log(recipes);
       if (recipes.length === 0) {
         Notify.failure(
           'Sorry, nothing found. Change your filters, or check the entered values.'

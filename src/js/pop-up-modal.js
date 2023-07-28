@@ -25,7 +25,6 @@ export class PopUpModal {
   }
 
   onOpenModal = () => {
-    console.log('Open!');
     window.addEventListener('keydown', this.onEscapeKeyPress);
     this.refs.backdrop.classList.remove('is-hidden');
   };
@@ -42,7 +41,6 @@ export class PopUpModal {
   };
 
   onEscapeKeyPress = e => {
-    console.log(e);
     if (e.code === 'Escape') {
       this.onCloseModal();
     }

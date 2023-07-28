@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { PopUpRecipeModal } from './pop-up-recipe-modal.js';
+import { Notify } from 'notiflix/build/notiflix-notify-aio.js';
 
 document.body.addEventListener('click', handleRecipeCardClick);
 
@@ -20,21 +21,16 @@ async function handleRecipeCardClick({ target }) {
   }
 
   if (!clickedCard) {
-    console.log('error');
     return;
   }
 
   try {
     await renderModalById();
   } catch (e) {
-    console.log(e);
+    Notify.failure(e);
   }
 
   function hasLikeIconBeenClicked() {
-    console.log(
-      'target.dataset.like === undefined: ',
-      target.dataset.like === undefined
-    );
     return target.dataset.like !== undefined;
   }
 

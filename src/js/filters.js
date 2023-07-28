@@ -79,7 +79,6 @@ searchFormEl.addEventListener('submit', e => {
 });
 
 searchIconEl.addEventListener('click', () => {
-  console.log('hi');
   fetchRecipeByFilter(filtersResultForQuery);
 });
 
@@ -126,7 +125,6 @@ function handleFilterSelectChange(e) {
   const filterBtn = e.target.querySelector('.filter-select__toggle');
   let elName = filterBtn.name;
   filtersResultForQuery[elName] = filterBtn.value;
-  console.log(filtersResultForQuery);
   fetchRecipeByFilter(filtersResultForQuery);
 }
 
@@ -221,7 +219,6 @@ export function checkMediaQueriesByClick() {
     limit = 9;
   }
 
-  console.log('Limit:', limit);
   return limit;
 }
 
@@ -231,7 +228,6 @@ export function axiosRequestForRenderCards({ url }) {
     .get(`${url}&page=${page}`)
     .then(response => {
       const recipes = response.data.results;
-      console.log(recipes);
       renderedCards.innerHTML = '';
       if (recipes.length === 0) {
         Notify.failure(
@@ -266,20 +262,18 @@ export function axiosRequestForRenderCards({ url }) {
 
       return Promise.all(recipeCardPromises).then(recipeCardEls => {
         recipeCardEls.forEach(recipeCardEl => {
-          console.log(recipeCardEl);
           renderedCards.prepend(recipeCardEl._recipeCardEl);
         });
       });
     })
     .catch(error => {
-      console.log(error);
+      Notify.failure(error);
       // Notify.failure('Sorry, there is something wrong with your request!');
       throw error;
     });
 }
 
 const callWithLimitAccordingToScreenSize = mediaQuery => {
-  console.log(mediaQuery);
   if (mediaQuery.media === '(max-width: 768px)') {
     fetchRecipes(activeCategory, 6);
   } else if (
@@ -343,7 +337,6 @@ function handleClickedCategories(event) {
     } else {
       target.classList.add('is-active');
       filtersResultForQuery['category'] = target.textContent.trim();
-      console.log(filtersResultForQuery);
       activeCategory = target.innerText;
       allCategoriesButton.classList.remove('is-active'); // Знімаємо активний клас з кнопки "All categories"
     }
@@ -364,13 +357,9 @@ function handleClickedAllCategories() {
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
 
-  fetchRecipes(activeCategory, ITEMS_PER_PAGE)
-    .then(recipes => {
-      console.log(recipes);
-    })
-    .catch(error => {
-      console.error('ERROR', error);
-    });
+  fetchRecipes(activeCategory, ITEMS_PER_PAGE).catch(error => {
+    Notify.failure(error);
+  });
 }
 
 function fetchRecipes(category, limit) {

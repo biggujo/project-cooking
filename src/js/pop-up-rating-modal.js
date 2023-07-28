@@ -69,7 +69,6 @@ export class PopUpRatingModal extends PopUpModal {
       email: emailValue,
     };
 
-    console.log(data);
     this.patchData(data);
     this.removeEventListeners();
     this.clearRatingIntormation();
@@ -77,8 +76,6 @@ export class PopUpRatingModal extends PopUpModal {
   };
 
   async patchData(data) {
-    console.log(this.recipeId);
-    console.log(this.ratingURL);
     try {
       const res = await axios.patch(
         `${this.ratingURL}/${this.recipeId}/rating`,
@@ -100,7 +97,6 @@ export class PopUpRatingModal extends PopUpModal {
   }
 
   removeEventListeners() {
-    console.log(1);
     this.formRef.removeEventListener('submit', this.onRatingFormSubmit);
     this.starsListRef.removeEventListener('click', this.onStarRatingClick);
   }

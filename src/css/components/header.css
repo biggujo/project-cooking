@@ -1,6 +1,18 @@
 header {
   padding-top: 20px;
   padding-bottom: 45px;
+  height: 200px;
+}
+
+.modal-nav {
+  height: 500px;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 768px) {
+  [data-header-menu-modal] {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -303,7 +315,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     margin: 0 auto;
     text-align: center;
   }
