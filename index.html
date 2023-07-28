@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     
-    <script type="module" crossorigin src="/project-cooking/assets/index-1d9f99e7.js"></script>
+    <script type="module" crossorigin src="/project-cooking/assets/index-fcfa770d.js"></script>
     <link rel="modulepreload" crossorigin href="/project-cooking/assets/scroll-up-5e887f43.js">
-    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-30d960b9.js">
+    <link rel="modulepreload" crossorigin href="/project-cooking/assets/icons-6c73c326.js">
     <link rel="stylesheet" href="/project-cooking/assets/scroll-up-88da730b.css">
-    <link rel="stylesheet" href="/project-cooking/assets/icons-ef6bc7a2.css">
+    <link rel="stylesheet" href="/project-cooking/assets/icons-faf1d3a3.css">
     <link rel="stylesheet" href="/project-cooking/assets/index-c542050c.css">
   </head>
   <body>
@@ -197,85 +197,106 @@
 
     </main>
 
-    <div class="container">
-    <div class="filters__block">
-       <div class="filters__block-main">
-        <form class="search__recipes">
-          <label class="search__recipes-label filters-label" for="search__recipes-input">Search</label>
-          <div class="search__recipes-input__block">
-            <div class="search__icon filters-icon">
-              <svg class="search__icon-svg">
-                <use href='/project-cooking/assets/icons-bb57ee8a.svg#search-magnifier'></use>
-              </svg>
+    <section>
+  <div class='container'>
+    <div class='filters'>
+      <div class='filters__aside'>
+        <div class='all-categories'>
+  <button type='button' class='all-categories-button button is-active'>
+    All categories
+  </button>
+  <ul class='all-categories-list'>
+  </ul>
+</div>
+
+        <article class="popular-recipes">
+  <h2 class="popular-recipes-title">Popular recipes</h2>
+  <ul class="popular-recipes-list"></ul>
+  <span class="loader load-popular"></span>
+</article>
+
+      </div>
+      <div class="filters__block">
+        <div class="filters__block-main">
+          <form class="search__recipes">
+            <label class="search__recipes-label filters-label" for="search__recipes-input">Search</label>
+            <div class="search__recipes-input__block">
+              <div class="search__icon filters-icon">
+                <svg class="search__icon-svg">
+                  <use href='/project-cooking/assets/icons-bb57ee8a.svg#search-magnifier'></use>
+                </svg>
+              </div>
+              <input type="text" id="search__recipes-input" name="search-input" class="search__recipes-input" placeholder="Enter Text">
+              <div class="search__close-icon filters-icon is-hidden">
+                <svg class="search__close-icon-svg">
+                  <use href='/project-cooking/assets/icons-bb57ee8a.svg#close-search'></use>
+                </svg>
+              </div>
             </div>
-            <input type="text" id="search__recipes-input" name="search-input" class="search__recipes-input" placeholder="Enter Text">
-            <div class="search__close-icon filters-icon is-hidden">
-              <svg class="search__close-icon-svg">
-                <use href='/project-cooking/assets/icons-bb57ee8a.svg#close-search'></use>
-              </svg>
-            </div>
-          </div>
-      </form>
-      <div class="filter-select" id="select-time">
-          <label class="filters-label" for="toggle-time">Time</label>
-          <div class="filter-select__button-block" data-select="toggle-block">
+          </form>
+          <div class="filter-select" id="select-time">
+            <label class="filters-label" for="toggle-time">Time</label>
+            <div class="filter-select__button-block" data-select="toggle-block">
               <button type="button" class="filter-select__toggle" id="toggle-time" name="time" value="0 min" data-select="toggle" data-index="-1" data-start="0 min" disabled>0 min</button>
               <div class="dropdown-icon filters-icon">
-                  <svg>
-                    <use href='/project-cooking/assets/icons-bb57ee8a.svg#dropdown'></use>
-                  </svg>
+                <svg>
+                  <use href='/project-cooking/assets/icons-bb57ee8a.svg#dropdown'></use>
+                </svg>
               </div>
+            </div>
+            <div class="filter-select__dropdown" id="dropdown-time">
+              <ul class="filter-select__options" id="options-time"></ul>
+              <input type="text" name="select-time" value="" class="filter-select__input-hidden" >
+            </div>
           </div>
-          <div class="filter-select__dropdown" id="dropdown-time">
-            <ul class="filter-select__options" id="options-time"></ul>
-            <input type="text" name="select-time" value="" class="filter-select__input-hidden" >
-          </div>
-      </div>
-      <div class="filter-select" id="select-area">
-          <label class="filters-label" for="toggle-area">Area</label>
-          <div class="filter-select__button-block" data-select="toggle-block">
+          <div class="filter-select" id="select-area">
+            <label class="filters-label" for="toggle-area">Area</label>
+            <div class="filter-select__button-block" data-select="toggle-block">
               <button type="button" class="filter-select__toggle" id="toggle-area" name="area" value="Region" data-select="toggle" data-index="-1" data-start="Region" disabled>Region</button>
               <div class="dropdown-icon filters-icon">
-                  <svg>
-                    <use href='/project-cooking/assets/icons-bb57ee8a.svg#dropdown'></use>
-                  </svg>
+                <svg>
+                  <use href='/project-cooking/assets/icons-bb57ee8a.svg#dropdown'></use>
+                </svg>
               </div>
-          </div>
-          <div div class="filter-select__dropdown" id="dropdown-area">
+            </div>
+            <div div class="filter-select__dropdown" id="dropdown-area">
               <ul class="filter-select__options" id="options-area"></ul>
               <input type="text" name="select-area" value="" class="filter-select__input-hidden" >
-        </div>
-      </div>
-      <div class="filter-select" id="select-ingredients">
-          <label class="filters-label" for="toggle-ingredients">Ingredients</label>
-          <div class="filter-select__button-block" data-select="toggle-block">
+            </div>
+          </div>
+          <div class="filter-select" id="select-ingredients">
+            <label class="filters-label" for="toggle-ingredients">Ingredients</label>
+            <div class="filter-select__button-block" data-select="toggle-block">
               <button type="button" class="filter-select__toggle" id="toggle-ingredients" name="ingredient" value="Product" data-select="toggle" data-index="-1" data-start="Product" disabled>Product</button>
               <div class="dropdown-icon filters-icon">
-                  <svg>
-                    <use href='/project-cooking/assets/icons-bb57ee8a.svg#dropdown'></use>
-                  </svg>
+                <svg>
+                  <use href='/project-cooking/assets/icons-bb57ee8a.svg#dropdown'></use>
+                </svg>
               </div>
-          </div>
-          <div class="filter-select__dropdown" id="dropdown-ingredients">
+            </div>
+            <div class="filter-select__dropdown" id="dropdown-ingredients">
               <ul class="filter-select__options" id="options-ingredients" ></ul>
               <input type="text" name="select-ingredients" value="" class="filter-select__input-hidden" >
+            </div>
           </div>
-      </div>
-      <div class="filters-reset">
-          <div class="filters-reset__icon filters-icon">
+          <div class="filters-reset">
+            <div class="filters-reset__icon filters-icon">
               <svg>
                 <use href='/project-cooking/assets/icons-bb57ee8a.svg#close-reset-filter'></use>
               </svg>
+            </div>
+            <span class="filters-label">Reset the filter</span>
           </div>
-          <span class="filters-label">Reset the filter</span>
-      </div>
-       </div>
-           <div class="rendered-cards" id="rendered-cards-for-filters">
+        </div>
+            <div class="rendered-cards" id="rendered-cards-for-filters">
     
     </div>
 
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
     <div class='backdrop is-hidden' data-pop-up-recipe-modal>
   <div class='modal'>
     <button class='close-btn' data-pop-up-recipe-close>
@@ -295,24 +316,7 @@
   </div>
 </div>
 
-    <div class="all-categories container">
-  <button type="button" class="all-categories-button button is-active">
-    All categories
-  </button>
-  <ul class="all-categories-list">
-    <span class="loader load-categories"></span>
-  </ul>
-</div>
-
     <div id="pagination" class="pagination tui-pagination"></div>
-    <div class="container">
-      <article class="popular-recipes">
-  <h2 class="popular-recipes-title">Popular recipes</h2>
-  <ul class="popular-recipes-list"></ul>
-  <span class="loader load-popular"></span>
-</article>
-
-    </div>
 
     <div class='backdrop is-hidden' data-pop-up-rating-modal>
   <div class='pop-up-rating-modal'>
@@ -363,7 +367,6 @@
 </div>
 
     <div class="loader"></div>
-    <div id="recipe-container"></div>
 
     <!-- TODO: Remove -->
     <h2>Modals</h2>
