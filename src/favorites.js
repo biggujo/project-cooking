@@ -1,5 +1,6 @@
 import { RecipeCard } from './js/recipe-card.js';
 import './js/pagination-favorites.js';
+import './js/card-click.js';
 import { createPagination } from './js/pagination-favorites.js';
 
 const ALL_CATEGORIES_NAME = 'All categories';
