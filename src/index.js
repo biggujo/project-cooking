@@ -103,7 +103,8 @@ async function handleRecipeCardClick({ target }) {
   }
 
   function hasLikeIconBeenClicked() {
-    return target.nodeName === 'svg' || target.nodeName === 'use';
+    console.log('target.dataset.like !== null: ', target.dataset.like !== null);
+    return target.dataset.like !== undefined;
   }
 
   async function renderModalById() {

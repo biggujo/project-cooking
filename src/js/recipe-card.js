@@ -50,7 +50,7 @@ export class RecipeCard {
     cardEl.classList.add('recipe-card');
 
     const likeWrapperEl = document.createElement('span');
-    likeWrapperEl.innerHTML = `<svg class='like-icon'><use href='./img/icons.svg#like'></use></svg>`;
+    likeWrapperEl.innerHTML = `<svg class='like-icon' data-like><use href='./img/icons.svg#like' data-like></use></svg>`;
     cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
