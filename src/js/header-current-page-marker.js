@@ -1,7 +1,16 @@
 export function highlightCurrentPage() {
   const { pathname } = window.location;
 
-  const path = pathname === '/' ? '/index.html' : pathname;
+  // ! Development
+  // const path = pathname === '/' ? '/index.html' : pathname;
+
+  // ! Production
+  let path;
+  if (pathname.includes("index.html")) {
+    path = "/index.html";
+  } else if (pathname.includes("favorites.html")) {
+    path = "/favorites.html";
+  }
 
   // querySelectorAll because there are two references (PC & mobile modal)
   const links = document.querySelectorAll(
