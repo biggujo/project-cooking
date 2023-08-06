@@ -149,7 +149,6 @@ function fetchDataForFilters(filterName) {
     })
     .catch(error => {
       Notify.failure('Sorry, there is something wrong with your request!');
-      console.error('ERROR', error);
     });
 }
 
@@ -185,7 +184,6 @@ fetchDataForFilters('ingredients')
     Notify.failure(
       'Sorry, there is something wrong with your request data fo filter!'
     );
-    console.error('ERROR', error);
   });
 
 fetchDataForFilters('areas')
@@ -200,7 +198,6 @@ fetchDataForFilters('areas')
     Notify.failure(
       'Sorry, there is something wrong with your request data fo filter!!'
     );
-    console.error('ERROR', error);
   });
 
 /* Function for check media queries and rendering the cards. Used also in all-categories.js  */
@@ -317,7 +314,7 @@ fetchCategories()
     renderAccordingToMediaQueryScreenSize();
   })
   .catch(error => {
-    console.error('ERROR', error);
+    Notify.failure('ERROR', error);
   });
 
 function handleClickedCategories(event) {
@@ -357,9 +354,7 @@ function handleClickedAllCategories() {
   activeCategory = null;
   allCategoriesButton.classList.add('is-active');
 
-  fetchRecipes(activeCategory, ITEMS_PER_PAGE).catch(error => {
-    Notify.failure(error);
-  });
+  fetchRecipes(activeCategory, ITEMS_PER_PAGE);
 }
 
 function fetchRecipes(category, limit) {

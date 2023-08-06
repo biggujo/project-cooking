@@ -2,6 +2,10 @@ header {
   padding-top: 20px;
 }
 
+[data-header-menu-modal] .modal-item-list .current-page {
+  color: white;
+}
+
 @media screen and (max-width: 767px) {
   .modal-nav {
     height: 500px;

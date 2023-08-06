@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const listDiv = document.querySelector('.popular-recipes-list');
 const popularRecipesItems = document.querySelectorAll('.popular-recipes-item');
@@ -30,11 +31,11 @@ function getEventData() {
 
 function renderPopular(item) {
   return `
-    <li class="popular-recipes-item" attribute-id="${item._id}">
-      <img class="popular-recipes-image" src="${item.preview}" alt="${item.title}" />
-      <div class="popular-recipes-text">
-        <h3 class="popular-recipes-text-title">${item.title}</h3>
-        <p class="popular-recipes-text-description">${item.description}</p>
+    <li class='popular-recipes-item' attribute-id='${item._id}'>
+      <img class='popular-recipes-image' src='${item.preview}' alt='${item.title}' />
+      <div class='popular-recipes-text'>
+        <h3 class='popular-recipes-text-title'>${item.title}</h3>
+        <p class='popular-recipes-text-description'>${item.description}</p>
       </div>
     </li>
   `;
@@ -57,7 +58,7 @@ export function popular() {
       .then(data => {
         renderPopularItems(data);
       })
-      .catch(error => console.error(error));
+      .catch(error => Notify.failure(error));
   }
 
   window.addEventListener('resize', throttle(resize, 100));

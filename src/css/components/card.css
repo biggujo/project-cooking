@@ -94,6 +94,10 @@
   color: #050505;
 }
 
+.rating-btn.btn, .fav.btn {
+  background-color: transparent;
+}
+
 .rating-btn-container {
   display: flex;
   justify-content: center;
