@@ -1,7 +1,11 @@
 import { all } from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-import spriteSvg from "../../dist/img/icons.svg";
+// ! Development
+// import spriteSvg from "../../dist/img/icons.svg";
+
+// ! Production
+import spriteSvg from "/project-cooking/img/icons.svg";
 
 const removeFromFavoritesEvent = new Event('remove-from-favorites');
 
