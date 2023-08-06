@@ -1,6 +1,12 @@
 import { all } from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+// ! Development
+// import spriteSvg from "../../dist/img/icons.svg";
+
+// ! Production
+import spriteSvg from "/project-cooking/img/icons.svg";
+
 const removeFromFavoritesEvent = new Event('remove-from-favorites');
 
 export class RecipeCard {
@@ -51,7 +57,7 @@ export class RecipeCard {
     cardEl.classList.add('recipe-card');
 
     const likeWrapperEl = document.createElement('span');
-    likeWrapperEl.innerHTML = `<svg class='like-icon' data-like><use href='/img/icons.svg#like' data-like></use></svg>`;
+    likeWrapperEl.innerHTML = `<svg class='like-icon' data-like><use href='${spriteSvg}#like' data-like></use></svg>`;
     cardEl.appendChild(likeWrapperEl);
 
     const subtitle = document.createElement('h2');
@@ -89,11 +95,11 @@ export class RecipeCard {
     ratingStars.classList.add('rating-stars');
     rating.appendChild(ratingStars);
 
-    ratingStars.innerHTML = `<span class='rating-star'><svg class='rating-star-icon'><use href='/img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='/img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='/img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='/img/icons.svg#star'></use>
-    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='/img/icons.svg#star'></use>
+    ratingStars.innerHTML = `<span class='rating-star'><svg class='rating-star-icon'><use href='${spriteSvg}#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='${spriteSvg}#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='${spriteSvg}#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='${spriteSvg}#star'></use>
+    </svg></span><span class='rating-star'><svg class='rating-star-icon'><use href='${spriteSvg}#star'></use>
     </svg></span>`;
 
     return cardEl;
@@ -129,7 +135,7 @@ export class RecipeCard {
         <stop offset='${filledPart}%' stop-color='var(--color-star-unmarked)' />
         <stop offset='100%' stop-color='var(--color-star-unmarked)' />
       </linearGradient>
-      <use href='/img/icons.svg#star' fill='url(#myGradient${filledPart})'></use>
+      <use href='${spriteSvg}#star' fill='url(#myGradient${filledPart})'></use>
     </svg>`;
   }
 
