@@ -20,6 +20,20 @@ refs.favoritesList.addEventListener('click', handleFavoriteLikeClick);
 
 initRender();
 
+// Header burger-menu modal
+new PopUpModal({
+  openModalSelector: '[data-header-menu-open]',
+  closeModalSelector: '[data-header-menu-close]',
+  backdropSelector: '[data-header-menu-modal]',
+});
+
+// "Order now" modal
+new PopUpModal({
+  openModalSelector: '[data-pop-up-order-now-open]',
+  closeModalSelector: '[data-pop-up-order-now-close]',
+  backdropSelector: '[data-pop-up-order-now-modal]',
+});
+
 function initRender() {
   if (isFavoritesEmpty()) {
     showNoFavFound();
